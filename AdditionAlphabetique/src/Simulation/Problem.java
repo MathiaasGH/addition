@@ -22,7 +22,7 @@ public class Problem extends Model{
 	char leftOperand;
 	char rightOperand;
 	char operator;
-	String isAnswerRetrieved = "undefined";
+	String strategyChosen;
 	List<String> historyRetrieved;
 	
 	/**
@@ -37,6 +37,7 @@ public class Problem extends Model{
 		time=0;
 		answer=null;
 		this.model=model;
+		strategyChosen="null";
 		if(condition!="CSC" && condition!="NCSC")
 			throw new ProblemException();
 		this.condition = condition;
@@ -94,20 +95,13 @@ public class Problem extends Model{
 	 */
 	public void endProblem() {
 		time = time + elementEncoding + motorCommand + comparison;
-		//System.out.println("Problem solved : " + name + "=" +  answer + " calculated in " + time + "ms " + (error()?"❌":"✅") + (isAnswerRetrieved.equals("undefined")?" by producing.":(" by retrieving " + historyRetrieved() + ".")));
+		//System.out.println("Problem solved : " + name + "=" +  answer + " calculated in " + time + "ms " + (error()?"❌":"✅") + (strategyChosen.equals("production")?" by producing.":(" by retrieving " + historyRetrieved() + ".")));
 		Procedure_Memory.getInstance().modifyWeigth(usedRules, error()?-1:1);
 		if(!error())
 			Answer_Memory.getInstance().putMemory(name, answer, time);
 		//System.out.println(trace());
 	}
 	
-	/**
-	 * Retourne si la réponse a été trouvée grâce à la mémoire de réponse ou non
-	 * @return si la réponse a été trouvée grâce à la mémoire de réponse ou non
-	 */
-	public boolean isRetrieved() {
-		return !isAnswerRetrieved.equals("undefined");
-	}
 	
 	/**
 	 * Retourne le modèle qui résoud ce problème
@@ -207,5 +201,13 @@ public class Problem extends Model{
 	 */
 	public List<String> getHistoryRetrieved(){
 		return historyRetrieved;
+	}
+	
+	public String getStrategyUsed() {
+		return strategyChosen;
+	}
+	
+	public String getAnswer() {
+		return answer;
 	}
 }

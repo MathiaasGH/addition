@@ -47,7 +47,7 @@ public class Model {
 	protected static int motorCommand = 300;
 	protected static int comparison = 200;
 
-	
+
 
 	public int session=0;
 	List<Problem> problemList = new LinkedList<Problem>();
@@ -95,7 +95,7 @@ public class Model {
 			practice[i]=initialPractice;
 		}
 	}
-	
+
 	/**
 	 * Modifie le paramètre initialPractice sans modifier les valeurs des cases du tableau practice
 	 * @param j la valeur du paramètre initialPractice
@@ -232,7 +232,7 @@ public class Model {
 			try {
 				Problem problem;
 				if(condition.equals("CSC"))
-				 problem = new Problem((char)(randomLetter) + "+" + addend ,this, condition);
+					problem = new Problem((char)(randomLetter) + "+" + addend ,this, condition);
 				else
 					problem = new Problem(letters[randomLetter] + "+" + addend ,this, condition);
 				double timeProblem = addProblem(problem);
@@ -268,7 +268,7 @@ public class Model {
 			try {
 				Problem problem;
 				if(condition.equals("CSC"))
-				 problem = new Problem((char)(randomLetter) + "+" + randomNumber ,this, condition);
+					problem = new Problem((char)(randomLetter) + "+" + randomNumber ,this, condition);
 				else
 					problem = new Problem(letters[randomLetter] + "+" + randomNumber ,this, condition);
 				double timeProblem = addProblem(problem);
@@ -296,12 +296,15 @@ public class Model {
 
 	public static void main(String[] args) {
 		Model model = new Model();
-		System.out.println("Branch ratioStrat");
-		//		try{
-		//model.addProblem(new Problem("a+2", model, "NCSC"));
-		
-					
-					/*model.addProblem(new Problem("g+2", model, "CSC"));
+		try{
+			model.addProblem(new Problem("a+2", model, "CSC"));
+		}
+		catch(ProblemException e) {
+			System.out.println(e);
+		}
+
+
+		/*model.addProblem(new Problem("g+2", model, "CSC"));
 		model.addProblem(new Problem("g+2", model, "CSC"));
 		model.addProblem(new Problem("g+2", model, "CSC"));
 		model.addProblem(new Problem("g+2", model, "CSC"));
@@ -310,17 +313,17 @@ public class Model {
 		model.addProblem(new Problem("g+2", model, "CSC"));
 
 		odel.addProblem(new Problem("f+3", model, "CSC"));
-					*/
+		 */
 		/*try{
 		model.addProblem(new Problem("a+2", model, "NCSC"));
 		}
 		catch(ProblemException e) {
-			
+
 		}*/
 		//model.session("NCSC");
-	//	model.session("NCSC");
-	//	model.session("NCSC");
-	//	model.session("NCSC");
+		//	model.session("NCSC");
+		//	model.session("NCSC");
+		//	model.session("NCSC");
 
 		//model.session("CSC");
 		//model.session("CSC");
@@ -329,24 +332,24 @@ public class Model {
 		//model.session("CSC");
 		//model.session("CSC");
 		//model.session("CSC");
-		
+
 		//model.printPractice();
-	//	System.out.println(model);
-		
+		//	System.out.println(model);
+
 		/*try {
 		for(int i=0;i<60;i++)
 			model.addProblem(new Problem("a+2", model, "CSC"));
 		System.out.println(model);
 		model.addProblem(new Problem("a+3", model, "CSC"));
 		}
-		*/
+		 */
 		/*		}
 		catch(ProblemException e) {
 			System.out.println(e);
 		}
-		*/
-		
-		
+		 */
+
+
 		//		}
 		//		catch(ProblemException e) {
 		//			System.out.println(e);

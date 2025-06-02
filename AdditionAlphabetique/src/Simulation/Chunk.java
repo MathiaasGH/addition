@@ -48,14 +48,14 @@ public class Chunk extends Model{
 	private void solve() {
 		try {
 			//Je choisis la stratégie à adopter
-			String productionRule = Procedure_Memory.getInstance().findAction(this);
-			if(productionRule.equals("production") || productionRule.equals("answer"))
-				strategyChosen=true;
+			if(problem.strategyChosen.equals("null")) {
+				problem.strategyChosen = Procedure_Memory.getInstance().findAction(this);
+			}
 			//Je résouds en conséquences
-			if(productionRule.equals("production")) {
+			if(problem.strategyChosen.equals("production")) {
 				production();
 			}
-			else if(productionRule.equals("answer")) {
+			else if(problem.strategyChosen.equals("answer")) {
 				retrieveAnswer();
 			}
 
@@ -82,15 +82,15 @@ public class Chunk extends Model{
 				problem.setAnswer(letter, time);
 			else if(production.equals("increment")) {
 				//if(problem.condition.equals("CSC"))
-					//Je crée un nouveau chunk avec la lettre voisine, en décrémentant le compteur et en ajoutant le temps pris pour incrémenter
-					new Chunk(String.valueOf((char)(letter.charAt(0)+1)), String.valueOf(Integer.valueOf(number)-1), null, time + problem.getModel().getTime(letter, problem), operand, problem);
+				//Je crée un nouveau chunk avec la lettre voisine, en décrémentant le compteur et en ajoutant le temps pris pour incrémenter
+				new Chunk(String.valueOf((char)(letter.charAt(0)+1)), String.valueOf(Integer.valueOf(number)-1), null, time + problem.getModel().getTime(letter, problem), operand, problem);
 				//else 
 				//	new Chunk(String.valueOf((char)(letter.charAt(0)+2)), String.valueOf(Integer.valueOf(number)-1), null, time + problem.getModel().getTime(letter), operand, problem);
 			}
 			else if(production.equals("incrementOnlyLetter")) {
 				//if(problem.condition.equals("CSC"))
-					//Je crée un nouveau chunk avec la lettre voisine en ajoutant le temps pris pour incrémenter
-					new Chunk(String.valueOf((char)(letter.charAt(0)+1)), number, null, time + problem.getModel().getTime(letter, problem), operand, problem);
+				//Je crée un nouveau chunk avec la lettre voisine en ajoutant le temps pris pour incrémenter
+				new Chunk(String.valueOf((char)(letter.charAt(0)+1)), number, null, time + problem.getModel().getTime(letter, problem), operand, problem);
 				//else
 				//	new Chunk(String.valueOf((char)(letter.charAt(0)+2)), number, null, time + problem.getModel().getTime(letter), operand, problem);
 			}
@@ -114,22 +114,22 @@ public class Chunk extends Model{
 				String directAnswer = Answer_Memory.getInstance().findAnswer(this);
 				if(directAnswer == null || directAnswer.length()==0 || directAnswer.equals(letter) || directAnswer.charAt(0)< number.charAt(0)) {
 					//Si je n'ai pas trouvé la réponse, je calcule via la mémoire procédurale
+					problem.strategyChosen="production";
 					production();
 				}
 				else {
 					problem.receiveAction("answerRetrieved");
 					//if(problem.condition.equals("CSC")) {
-						//Je donne au problème le sous problème que je viens de résoudre
-						problem.addRetrieved(letter+"+"+(Integer.valueOf(number) - ((int)(letter.charAt(0)-96) + (Integer.valueOf(number)) - ((int)(directAnswer.charAt(0)-96))))+"="+directAnswer);
-						problem.isAnswerRetrieved="yes";
-						//Si j'ai trouvé une réponse, je calcule le pas entre la nouvelle réponse et l'augend pour savoir de combien j'ai avancé, puis je crée le nouvel augend
-						int newNumber = Integer.valueOf(number)-(Math.abs(Integer.valueOf(letter.charAt(0)) - Integer.valueOf(directAnswer.charAt(0))));
-						//Et je crée un nouveau chunk avec cette différence
-						if(newNumber<0)
-							new Chunk(directAnswer, String.valueOf(0), null, time + 0, operand, problem);
-						else
-							new Chunk(directAnswer, String.valueOf(newNumber), null, time + 0, operand, problem);
-						return;
+					//Je donne au problème le sous problème que je viens de résoudre
+					problem.addRetrieved(letter+"+"+(Integer.valueOf(number) - ((int)(letter.charAt(0)-96) + (Integer.valueOf(number)) - ((int)(directAnswer.charAt(0)-96))))+"="+directAnswer);
+					//Si j'ai trouvé une réponse, je calcule le pas entre la nouvelle réponse et l'augend pour savoir de combien j'ai avancé, puis je crée le nouvel augend
+					int newNumber = Integer.valueOf(number)-(Math.abs(Integer.valueOf(letter.charAt(0)) - Integer.valueOf(directAnswer.charAt(0))));
+					//Et je crée un nouveau chunk avec cette différence
+					if(newNumber<0)
+						new Chunk(directAnswer, String.valueOf(0), null, time + 0, operand, problem);
+					else
+						new Chunk(directAnswer, String.valueOf(newNumber), null, time + 0, operand, problem);
+					return;
 					//}
 					/*else {
 						//Je donne au problème le sous problème que je viens de résoudre
@@ -145,6 +145,10 @@ public class Chunk extends Model{
 						return;
 					}*/
 				}
+			}
+			else {
+				//Pour pop_goal
+				production();
 			}
 		}
 		catch(CantRetrieveAnswerInAnswerMemoryException e) {
@@ -165,7 +169,7 @@ public class Chunk extends Model{
 	 * @return la stratégie choisie
 	 */
 	protected String isStrategyChosen() {
-		return String.valueOf(strategyChosen);
+		return problem.strategyChosen.equals("null")?"false":"true";
 	}
 }
 

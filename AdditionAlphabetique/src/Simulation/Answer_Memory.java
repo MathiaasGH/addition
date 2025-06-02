@@ -211,7 +211,11 @@ public class Answer_Memory extends Model{
 	 * @return le score de similarité de deux problèmes
 	 */
 	private double similarity(String problemName, String problemCurrentName) {
-		return Math.exp(-specificity*distance(problemName,problemCurrentName));
+		//J'inhibe le fait de récupérer des bouts de réponse
+		if(problemName.equals(problemCurrentName))
+			return Math.exp(-specificity*distance(problemName,problemCurrentName));
+		else
+			return 0;
 	}
 
 	/**
@@ -292,7 +296,7 @@ public class Answer_Memory extends Model{
 			return assoStrength;
 		}
 	}
-	
+
 	/**
 	 * Réinitialise la mémoire de réponses
 	 */
@@ -322,7 +326,7 @@ public class Answer_Memory extends Model{
 			return 0;
 		return lastTimeAddend[addend][0];
 	}
-	
+
 	public static void main(String[] args) {
 	}
 }
