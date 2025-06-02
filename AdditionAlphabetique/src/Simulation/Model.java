@@ -296,6 +296,7 @@ public class Model {
 
 	public static void main(String[] args) {
 		Model model = new Model();
+		System.out.println("Branch ratioStrat");
 		//		try{
 		//model.addProblem(new Problem("a+2", model, "NCSC"));
 		
@@ -317,9 +318,9 @@ public class Model {
 			
 		}*/
 		//model.session("NCSC");
-		model.session("NCSC");
-		model.session("NCSC");
-		model.session("NCSC");
+	//	model.session("NCSC");
+	//	model.session("NCSC");
+	//	model.session("NCSC");
 
 		//model.session("CSC");
 		//model.session("CSC");
@@ -330,7 +331,7 @@ public class Model {
 		//model.session("CSC");
 		
 		//model.printPractice();
-		System.out.println(model);
+	//	System.out.println(model);
 		
 		/*try {
 		for(int i=0;i<60;i++)
