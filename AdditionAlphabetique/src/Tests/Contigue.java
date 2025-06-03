@@ -37,7 +37,7 @@ public class Contigue {
 					try {
 					int randomLetter = (int) ((Math.random() * (107 - 101)) + 101);
 					int randomNumber = (int) ((Math.random() * (5 - 2 + 1)) + 2);
-					Problem problem = new Problem((char)(randomLetter) + "+" + randomNumber , model, "CSC");
+					Problem problem = new Problem((char)(randomLetter) + "+" + randomNumber , model);
 					double timeProblem = model.addProblem(problem);
 					timeList.add(timeProblem);
 					errorList.add(problem.error());

@@ -195,7 +195,7 @@ public class mainPanel extends JPanel {
         	problemName = name;
             boule.setCurrentLink(link1);
             boule.resetPosition();
-            currentProblem = new Problem(name, model, condition);
+            currentProblem = new Problem(name, model);
             model.addProblem(currentProblem);
             boule.setHistoric(currentProblem.trace());
             showBoule = true;

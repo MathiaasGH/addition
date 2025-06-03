@@ -13,7 +13,6 @@ import Exceptions.*;
  */
 public class Problem extends Model{
 	
-	String condition;
 	String name;
 	String answer;
 	double time;
@@ -31,16 +30,13 @@ public class Problem extends Model{
 	 * @param model le modèle qui doit résoudre le problème
 	 * @throws ProblemException 
 	 */
-	public Problem(String name, Model model, String condition) throws ProblemException {
+	public Problem(String name, Model model) throws ProblemException {
 		historyRetrieved= new ArrayList<String>();
 		this.name=name;
 		time=0;
 		answer=null;
 		this.model=model;
 		strategyChosen="null";
-		if(condition!="CSC" && condition!="NCSC")
-			throw new ProblemException();
-		this.condition = condition;
 		usedRules= new ArrayList<String>();
 		try {
 		createChunk();

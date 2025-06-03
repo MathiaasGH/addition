@@ -232,9 +232,9 @@ public class Model {
 			try {
 				Problem problem;
 				if(condition.equals("CSC"))
-					problem = new Problem((char)(randomLetter) + "+" + addend ,this, condition);
+					problem = new Problem((char)(randomLetter) + "+" + addend ,this);
 				else
-					problem = new Problem(letters[randomLetter] + "+" + addend ,this, condition);
+					problem = new Problem(letters[randomLetter] + "+" + addend ,this);
 				double timeProblem = addProblem(problem);
 				time = time + timeProblem;
 				if(problem.error())
@@ -268,9 +268,9 @@ public class Model {
 			try {
 				Problem problem;
 				if(condition.equals("CSC"))
-					problem = new Problem((char)(randomLetter) + "+" + randomNumber ,this, condition);
+					problem = new Problem((char)(randomLetter) + "+" + randomNumber ,this);
 				else
-					problem = new Problem(letters[randomLetter] + "+" + randomNumber ,this, condition);
+					problem = new Problem(letters[randomLetter] + "+" + randomNumber ,this);
 				double timeProblem = addProblem(problem);
 				time = time + timeProblem;
 				if(problem.error())
@@ -297,7 +297,7 @@ public class Model {
 	public static void main(String[] args) {
 		Model model = new Model();
 		try{
-			model.addProblem(new Problem("a+2", model, "CSC"));
+			model.addProblem(new Problem("a+2", model));
 		}
 		catch(ProblemException e) {
 			System.out.println(e);

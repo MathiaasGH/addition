@@ -20,7 +20,7 @@ public class NonContigue {
 		List<Integer> sessionList= new ArrayList<Integer>();
 		List<String> participantList = new ArrayList<String>();
 		List<String> strategyList = new ArrayList<String>();
-		char[] letters = {'a', 'c', 'e', 'g', 'i', 'k'};
+		char[] letters = {'a', 'e', 'h', 'l', 'p'};
 
 		//Rules.getInstance().setWeight(0.2, -0.8);
 		double time = System.currentTimeMillis();
@@ -39,7 +39,7 @@ public class NonContigue {
 			        char randomLetter = letters[random.nextInt(letters.length)];
 					int randomNumber = (int) ((Math.random() * (5 - 2 + 1)) + 2);
 					try {
-					Problem problem = new Problem(randomLetter + "+" + randomNumber , model, "NCSC");
+					Problem problem = new Problem(randomLetter + "+" + randomNumber , model);
 					double timeProblem = model.addProblem(problem);
 					timeList.add(timeProblem);
 					errorList.add(problem.error());

@@ -402,12 +402,12 @@ import javax.swing.JLabel;
 				try {
 				if(csc.isSelected()) {
 					randomLetter = (int) ((Math.random() * (107 - 101)) + 101);
-					problem = new Problem((char)(randomLetter) + "+" + randomNumber ,mainPanel.getModel(), "CSC");
+					problem = new Problem((char)(randomLetter) + "+" + randomNumber ,mainPanel.getModel());
 					augends.setSelectedItem((char)(randomLetter) + "");
 				}
 				else {
 					randomLetter = new Random().nextInt(letters.length);
-					problem = new Problem(letters[randomLetter] + "+" + randomNumber ,mainPanel.getModel(), "NCSC");
+					problem = new Problem(letters[randomLetter] + "+" + randomNumber ,mainPanel.getModel());
 					augends.setSelectedItem(letters[randomLetter] + "");
 				}
 				addends.setSelectedItem(randomNumber + "");
