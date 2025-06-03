@@ -24,7 +24,7 @@ public class meanTimeFirstSessionNCSC {
 
 		//Rules.getInstance().setWeight(0.2, -0.8);
 		double time = System.currentTimeMillis();
-		for(int i=0;i<1000;i++) {
+		for(int i=0;i<10;i++) {
 			model.cleanAnswerMemory();
 			model.cleanProcedureMemory();
 			model=new Model();

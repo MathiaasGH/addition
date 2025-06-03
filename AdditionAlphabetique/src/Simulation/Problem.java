@@ -13,6 +13,7 @@ import Exceptions.*;
  */
 public class Problem extends Model{
 	
+
 	String condition;
 	String name;
 	String answer;
@@ -32,6 +33,12 @@ public class Problem extends Model{
 	 * @throws ProblemException 
 	 */
 	public Problem(String name, Model model, String condition) throws ProblemException {
+		model.profil = profil;
+		//if(profil.equals("breaker")) {
+			//switching_cost=100;
+			//System.out.print(switching_cost);
+		//}
+		//else switching_cost=1000;
 		historyRetrieved= new ArrayList<String>();
 		this.name=name;
 		time=0;
@@ -40,6 +47,7 @@ public class Problem extends Model{
 		if(condition!="CSC" && condition!="NCSC")
 			throw new ProblemException();
 		this.condition = condition;
+		
 		usedRules= new ArrayList<String>();
 		try {
 		createChunk();
@@ -146,10 +154,10 @@ public class Problem extends Model{
 	 * @return si la réponse trouvée est correcte ou non
 	 */
 	public boolean error() {
-		//if(condition.equals("CSC"))
+		if(condition.equals("CSC"))
 			return !String.valueOf((char)(Integer.valueOf(leftOperand)+Integer.valueOf(String.valueOf(rightOperand)))).equals(answer);
-		//else
-		//	return !String.valueOf((char)(Integer.valueOf(leftOperand)+2*Integer.valueOf(String.valueOf(rightOperand)))).equals(answer);
+		else
+			return !String.valueOf((char)(Integer.valueOf(leftOperand)+2*Integer.valueOf(String.valueOf(rightOperand)))).equals(answer);
 	}
 
 	/**
@@ -207,5 +215,10 @@ public class Problem extends Model{
 	 */
 	public List<String> getHistoryRetrieved(){
 		return historyRetrieved;
+	}
+
+	public String getProfil() {
+		// TODO Auto-generated method stub
+		return profil;
 	}
 }

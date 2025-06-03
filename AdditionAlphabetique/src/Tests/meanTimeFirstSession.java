@@ -19,15 +19,17 @@ public class meanTimeFirstSession {
 		List<Integer> sessionList= new ArrayList<Integer>();
 		List<Boolean> isRetrievedList = new ArrayList<Boolean>();
 		List<String> participantList = new ArrayList<String>();
+		List<String> profilList = new ArrayList<String>();
 
 
 		//Rules.getInstance().setWeight(0.2, -0.8);
 		double time = System.currentTimeMillis();
-		for(int i=0;i<10;i++) {
+		String profil="breaker";
+		for(int i=0;i<20;i++) {
 			model.cleanAnswerMemory();
 			model.cleanProcedureMemory();
-			model=new Model();
-			for(int session=1; session<11; session++) {
+			model=new Model(142);
+			for(int session=1; session<5; session++) {
 				model.session=session;
 				//model.cleanAnswerMemory();
 				//model.cleanProcedureMemory();
@@ -45,6 +47,7 @@ public class meanTimeFirstSession {
 					sessionList.add(session);
 					isRetrievedList.add(problem.isRetrieved());
 					participantList.add("participant " + i);
+					profilList.add(profil);
 					}
 					catch(ProblemException e) {
 						System.out.println(e + "\nProgram stopped.");
@@ -62,7 +65,7 @@ public class meanTimeFirstSession {
 		System.out.println("Took " + (System.currentTimeMillis() - time) + "ms");
 		//int errors2=model.session(2);
 
-		String csvFile = "problemContigueTimeSession.csv";
+		String csvFile = "NBproblemContigueTimeSession.csv";
 		File file = new File(csvFile);
 
 		try {
@@ -74,10 +77,10 @@ public class meanTimeFirstSession {
 
 			// Écriture dans le fichier
 			try (FileWriter writer = new FileWriter(file)) {
-				writer.append("addend, time, error, session, isRetrieved, particpant\n");
+				writer.append("addend, time, error, session, isRetrieved, particpant, profil\n");
 				// Écrire quelques lignes de données
 				for(int i=0; i<addendList.size();i++) {
-					writer.append(addendList.get(i) + "," + timeList.get(i) + "," + errorList.get(i) + "," + sessionList.get(i) + "," + isRetrievedList.get(i) +  "," + participantList.get(i) + "\n");
+					writer.append(addendList.get(i) + "," + timeList.get(i) + "," + errorList.get(i) + "," + sessionList.get(i) + "," + isRetrievedList.get(i) +  "," + participantList.get(i) + "," + profilList.get(i)+"\n");
 				}
 			}
 

@@ -59,6 +59,13 @@ public class Answer_Memory extends Model{
 	 * @throws CantRetrieveAnswerInAnswerMemoryException
 	 */
 	public String findAnswer(Chunk chunk) throws CantRetrieveAnswerInAnswerMemoryException{
+		int other_strat=0;
+		if(previous_strat=='p') {
+			other_strat=1;
+		}
+		else {
+			other_strat=0;
+		}
 		//Je reconstruis le nom du chunk à résoudre
 		String problemName = chunk.letter + "+" + chunk.number;
 		//Je crée une liste de taille 26 (26 lettres de l'alphabet)
@@ -102,9 +109,9 @@ public class Answer_Memory extends Model{
 			//System.out.println(memory);
 			//System.out.println(problemName);
 			double practice=0;
-			if(memory.get(problemSolved)!=null) {
+			if(memory.get(problemSolved)!=null)
 				practice=memory.get(problemSolved).getPractice();
-			}
+			
 			chunk.addTime(n+t*Math.exp(-practice/p));
 			return potentialAnswers.get(0);
 		}
@@ -144,8 +151,8 @@ public class Answer_Memory extends Model{
 								char augend = chunk.letter.charAt(0);
 								String problemSolved = augend + "+" + (answer-augend);
 								double practice=0;
-								//if(chunk.problem.condition.equals("NCSC"))
-								//	problemSolved = augend + "+" + ((answer-augend)/2);
+								if(chunk.problem.condition.equals("NCSC"))
+									problemSolved = augend + "+" + ((answer-augend)/2);
 								if(memory.get(problemSolved)!=null)
 									practice=memory.get(problemSolved).getPractice();
 								chunk.addTime(n+t*Math.exp(-practice/p));
@@ -158,8 +165,8 @@ public class Answer_Memory extends Model{
 							char augend = chunk.letter.charAt(0);
 							String problemSolved = augend + "+" + (answer-augend);
 							double practice=0;
-							//if(chunk.problem.condition.equals("NCSC"))
-							//	problemSolved = augend + "+" + ((answer-augend)/2);
+							if(chunk.problem.condition.equals("NCSC"))
+								problemSolved = augend + "+" + ((answer-augend)/2);
 							if(memory.get(problemSolved)!=null)
 								practice=memory.get(problemSolved).getPractice();
 							chunk.addTime(n+t*Math.exp(-practice/p));

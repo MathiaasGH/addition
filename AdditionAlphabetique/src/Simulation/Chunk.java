@@ -77,22 +77,23 @@ public class Chunk extends Model{
 			//Je cherche la règle à utiliser et je l'ajoute à l'historique des règles de mon problème
 			String production = Procedure_Memory.getInstance().findAction(this);
 			problem.receiveAction(production);
+			previous_strat='p';
 			if(production.equals("pop_goal"))
 				//Je définis la réponse
 				problem.setAnswer(letter, time);
 			else if(production.equals("increment")) {
-				//if(problem.condition.equals("CSC"))
+				if(problem.condition.equals("CSC"))
 					//Je crée un nouveau chunk avec la lettre voisine, en décrémentant le compteur et en ajoutant le temps pris pour incrémenter
-					new Chunk(String.valueOf((char)(letter.charAt(0)+1)), String.valueOf(Integer.valueOf(number)-1), null, time + problem.getModel().getTime(letter, problem), operand, problem);
-				//else 
-				//	new Chunk(String.valueOf((char)(letter.charAt(0)+2)), String.valueOf(Integer.valueOf(number)-1), null, time + problem.getModel().getTime(letter), operand, problem);
+					new Chunk(String.valueOf((char)(letter.charAt(0)+1)), String.valueOf(Integer.valueOf(number)-1), null, time + problem.getModel().getTime(letter), operand, problem);
+				else 
+					new Chunk(String.valueOf((char)(letter.charAt(0)+2)), String.valueOf(Integer.valueOf(number)-1), null, time + problem.getModel().getTime(letter), operand, problem);
 			}
 			else if(production.equals("incrementOnlyLetter")) {
-				//if(problem.condition.equals("CSC"))
+				if(problem.condition.equals("NCSC"))
 					//Je crée un nouveau chunk avec la lettre voisine en ajoutant le temps pris pour incrémenter
-					new Chunk(String.valueOf((char)(letter.charAt(0)+1)), number, null, time + problem.getModel().getTime(letter, problem), operand, problem);
-				//else
-				//	new Chunk(String.valueOf((char)(letter.charAt(0)+2)), number, null, time + problem.getModel().getTime(letter), operand, problem);
+					new Chunk(String.valueOf((char)(letter.charAt(0)+1)), number, null, time + problem.getModel().getTime(letter), operand, problem);
+				else
+					new Chunk(String.valueOf((char)(letter.charAt(0)+2)), number, null, time + problem.getModel().getTime(letter), operand, problem);
 			}
 		}
 		catch(ConditionRuleException e) {
@@ -117,8 +118,9 @@ public class Chunk extends Model{
 					production();
 				}
 				else {
+					previous_strat='a';
 					problem.receiveAction("answerRetrieved");
-					//if(problem.condition.equals("CSC")) {
+					if(problem.condition.equals("CSC")) {
 						//Je donne au problème le sous problème que je viens de résoudre
 						problem.addRetrieved(letter+"+"+(Integer.valueOf(number) - ((int)(letter.charAt(0)-96) + (Integer.valueOf(number)) - ((int)(directAnswer.charAt(0)-96))))+"="+directAnswer);
 						problem.isAnswerRetrieved="yes";
@@ -130,8 +132,8 @@ public class Chunk extends Model{
 						else
 							new Chunk(directAnswer, String.valueOf(newNumber), null, time + 0, operand, problem);
 						return;
-					//}
-					/*else {
+					}
+					else {
 						//Je donne au problème le sous problème que je viens de résoudre
 						problem.addRetrieved(letter+"+"+ (Integer.valueOf(number) - (((int)(letter.charAt(0)-96) + 2*(Integer.valueOf(number))) - ((int)(directAnswer.charAt(0)-96)))/2) + "=" + directAnswer);
 						problem.isAnswerRetrieved="yes";
@@ -143,7 +145,7 @@ public class Chunk extends Model{
 						else
 							new Chunk(directAnswer, String.valueOf(newNumber), null, time + 0, operand, problem);
 						return;
-					}*/
+					}
 				}
 			}
 		}
