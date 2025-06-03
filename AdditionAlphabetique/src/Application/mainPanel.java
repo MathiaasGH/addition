@@ -189,7 +189,7 @@ public class mainPanel extends JPanel {
         initialHeight = getHeight();
     }
 
-    public void start(String name, String condition) {
+    public void start(String name) {
         try {
         	idxRetrieved=0;
         	problemName = name;
@@ -258,14 +258,14 @@ public class mainPanel extends JPanel {
         model.setincreaseStrength(incs);
     }
 
-    public void session(String condition) {
-        model.session(condition);
+    public void session(ArrayList<String> charList) {
+        model.session(charList);
         appli.updateInfos();
     }
 
-    public void session10(String condition) {
+    public void session10(ArrayList<String> charList) {
         for (int i = 0; i < 10; i++)
-            model.session(condition);
+            model.session(charList);
         appli.updateInfos();
     }
     
@@ -275,8 +275,12 @@ public class mainPanel extends JPanel {
     
     public void newRule(String rule) {
     	appli.newRule(rule);
-    	if(rule.equals("increment") || rule.equals("incrementOnlyLetter")) {
-    		appli.newChunk(letter);
+    	if(rule.equals("increment")) {
+    		appli.newChunk(letter, true);
+    		letter++;
+    	}
+    	if(rule.equals("incrementOnlyLetter")) {
+    		appli.newChunk(letter, false);
     		letter++;
     	}
     	if(rule.equals("answerRetrieved")) {

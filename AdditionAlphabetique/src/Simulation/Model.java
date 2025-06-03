@@ -217,24 +217,15 @@ public class Model {
 	 * @param addend l'addend des problèmes choisi
 	 * @return un tableau contenant le nombre d'erreurs et le temps total pris pour résoudre les 288 problèmes
 	 */
-	public double[] session(int addend, String condition) {
+	public double[] session(int addend, List<String> charList) {
 		session++;
 		printSession();
 		int errors=0;
 		double time=0;
-		char[] letters = {'a', 'c', 'e', 'g', 'i', 'k'};
 		for(int a=0;a<288;a++) {
-			int randomLetter;
-			if(condition.equals("CSC"))
-				randomLetter = (int) ((Math.random() * (107 - 101)) + 101);
-			else
-				randomLetter = new Random().nextInt(letters.length);
+			String randomLetter = (String)charList.get(new Random().nextInt(charList.size()));
 			try {
-				Problem problem;
-				if(condition.equals("CSC"))
-					problem = new Problem((char)(randomLetter) + "+" + addend ,this);
-				else
-					problem = new Problem(letters[randomLetter] + "+" + addend ,this);
+				Problem problem = new Problem(randomLetter + "+" + addend ,this);
 				double timeProblem = addProblem(problem);
 				time = time + timeProblem;
 				if(problem.error())
@@ -252,25 +243,16 @@ public class Model {
 	 * Simule une session de 288 problèmes d'addends entre 2 et 5 d'augend de A à F
 	 * @return un tableau du nombre d'erreur et du temps total pris par le modèle pour résoudre toute la session
 	 */
-	public double[] session(String condition) {
+	public double[] session(List<String> charList) {
 		session++;
 		printSession();
 		int errors=0;
 		double time=0;
-		char[] letters = {'a', 'c', 'e', 'g', 'i', 'k'};
 		for(int a=0;a<288;a++) {
-			int randomLetter;
-			if(condition.equals("CSC"))
-				randomLetter = (int) ((Math.random() * (107 - 101)) + 101);
-			else
-				randomLetter = new Random().nextInt(letters.length);
+			String randomLetter = (String)charList.get(new Random().nextInt(charList.size()));
 			int randomNumber = (int) ((Math.random() * (5 - 2 + 1)) + 2);
 			try {
-				Problem problem;
-				if(condition.equals("CSC"))
-					problem = new Problem((char)(randomLetter) + "+" + randomNumber ,this);
-				else
-					problem = new Problem(letters[randomLetter] + "+" + randomNumber ,this);
+				Problem problem = new Problem(randomLetter + "+" + randomNumber ,this);
 				double timeProblem = addProblem(problem);
 				time = time + timeProblem;
 				if(problem.error())
