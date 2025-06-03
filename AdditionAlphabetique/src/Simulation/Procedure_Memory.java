@@ -14,7 +14,6 @@ import Simulation.Procedure_Memory.inf;
  * @version 1.0
  */
 public class Procedure_Memory extends Model{
-
 	private static final Procedure_Memory instance = new Procedure_Memory();
 	Map<cond[], Action> rules;
 
@@ -330,10 +329,15 @@ public class Procedure_Memory extends Model{
 	 */
 	private double estimationTimeAnswer(Chunk chunk) {
 		double practice=0;
+		if(previous_strat=='p') {
+			other_strat=1;
+		}
+		else other_strat=0;
+		//System.out.print(previous_strat);
 		if(Answer_Memory.getInstance().getMemory().get(chunk.letter + "+" + chunk.number)!=null) {
 			//Si la réponse existe dans la mémoire de réponse, je calcule le temps que ca prendrait pour la récupérer
 			practice=Answer_Memory.getInstance().getMemory().get(chunk.letter + "+" + chunk.number).getPractice();
-			return n+t*Math.exp(-practice/p) + elementEncoding + motorCommand + comparison;
+			return n+t*Math.exp(-practice/p) + elementEncoding + motorCommand + comparison + switching_cost*other_strat;
 		}
 		else {
 			//Sinon j'estime que le temps que ca me prendrait c'est le temps moyen que je prends a calculer le probleme
@@ -342,7 +346,8 @@ public class Procedure_Memory extends Model{
 				return -1;
 			if(times.get(chunk.letter+"+"+chunk.number) == null || times.get(chunk.letter+"+"+chunk.number)==0)
 				return -1;
-			return times.get(chunk.letter+"+"+chunk.number) + elementEncoding + motorCommand + comparison;
+			
+			return times.get(chunk.letter+"+"+chunk.number) + elementEncoding + motorCommand + comparison + switching_cost*(other_strat-1)*(-1);
 		}
 
 	}
@@ -353,11 +358,16 @@ public class Procedure_Memory extends Model{
 	 * @return le temps estimé à résoudre ce chunk en passant par la mémoire procédurale
 	 */
 	private double estimationTimeProduction(Chunk chunk) {
+		if(previous_strat=='p') {
+			other_strat=0;
+		}
+		else other_strat=1;
+		
 		//Si je ne l'ai jamais travaillé, je ne sais pas
 		if(Answer_Memory.getInstance().getLastTime(Integer.valueOf(chunk.number)) == 0)
 			return -1;
 		//Sinon c'est le temps moyen pris pour résoudre un problème de même addend
-		return Answer_Memory.getInstance().getLastTime(Integer.valueOf(chunk.number));
+		return Answer_Memory.getInstance().getLastTime(Integer.valueOf(chunk.number))+switching_cost*other_strat;
 	}
 
 	/**

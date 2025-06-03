@@ -33,7 +33,7 @@ public class mainPanel extends JPanel {
 
     private Boule boule = Boule.getInstance();
     private boolean showBoule = false;
-    private Model model = new Model();
+    private Model model = new Model("breaker");
     private Timer timer;
 
     private int initialWidth;
@@ -232,7 +232,6 @@ public class mainPanel extends JPanel {
     }
 
     public Map<String, Link> getLinkMap(String currentStr) {
-    	System.out.println("je cherche le bon link");
         Map<String, Link> map = new HashMap<>();
         map.put("increment", link3);
         map.put("incrementOnlyLetter", link3);

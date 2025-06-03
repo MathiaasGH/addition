@@ -31,6 +31,10 @@ public class Problem extends Model{
 	 * @throws ProblemException 
 	 */
 	public Problem(String name, Model model) throws ProblemException {
+		if(profil.equals("breaker")) {
+			switching_cost=100;
+		}
+		else switching_cost=1000;
 		historyRetrieved= new ArrayList<String>();
 		this.name=name;
 		time=0;
@@ -136,10 +140,7 @@ public class Problem extends Model{
 	 * @return si la réponse trouvée est correcte ou non
 	 */
 	public boolean error() {
-		//if(condition.equals("CSC"))
-			return !String.valueOf((char)(Integer.valueOf(leftOperand)+Integer.valueOf(String.valueOf(rightOperand)))).equals(answer);
-		//else
-		//	return !String.valueOf((char)(Integer.valueOf(leftOperand)+2*Integer.valueOf(String.valueOf(rightOperand)))).equals(answer);
+		return !String.valueOf((char)(Integer.valueOf(leftOperand)+Integer.valueOf(String.valueOf(rightOperand)))).equals(answer);
 	}
 
 	/**
@@ -205,5 +206,9 @@ public class Problem extends Model{
 	
 	public String getAnswer() {
 		return answer;
+	}
+
+	public String getProfil() {
+		return profil;
 	}
 }

@@ -63,7 +63,7 @@ public class parametersEstimation_3 {
 											for(int i=0;i<1;i++) {
 												model.cleanAnswerMemory();
 												model.cleanProcedureMemory();
-												model=new Model(decisionDeterminism, errorDiscount, wi, initPrac, incrPract, initStrength, incrStrength);
+												model=new Model(decisionDeterminism, errorDiscount, wi, initPrac, incrPract, initStrength, incrStrength, "breaker");
 												for(int session=1; session<11; session++) {
 													for(int a=0;a<288;a++) {
 														try {

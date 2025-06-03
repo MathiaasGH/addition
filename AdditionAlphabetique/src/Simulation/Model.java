@@ -30,7 +30,7 @@ public class Model {
 	protected static double increasePractice=1;
 	//To set initial strength of an answer to retrieve it more or less efficiency
 	protected static double initialStrength=1.5;
-	//To increase the strength of an answer to retrieve it more or less efficiency
+	// To increase the strength of an answer to retrieve it more or less efficiency
 	protected static double increaseStrength=2;
 	// 3 parameters to calculate time by retrieving memory
 	protected double n = 171;
@@ -48,20 +48,38 @@ public class Model {
 	protected static int comparison = 200;
 
 
-
 	public int session=0;
 	List<Problem> problemList = new LinkedList<Problem>();
 	double[] practice = new double[26];
+	
+	public static double switching_cost=0;
+	public static char previous_strat='p';
+	int other_strat=0;
+	public String profil;
 
 	/**
 	 * Constructeur pour le modèle.
 	 */
 	public Model() {
+		this("breaker");
+	}
+
+	public Model(double sw) {
+		this("breaker");
+		switching_cost=sw;
+	}
+
+	public Model(String profil) {
+		this.profil=profil;
+		if(profil.equals("breaker")) {
+			switching_cost=154;
+		}
+		else switching_cost=730;
 		for(int i=0;i<26;i++) {
 			practice[i]=initialPractice;
 		}
 	}
-
+	
 	/**
 	 * Constructeur pour le modèle
 	 * @param dd la valeur du paramère decisionDeterminism
@@ -72,7 +90,7 @@ public class Model {
 	 * @param is la valeur du paramètre initialStrength
 	 * @param ins la valeur du paramètre increaseStrength
 	 */
-	public Model(double dd, double ed, double wi, int ip, double inp, double is, double ins) {
+	public Model(double dd, double ed, double wi, int ip, double inp, double is, double ins, String profil) {
 		decisionDeterminism = dd;
 		errorDiscount = ed;
 		weightIncrease= wi;
@@ -83,6 +101,7 @@ public class Model {
 		for(int i=0;i<26;i++) {
 			practice[i]=initialPractice;
 		}
+		this.profil = profil;
 	}
 
 	/**
@@ -165,7 +184,7 @@ public class Model {
 	 * @param lettre la lettre de départ (L)
 	 * @return le temps pris pour passer de la lettre de départ à la lettre d'arrivée (L -> L+1)
 	 */
-	public double getTime(String lettre, Problem pb) {
+	public double getTime(String lettre) {
 		try {
 			practice[(int)(lettre.charAt(0)) - 65]=practice[(int)(lettre.charAt(0)) - 65]+increasePractice;
 			return a+b*Math.exp(-practice[(int)(lettre.charAt(0)) - 65] / d);
@@ -179,6 +198,10 @@ public class Model {
 				return a+b*Math.exp(-practice[(int)(lettre.charAt(0)) - 97] / d);
 			}
 		}
+	}
+	
+	public String getProfil() {
+		return profil;
 	}
 
 	/**
@@ -213,7 +236,7 @@ public class Model {
 	}
 
 	/**
-	 * Simule une session de 288 problèmes pour un addend choisi et des lettres de A à F
+	 * Simule une session de 288 problèmes pour un addend choisi
 	 * @param addend l'addend des problèmes choisi
 	 * @return un tableau contenant le nombre d'erreurs et le temps total pris pour résoudre les 288 problèmes
 	 */
@@ -276,66 +299,47 @@ public class Model {
 		System.out.println(Arrays.toString(practice));
 	}
 
+
+	public void setSwitchingCost(double switchingCost) {
+		Model.switching_cost=switchingCost;
+	}
+
+	public void resetMemory() {
+	    // Réinitialiser la mémoire des réponses
+	    cleanAnswerMemory();
+
+	    // Réinitialiser la mémoire procédurale
+	    cleanProcedureMemory();
+
+	    // Réinitialiser la pratique des lettres
+	    for (int i = 0; i < practice.length; i++) {
+	        practice[i] = initialPractice;
+	    }
+
+	    // Réinitialiser la liste des problèmes
+	    problemList.clear();
+
+	    // Réinitialiser la session
+	    session = 0;
+
+	    // Réinitialiser le coût de switching et stratégie précédente si nécessaire
+	    switching_cost = 0;
+	    previous_strat = 'p';
+	    other_strat = 0;
+
+	    // Réinitialiser le profil (optionnel)
+	   // profil = null;
+	}
+	
 	public static void main(String[] args) {
-		Model model = new Model();
+		Model model = new Model("breaker");
 		try{
+			System.out.println(model.profil);
 			model.addProblem(new Problem("a+2", model));
 		}
 		catch(ProblemException e) {
 			System.out.println(e);
 		}
-
-
-		/*model.addProblem(new Problem("g+2", model, "CSC"));
-		model.addProblem(new Problem("g+2", model, "CSC"));
-		model.addProblem(new Problem("g+2", model, "CSC"));
-		model.addProblem(new Problem("g+2", model, "CSC"));
-		model.addProblem(new Problem("g+2", model, "CSC"));
-		model.addProblem(new Problem("g+2", model, "CSC"));
-		model.addProblem(new Problem("g+2", model, "CSC"));
-
-		odel.addProblem(new Problem("f+3", model, "CSC"));
-		 */
-		/*try{
-		model.addProblem(new Problem("a+2", model, "NCSC"));
-		}
-		catch(ProblemException e) {
-
-		}*/
-		//model.session("NCSC");
-		//	model.session("NCSC");
-		//	model.session("NCSC");
-		//	model.session("NCSC");
-
-		//model.session("CSC");
-		//model.session("CSC");
-		//model.session("CSC");
-		//model.session("CSC");
-		//model.session("CSC");
-		//model.session("CSC");
-		//model.session("CSC");
-
-		//model.printPractice();
-		//	System.out.println(model);
-
-		/*try {
-		for(int i=0;i<60;i++)
-			model.addProblem(new Problem("a+2", model, "CSC"));
-		System.out.println(model);
-		model.addProblem(new Problem("a+3", model, "CSC"));
-		}
-		 */
-		/*		}
-		catch(ProblemException e) {
-			System.out.println(e);
-		}
-		 */
-
-
-		//		}
-		//		catch(ProblemException e) {
-		//			System.out.println(e);
-		//		}
-
 	}
+
 }

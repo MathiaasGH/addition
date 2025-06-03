@@ -19,6 +19,7 @@ public class Contigue {
 		List<Integer> sessionList= new ArrayList<Integer>();
 		List<String> participantList = new ArrayList<String>();
 		List<String> strategyList = new ArrayList<String>();
+		List<String> profilList = new ArrayList<String>();
 
 
 		//Rules.getInstance().setWeight(0.2, -0.8);
@@ -26,7 +27,7 @@ public class Contigue {
 		for(int i=0;i<100;i++) {
 			model.cleanAnswerMemory();
 			model.cleanProcedureMemory();
-			model=new Model();
+			model=new Model("breaker");
 			for(int session=1; session<11; session++) {
 				model.session=session;
 				//model.cleanAnswerMemory();
@@ -45,6 +46,7 @@ public class Contigue {
 					sessionList.add(session);
 					participantList.add("participant " + i);
 					strategyList.add(problem.getStrategyUsed());
+					profilList.add(model.getProfil());
 					}
 					catch(ProblemException e) {
 						System.out.println(e + "\nProgram stopped.");
@@ -74,10 +76,10 @@ public class Contigue {
 
 			// Écriture dans le fichier
 			try (FileWriter writer = new FileWriter(file)) {
-				writer.append("addend, time, error, session, particpant, strategy\n");
+				writer.append("addend, time, error, session, particpant, strategy, profil\n");
 				// Écrire quelques lignes de données
 				for(int i=0; i<addendList.size();i++) {
-					writer.append(addendList.get(i) + "," + timeList.get(i) + "," + errorList.get(i) + "," + sessionList.get(i) + "," +  participantList.get(i) + "," + strategyList.get(i) + "\n");
+					writer.append(addendList.get(i) + "," + timeList.get(i) + "," + errorList.get(i) + "," + sessionList.get(i) + "," +  participantList.get(i) + "," + strategyList.get(i) + "," + profilList.get(i) + "\n");
 				}
 			}
 
@@ -87,4 +89,3 @@ public class Contigue {
 		}
 	}
 }
-
