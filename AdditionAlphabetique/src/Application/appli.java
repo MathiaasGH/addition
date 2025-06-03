@@ -154,6 +154,8 @@ public class appli {
 		JButton startB = new JButton("Solve");
 		startB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				currentLetter=(Character)augends.getSelectedItem();
+				currentNumber=Integer.valueOf((String)addends.getSelectedItem());
 				mainPanel.setVitesse(slider.getValue());
 				mainPanel.start(augends.getSelectedItem() + "+" + addends.getSelectedItem());
 			}
@@ -384,6 +386,9 @@ public class appli {
 	}
 
 	public void newRule(String rule) {
+		if(rule.equals("z reach")) {
+			history.setText(history.getText() + "\n" + "Problem stopped because z is reached.");
+		}
 		history.setText(history.getText() + "\n" + "Rule chosen : " + rule);
 		history.revalidate();
 		history.repaint();
@@ -393,6 +398,7 @@ public class appli {
 
 	public void newChunk(char letter, boolean isGoodRule) {
 		currentLetter=(char)(currentLetter+1);
+		System.out.println(currentLetter);
 		if(isGoodRule)
 		currentNumber--;
 		if(currentNumber!=0)

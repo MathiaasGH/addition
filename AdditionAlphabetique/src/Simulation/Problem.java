@@ -91,7 +91,7 @@ public class Problem extends Model{
 	 */
 	public void endProblem() {
 		time = time + elementEncoding + motorCommand + comparison;
-		//System.out.println("Problem solved : " + name + "=" +  answer + " calculated in " + time + "ms " + (error()?"❌":"✅") + (strategyChosen.equals("production")?" by producing.":(" by retrieving " + historyRetrieved() + ".")));
+		System.out.println("Problem solved : " + name + "=" +  answer + " calculated in " + time + "ms " + (error()?"❌":"✅") + (strategyChosen.equals("production")?" by producing.":(" by retrieving " + historyRetrieved() + ".")));
 		Procedure_Memory.getInstance().modifyWeigth(usedRules, error()?-1:1);
 		if(!error())
 			Answer_Memory.getInstance().putMemory(name, answer, time);

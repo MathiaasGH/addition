@@ -34,9 +34,10 @@ public class Chunk extends Model{
 		this.operand=operand;
 		this.problem=problem;
 
-		if(!letter.equals("z") && !letter.equals("y"))
+		if(!letter.equals("z"))
 			solve();
 		else {
+			problem.receiveAction("z reach");
 			problem.setAnswer(letter, time);
 		}
 

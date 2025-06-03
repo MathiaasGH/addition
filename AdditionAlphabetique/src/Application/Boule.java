@@ -68,8 +68,13 @@ public class Boule {
 				cheminDejaAffiche=false;
 				if (historic.size() > 0) {
 					step = historic.remove(0);
-					System.out.println(step);
+					if(!step.equals("z reach"))
+						System.out.println(step);
 					mainPanel.newRule(step);
+					if(step.equals("z reach")) {
+						mainPanel.stop();
+						return;
+					}
 					// Si on est sur le chemin "Chunk → AnsMem/ProMem" et ce n'est pas un pop_goal, on revient
 					if (!step.equals("pop_goal") && currentLink.getStartStructure().getName().equals("Chunk")) {
 						comeBack = true;
