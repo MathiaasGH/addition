@@ -72,6 +72,7 @@ public class Procedure_Memory extends Model{
 				else
 					throw new ConditionRuleException("Condition rule's usage : param1 : \"operand\", \"number\" or \"letter\" ; parmam2 : a number or an operand. Misuse on {" + individualCond.toString() + "} condition.");
 				Object right = individualCond.op2;
+
 				if(right instanceof String) {
 					double rightValue = (right.equals("production")?
 							Double.valueOf(estimationTimeProduction(chunk)) : 

@@ -61,7 +61,7 @@ public class Answer_Memory extends Model{
 	 */
 	public String findAnswer(Chunk chunk) throws CantRetrieveAnswerInAnswerMemoryException{
 		//Je reconstruis le nom du chunk à résoudre
-		String problemName = chunk.letter + "+" + chunk.number;
+		String problemName = chunk.letter+"+"+chunk.number;
 		//Je crée une liste de taille 26 (26 lettres de l'alphabet)
 		ArrayList<Answer>[] weightList = new ArrayList[26];
 		for (int i = 0; i < 26; i++) { 

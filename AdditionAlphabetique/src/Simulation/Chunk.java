@@ -79,10 +79,26 @@ public class Chunk extends Model{
 			String production = Procedure_Memory.getInstance().findAction(this);
 			problem.receiveAction(production);
 			previous_strat='p';
-			if(production.equals("pop_goal"))
+			if(production.equals("pop_goal")) {
 				//Je définis la réponse
-				problem.setAnswer(letter, time);
-			else if(production.equals("increment")) {
+				if(problem.problemType.equals("instructed")) 
+					problem.setAnswer(letter +"true", time);
+				else 
+					problem.setAnswer(letter, time);
+			}
+			else if(production.equals("increment") || production.equals("incrementOnlyLetter")){
+				if(problem.problemType.equals("instructed")) {
+					//Je regarde si la target est atteinte
+					boolean target_reached = (char)(letter.charAt(0)+1)==problem.target;
+					//Je regarde si l'addend vaut 0
+					boolean is_addend_null = String.valueOf(Integer.valueOf(number)-1).equals("0");
+					if((target_reached && !is_addend_null) || (!target_reached && is_addend_null)) {
+						problem.setAnswer(letter + "false", time);
+						return;
+					}
+				}
+			}
+			if(production.equals("increment")) {	
 				//Je crée un nouveau chunk avec la lettre voisine, en décrémentant le compteur et en ajoutant le temps pris pour incrémenter
 				new Chunk(String.valueOf((char)(letter.charAt(0)+1)), String.valueOf(Integer.valueOf(number)-1), null, time + problem.getModel().getTime(letter), operand, problem);
 				//else 
@@ -120,16 +136,24 @@ public class Chunk extends Model{
 				else {
 					previous_strat='a';
 					problem.receiveAction("answerRetrieved");
+					//Si je dois trouver la réponse
 					//Je donne au problème le sous problème que je viens de résoudre
 					problem.addRetrieved(letter+"+"+(Integer.valueOf(number) - ((int)(letter.charAt(0)-96) + (Integer.valueOf(number)) - ((int)(directAnswer.charAt(0)-96))))+"="+directAnswer);
-					//Si j'ai trouvé une réponse, je calcule le pas entre la nouvelle réponse et l'augend pour savoir de combien j'ai avancé, puis je crée le nouvel augend
-					int newNumber = Integer.valueOf(number)-(Math.abs(Integer.valueOf(letter.charAt(0)) - Integer.valueOf(directAnswer.charAt(0))));
-					//Et je crée un nouveau chunk avec cette différence
-					if(newNumber<0)
-						new Chunk(directAnswer, String.valueOf(0), null, time + 0, operand, problem);
-					else
-						new Chunk(directAnswer, String.valueOf(newNumber), null, time + 0, operand, problem);
-					return;
+					if(problem.problemType.equals("free")) {
+						//Si j'ai trouvé une réponse, je calcule le pas entre la nouvelle réponse et l'augend pour savoir de combien j'ai avancé, puis je crée le nouvel augend
+						int newNumber = Integer.valueOf(number)-(Math.abs(Integer.valueOf(letter.charAt(0)) - Integer.valueOf(directAnswer.charAt(0))));
+						//Et je crée un nouveau chunk avec cette différence
+						if(newNumber<0)
+							new Chunk(directAnswer, String.valueOf(0), null, time + 0, operand, problem);
+						else
+							new Chunk(directAnswer, String.valueOf(newNumber), null, time + 0, operand, problem);
+						return;
+					}
+					//Si je dois comparer une réponse
+					else {
+						String instructedAnswer = directAnswer.equals(problem.target+"")?"true":"false";
+						problem.setAnswer(directAnswer+instructedAnswer, time);
+					}
 				}
 			}
 			else {
