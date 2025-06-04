@@ -335,9 +335,15 @@ public class Procedure_Memory extends Model{
 		}
 		else other_strat=0;
 		//System.out.print(previous_strat);
-		if(Answer_Memory.getInstance().getMemory().get(chunk.letter + "+" + chunk.number)!=null) {
-			//Si la réponse existe dans la mémoire de réponse, je calcule le temps que ca prendrait pour la récupérer
-			practice=Answer_Memory.getInstance().getMemory().get(chunk.letter + "+" + chunk.number).getPractice();
+		if(Answer_Memory.getInstance().getMemory().get(chunk.letter + "+" + chunk.number)!=null && Answer_Memory.getInstance().getMemory().get(chunk.letter + "+" + chunk.number).size()!=0) {
+			//Si au moins une réponse existe dans la mémoire de réponse, je calcule le temps que ca prendrait pour la récupérer (moyenne des réponses existantes)
+			List<Answer_Memory.Answer> ans = Answer_Memory.getInstance().getMemory().get(chunk.letter + "+" + chunk.number);
+			int nbAnswer = 0;
+			for(Answer_Memory.Answer answer : ans) {
+				practice = practice + answer.getPractice();
+				nbAnswer++;
+			}
+			practice=practice/nbAnswer;
 			return n+t*Math.exp(-practice/p) + elementEncoding + motorCommand + comparison + switching_cost*other_strat;
 		}
 		else {

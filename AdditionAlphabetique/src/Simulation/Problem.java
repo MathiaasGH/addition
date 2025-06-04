@@ -13,6 +13,7 @@ import Exceptions.*;
  */
 public class Problem extends Model{
 
+	boolean feedback;
 	String problemType;
 	String name;
 	String letterAnswer;
@@ -34,6 +35,35 @@ public class Problem extends Model{
 	 * @throws ProblemException 
 	 */
 	public Problem(String name, Model model) throws ProblemException {
+		feedback=true;
+		if(profil.equals("breaker")) {
+			switching_cost=100;
+		}
+		else switching_cost=1000;
+		historyRetrieved= new ArrayList<String>();
+		this.name=name;
+		time=0;
+		letterAnswer=null;
+		this.model=model;
+		strategyChosen="null";
+		usedRules= new ArrayList<String>();
+		try {
+			createChunk();
+		}
+		catch(ProblemException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/**
+	 * Constructeur d'un problème
+	 * @param name la chaine de caractère du problème (ex : "A+3")
+	 * @param model le modèle qui doit résoudre le problème
+	 * @param feedback si le modèle a un feedback de la bonne réponse ou non
+	 * @throws ProblemException 
+	 */
+	public Problem(String name, Model model, boolean feedback) throws ProblemException {
+		this.feedback=feedback;
 		if(profil.equals("breaker")) {
 			switching_cost=100;
 		}
@@ -121,7 +151,11 @@ public class Problem extends Model{
 		time = time + elementEncoding + motorCommand + comparison;
 		endMessage();
 		Procedure_Memory.getInstance().modifyWeigth(usedRules, error()?-1:1);
-		if(!error())
+		if(feedback) {
+			if(!error())
+				Answer_Memory.getInstance().putMemory(leftOperand+"+"+rightOperand, letterAnswer, time);
+		}
+		else
 			Answer_Memory.getInstance().putMemory(leftOperand+"+"+rightOperand, letterAnswer, time);
 
 		//System.out.println(trace());

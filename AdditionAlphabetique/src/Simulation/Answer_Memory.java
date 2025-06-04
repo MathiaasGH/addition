@@ -17,7 +17,7 @@ import Exceptions.*;
 public class Answer_Memory extends Model{
 
 	private static final Answer_Memory instance = new Answer_Memory();
-	Map<String, Answer> memory ;
+	Map<String, List<Answer>> memory ;
 	Map<String, Double> time;
 	double[][] lastTimeAddend;
 
@@ -25,7 +25,7 @@ public class Answer_Memory extends Model{
 	 * Constructeur de la mémoire de réponses
 	 */
 	private Answer_Memory() {
-		memory=new HashMap<String,Answer>();
+		memory=new HashMap<String,List<Answer>>();
 		time=new HashMap<String,Double>();
 		lastTimeAddend = new double[][] {{0,0},{0,0},{0,0},{0,0}};
 	}
@@ -41,7 +41,7 @@ public class Answer_Memory extends Model{
 	 * Retourne la mémoire des réponses
 	 * @return la Map des réponses
 	 */
-	public Map<String, Answer> getMemory(){
+	public Map<String, List<Answer>> getMemory(){
 		return memory;
 	}
 
@@ -68,8 +68,10 @@ public class Answer_Memory extends Model{
 			weightList[i] = new ArrayList<Answer>(); 
 		}
 		//Je remplis cette liste de toutes les réponses mémorisées ainsi que leur poids à l'indice correspondant à la lettre (a->0 ; b->1 ...)
-		for(Map.Entry<String, Answer> entry: memory.entrySet()) {
-			weightList[Integer.valueOf(entry.getValue().getName().charAt(0))-97].add(new Answer(entry.getKey(), entry.getValue().getWeight()));
+		for(Map.Entry<String, List<Answer>> entry: memory.entrySet()) {
+			for(Answer ans : entry.getValue()) {
+				weightList[Integer.valueOf(ans.getName().charAt(0))-97].add(new Answer(entry.getKey(), ans.getWeight(), ans.getPractice()));
+			}
 		}
 		//Je calcule l'activation de chaque réponse
 		Map<String, Double> activationMap = new HashMap<String, Double>();
@@ -104,7 +106,10 @@ public class Answer_Memory extends Model{
 			//System.out.println(problemName);
 			double practice=0;
 			if(memory.get(problemSolved)!=null) {
-				practice=memory.get(problemSolved).getPractice();
+				for(Answer ans : memory.get(problemSolved)) {
+					if(ans.getName().equals(potentialAnswers.get(0)))
+						practice=ans.getPractice();
+				}
 			}
 			chunk.addTime(n+t*Math.exp(-practice/p));
 			return potentialAnswers.get(0);
@@ -148,7 +153,12 @@ public class Answer_Memory extends Model{
 								//if(chunk.problem.condition.equals("NCSC"))
 								//	problemSolved = augend + "+" + ((answer-augend)/2);
 								if(memory.get(problemSolved)!=null)
-									practice=memory.get(problemSolved).getPractice();
+									if(memory.get(problemSolved)!=null) {
+										for(Answer ans : memory.get(problemSolved)) {
+											if(ans.getName().equals(entry.getKey()))
+												practice=ans.getPractice();
+										}
+									}
 								chunk.addTime(n+t*Math.exp(-practice/p));
 								return entry.getKey();
 							}
@@ -162,7 +172,10 @@ public class Answer_Memory extends Model{
 							//if(chunk.problem.condition.equals("NCSC"))
 							//	problemSolved = augend + "+" + ((answer-augend)/2);
 							if(memory.get(problemSolved)!=null)
-								practice=memory.get(problemSolved).getPractice();
+								for(Answer ans : memory.get(problemSolved)) {
+									if(ans.getName().equals(entry.getKey()))
+										practice=ans.getPractice();
+								}
 							chunk.addTime(n+t*Math.exp(-practice/p));
 							return entry.getKey();
 						}
@@ -245,14 +258,26 @@ public class Answer_Memory extends Model{
 	 */
 	protected void putMemory(String problemName, String answer, double time) {
 		double weight = weightIncrease;
-		Answer answerFromMemory = memory.get(problemName);
+		List<Answer> answerFromMemory = memory.get(problemName);
 		if(answerFromMemory != null) {
-			weight=weight+answerFromMemory.getWeight();
-			answerFromMemory.setWeight(weight);
-			answerFromMemory.practice();
+			boolean flag=false;
+			for(Answer ans : answerFromMemory) {
+				if(ans.getName().equals(answer)) {
+					weight=weight+ans.getWeight();
+					ans.setWeight(weight);
+					ans.practice();
+					flag=true;
+				}
+			}
+			if(!flag) {
+				memory.get(problemName).add(new Answer(answer,weight));
+			}
 		}
-		else
-			memory.put(problemName, new Answer(answer,weight));
+		else {
+			List<Answer> newList = new ArrayList<Answer>();
+			newList.add(new Answer(answer,weight));
+			memory.put(problemName, newList);
+		}
 		//Je fais la moyenne des temps pris pour résoudre ce problème et le stocke dans lastTimeAddend
 		this.time.put(problemName, time);
 		double howManyPracticed = lastTimeAddend[Integer.valueOf(problemName.charAt(2))-48-2][1];
@@ -273,6 +298,11 @@ public class Answer_Memory extends Model{
 		private String name;
 		private double weight;
 		private double assoStrength;
+		private Answer(String name, double weight, double practice) {
+			this.name=name;
+			this.weight=weight;
+			assoStrength=practice;
+		}
 		private Answer(String name, double weight) {
 			this.name=name;
 			this.weight=weight;
@@ -302,7 +332,7 @@ public class Answer_Memory extends Model{
 	 * Réinitialise la mémoire de réponses
 	 */
 	public void clean() {
-		memory=new HashMap<String,Answer>();
+		memory=new HashMap<String,List<Answer>>();
 		time=new HashMap<String,Double>();
 		lastTimeAddend = new double[][] {{0,0},{0,0},{0,0},{0,0}};
 	}
