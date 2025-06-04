@@ -13,6 +13,7 @@ import Exceptions.*;
  */
 public class Problem extends Model{
 	
+	//Je vais modifier
 	String name;
 	String answer;
 	double time;
