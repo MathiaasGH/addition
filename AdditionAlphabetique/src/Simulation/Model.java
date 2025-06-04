@@ -334,7 +334,6 @@ public class Model {
 	public static void main(String[] args) {
 		Model model = new Model("breaker");
 		try{
-			System.out.println(model.profil);
 			model.addProblem(new Problem("a+2", model));
 		}
 		catch(ProblemException e) {
