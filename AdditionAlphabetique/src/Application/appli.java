@@ -398,7 +398,6 @@ public class appli {
 
 	public void newChunk(char letter, boolean isGoodRule) {
 		currentLetter=(char)(currentLetter+1);
-		System.out.println(currentLetter);
 		if(isGoodRule)
 		currentNumber--;
 		if(currentNumber!=0)
@@ -444,23 +443,17 @@ public class appli {
 			if(randomProblem){
 				int randomNumber = (int) ((Math.random() * (5 - 2 + 1)) + 2);
 				String randomLetter = String.valueOf(augends.getItemAt(new Random().nextInt(augends.getItemCount())));
-				Problem problem;
-				try {
 					addends.setSelectedItem(randomNumber + "");
 					for (int i = 0; i < augends.getItemCount(); i++) {
 				        if (String.valueOf(augends.getItemAt(i)).equals(randomLetter)) {
 				           augends.setSelectedIndex(i);
 				        }
 				    }
-					problem = new Problem(randomLetter + "+" + randomNumber ,mainPanel.getModel());
+					String problemName = randomLetter + "+" + randomNumber;
 					currentLetter=randomLetter.charAt(0);
 					currentNumber=randomNumber;
-					mainPanel.start(problem.getName());
+					mainPanel.start(problemName);
 				}
-				catch(ProblemException e) {
-
-				}
-			}
 			else {
 				mainPanel.start(augends.getSelectedItem() + "+" + addends.getSelectedItem());
 			}		

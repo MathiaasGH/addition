@@ -69,7 +69,7 @@ public class Boule {
 				if (historic.size() > 0) {
 					step = historic.remove(0);
 					if(!step.equals("z reach"))
-						System.out.println(step);
+						System.out.println("Rule chosen : " + step);
 					mainPanel.newRule(step);
 					if(step.equals("z reach")) {
 						mainPanel.stop();
