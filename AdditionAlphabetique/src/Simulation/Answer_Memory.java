@@ -1,6 +1,7 @@
 
 package Simulation;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -94,7 +95,7 @@ public class Answer_Memory extends Model{
 				potentialAnswers.add(entry.getKey());
 		}
 		
-		System.out.println(potentialAnswers);
+		//System.out.println(potentialAnswers);
 		
 		//Si on n'a pas de réponse potentielle alors on retourne null
 		if(potentialAnswers.size()==0)
@@ -118,17 +119,18 @@ public class Answer_Memory extends Model{
 			return new String[] {potentialAnswers.get(0), problemSolved};
 		}
 		else {
-			System.out.println("activation map : " + activationMap);
+			//System.out.println("activation map : " + activationMap);
+			//System.out.println(Arrays.deepToString(weightList));
 			//Si il y a plus d'une potentielle réponse, alors je stocke la probabilité de récupérer chaque réponse 
 			Map<String, Double> probabilityMap = new HashMap<String, Double>();
 			for(String potentialAnswer : potentialAnswers) {
 				probabilityMap.put(potentialAnswer, probability(potentialAnswer,potentialAnswers,activationMap));
 			}
-			System.out.println(probabilityMap);
+			//System.out.println(probabilityMap);
 			List<Double> probabilities = new ArrayList<Double>(probabilityMap.values());
 			//Je trie les réponses en fonction de leur probabilité
 			Collections.sort(probabilities);
-			System.out.println(probabilities);
+			//System.out.println(probabilities);
 			//Je ne regarde que leur probabilité, et je découpe toutes les probabilités en suivant une méthode softmax
 			double[] probasArray = new double[probabilities.size()];
 			for(int i=0;i<probasArray.length; i++) {
@@ -229,10 +231,10 @@ public class Answer_Memory extends Model{
 	 */
 	private double similarity(String problemName, String problemCurrentName) {
 		//J'inhibe le fait de récupérer des bouts de réponse
-		if(problemName.equals(problemCurrentName))
+		//if(problemName.equals(problemCurrentName))
 			return Math.exp(-specificity*distance(problemName,problemCurrentName));
-		else
-			return 0;
+		//else
+		//	return 0;
 	}
 
 	/**

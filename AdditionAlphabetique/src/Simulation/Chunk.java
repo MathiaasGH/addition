@@ -151,12 +151,12 @@ public class Chunk extends Model{
 					problem.addRetrieved(probResolved+"="+ans);
 					if(problem.problemType.equals("free")) {
 						//Si j'ai trouvé une réponse, je calcule le pas entre la nouvelle réponse et l'augend pour savoir de combien j'ai avancé, puis je crée le nouvel augend
-						int newNumber = Integer.valueOf(number)-(Math.abs(Integer.valueOf(letter.charAt(0)) - Integer.valueOf(ans.charAt(0))));
+						//int newNumber = Integer.valueOf(number)-(Math.abs(Integer.valueOf(letter.charAt(0)) - Integer.valueOf(ans.charAt(0))));
 						//Et je crée un nouveau chunk avec cette différence
-						if(newNumber<0)
+						//if(newNumber<0)
 							new Chunk(ans, String.valueOf(0), null, time + 0, operand, problem);
-						else
-							new Chunk(ans, String.valueOf(newNumber), null, time + 0, operand, problem);
+						//else
+						//	new Chunk(ans, String.valueOf(newNumber), null, time + 0, operand, problem);
 						return;
 					}
 					//Si je dois comparer une réponse

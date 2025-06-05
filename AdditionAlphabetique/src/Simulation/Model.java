@@ -337,20 +337,28 @@ public class Model {
 	
 	public static void main(String[] args) {
 		Model model = new Model("breaker");
-		//try{
-			//for(int i=0;i<200;i++)
-			//model.addProblem(new Problem("a+2=d", model, false));
-			List<String> charList = new ArrayList<String>();
-			charList.add("a");
-			charList.add("b");
-			charList.add("c");
-
-			model.session(charList, false);
+	/*	try{
+			for(int i=0;i<130;i++)
+			model.addProblem(new Problem("a+5", model, false));
+			
 			System.out.println(model);
-		//}
-		//catch(ProblemException e) {
-		//	System.out.println(e);
-		//}
-	}
+		}
+		catch(ProblemException e) {
+			System.out.println(e);
+		}
+	*/	
 
+		List<String> charList = new ArrayList<String>();
+		charList.add("a");
+		charList.add("b");
+		charList.add("c");
+
+		model.session(charList, false);
+		model.session(charList, false);
+
+		System.out.println(model);
+		//System.out.println(model);
+	
+	}
+		
 }
