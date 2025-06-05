@@ -56,10 +56,10 @@ public class Answer_Memory extends Model{
 	/**
 	 * Cherche une réponse dans la mémoire des réponses associée à un chunk
 	 * @param chunk le chunk à résoudre
-	 * @return
+	 * @return un tableau contenant la réponse ainsi que le problème résolu
 	 * @throws CantRetrieveAnswerInAnswerMemoryException
 	 */
-	public String findAnswer(Chunk chunk) throws CantRetrieveAnswerInAnswerMemoryException{
+	public String[] findAnswer(Chunk chunk) throws CantRetrieveAnswerInAnswerMemoryException{
 		//Je reconstruis le nom du chunk à résoudre
 		String problemName = chunk.letter+"+"+chunk.number;
 		//Je crée une liste de taille 26 (26 lettres de l'alphabet)
@@ -93,6 +93,9 @@ public class Answer_Memory extends Model{
 			if(entry.getValue()>=treshold)
 				potentialAnswers.add(entry.getKey());
 		}
+		
+		System.out.println(potentialAnswers);
+		
 		//Si on n'a pas de réponse potentielle alors on retourne null
 		if(potentialAnswers.size()==0)
 			return null;
@@ -101,7 +104,7 @@ public class Answer_Memory extends Model{
 		else if(potentialAnswers.size()==1) {
 			char answer = potentialAnswers.get(0).charAt(0);
 			char augend = chunk.letter.charAt(0);
-			String problemSolved = augend + "+" + (answer-augend);
+			String problemSolved = augend + "+" + chunk.number;
 			//System.out.println(memory);
 			//System.out.println(problemName);
 			double practice=0;
@@ -112,20 +115,20 @@ public class Answer_Memory extends Model{
 				}
 			}
 			chunk.addTime(n+t*Math.exp(-practice/p));
-			return potentialAnswers.get(0);
+			return new String[] {potentialAnswers.get(0), problemSolved};
 		}
 		else {
+			System.out.println("activation map : " + activationMap);
 			//Si il y a plus d'une potentielle réponse, alors je stocke la probabilité de récupérer chaque réponse 
 			Map<String, Double> probabilityMap = new HashMap<String, Double>();
 			for(String potentialAnswer : potentialAnswers) {
 				probabilityMap.put(potentialAnswer, probability(potentialAnswer,potentialAnswers,activationMap));
 			}
+			System.out.println(probabilityMap);
 			List<Double> probabilities = new ArrayList<Double>(probabilityMap.values());
 			//Je trie les réponses en fonction de leur probabilité
-			for(String potentialAnswer : potentialAnswers) {
-				probabilities.add(probability(potentialAnswer,potentialAnswers,activationMap));
-			}
 			Collections.sort(probabilities);
+			System.out.println(probabilities);
 			//Je ne regarde que leur probabilité, et je découpe toutes les probabilités en suivant une méthode softmax
 			double[] probasArray = new double[probabilities.size()];
 			for(int i=0;i<probasArray.length; i++) {
@@ -148,7 +151,7 @@ public class Answer_Memory extends Model{
 							if (Math.abs(entry.getValue()-(probasArray[i]-probasArray[i-1])) <=0.01) {
 								char answer = entry.getKey().charAt(0);
 								char augend = chunk.letter.charAt(0);
-								String problemSolved = augend + "+" + (answer-augend);
+								String problemSolved = augend + "+" + chunk.number;
 								double practice=0;
 								//if(chunk.problem.condition.equals("NCSC"))
 								//	problemSolved = augend + "+" + ((answer-augend)/2);
@@ -160,14 +163,14 @@ public class Answer_Memory extends Model{
 										}
 									}
 								chunk.addTime(n+t*Math.exp(-practice/p));
-								return entry.getKey();
+								return new String[] {entry.getKey(), problemSolved};
 							}
 						}
 					else for (Map.Entry<String, Double> entry : probabilityMap.entrySet()) {
 						if (entry.getValue().equals(probasArray[i])) {
 							char answer = entry.getKey().charAt(0);
 							char augend = chunk.letter.charAt(0);
-							String problemSolved = augend + "+" + (answer-augend);
+							String problemSolved = augend + "+" + chunk.number;
 							double practice=0;
 							//if(chunk.problem.condition.equals("NCSC"))
 							//	problemSolved = augend + "+" + ((answer-augend)/2);
@@ -177,7 +180,7 @@ public class Answer_Memory extends Model{
 										practice=ans.getPractice();
 								}
 							chunk.addTime(n+t*Math.exp(-practice/p));
-							return entry.getKey();
+							return new String[] {entry.getKey(), problemSolved};
 						}
 					}
 				}

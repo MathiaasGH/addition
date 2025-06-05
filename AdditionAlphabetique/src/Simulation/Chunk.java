@@ -1,4 +1,6 @@
 package Simulation;
+import java.util.Arrays;
+
 import Exceptions.*;
 
 /**
@@ -81,8 +83,14 @@ public class Chunk extends Model{
 			previous_strat='p';
 			if(production.equals("pop_goal")) {
 				//Je définis la réponse
-				if(problem.problemType.equals("instructed")) 
-					problem.setAnswer(letter +"true", time);
+				if(problem.problemType.equals("instructed")) {
+					boolean target_reached = (char)(letter.charAt(0))==problem.target;
+					if(!target_reached) 
+						problem.setAnswer(letter +"false", time);
+					else
+						problem.setAnswer(letter +"true", time);
+
+				}
 				else 
 					problem.setAnswer(letter, time);
 			}
@@ -92,8 +100,8 @@ public class Chunk extends Model{
 					boolean target_reached = (char)(letter.charAt(0)+1)==problem.target;
 					//Je regarde si l'addend vaut 0
 					boolean is_addend_null = String.valueOf(Integer.valueOf(number)-1).equals("0");
-					if((target_reached && !is_addend_null) || (!target_reached && is_addend_null)) {
-						problem.setAnswer(letter + "false", time);
+					if((target_reached && !is_addend_null)) {
+						problem.setAnswer(letter + "false", time, false);
 						return;
 					}
 				}
@@ -127,8 +135,10 @@ public class Chunk extends Model{
 		try {
 			if(!number.equals("0")) {
 				//Si l'addend n'est pas 0 alors je cherche la réponse dans la mémoire de réponses
-				String directAnswer = Answer_Memory.getInstance().findAnswer(this);
-				if(directAnswer == null || directAnswer.length()==0 || directAnswer.equals(letter) || directAnswer.charAt(0)< number.charAt(0)) {
+				String directAnswer[] = Answer_Memory.getInstance().findAnswer(this);
+				String ans = directAnswer[0];
+				String probResolved = directAnswer[1];
+				if(ans == null || ans.length()==0 || ans.equals(letter) || ans.charAt(0)< number.charAt(0)) {
 					//Si je n'ai pas trouvé la réponse, je calcule via la mémoire procédurale
 					problem.strategyChosen="production";
 					production();
@@ -138,21 +148,21 @@ public class Chunk extends Model{
 					problem.receiveAction("answerRetrieved");
 					//Si je dois trouver la réponse
 					//Je donne au problème le sous problème que je viens de résoudre
-					problem.addRetrieved(letter+"+"+(Integer.valueOf(number) - ((int)(letter.charAt(0)-96) + (Integer.valueOf(number)) - ((int)(directAnswer.charAt(0)-96))))+"="+directAnswer);
+					problem.addRetrieved(probResolved+"="+ans);
 					if(problem.problemType.equals("free")) {
 						//Si j'ai trouvé une réponse, je calcule le pas entre la nouvelle réponse et l'augend pour savoir de combien j'ai avancé, puis je crée le nouvel augend
-						int newNumber = Integer.valueOf(number)-(Math.abs(Integer.valueOf(letter.charAt(0)) - Integer.valueOf(directAnswer.charAt(0))));
+						int newNumber = Integer.valueOf(number)-(Math.abs(Integer.valueOf(letter.charAt(0)) - Integer.valueOf(ans.charAt(0))));
 						//Et je crée un nouveau chunk avec cette différence
 						if(newNumber<0)
-							new Chunk(directAnswer, String.valueOf(0), null, time + 0, operand, problem);
+							new Chunk(ans, String.valueOf(0), null, time + 0, operand, problem);
 						else
-							new Chunk(directAnswer, String.valueOf(newNumber), null, time + 0, operand, problem);
+							new Chunk(ans, String.valueOf(newNumber), null, time + 0, operand, problem);
 						return;
 					}
 					//Si je dois comparer une réponse
 					else {
-						String instructedAnswer = directAnswer.equals(problem.target+"")?"true":"false";
-						problem.setAnswer(directAnswer+instructedAnswer, time);
+						String instructedAnswer = ans.equals(problem.target+"")?"true":"false";
+						problem.setAnswer(ans+instructedAnswer, time);
 					}
 				}
 			}

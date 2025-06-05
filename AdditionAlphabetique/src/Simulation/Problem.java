@@ -129,11 +129,21 @@ public class Problem extends Model{
 
 
 	/**
-	 * Définit la réponse au problème lorsque le problème est résolu
+	 * Définit la réponse au problème lorsque le problème est résolu en mémorisant la réponse
 	 * @param answer la réponse trouvée
 	 * @param time le temps pris pour résoudre le problème
 	 */
 	protected void setAnswer(String answer, double time) {
+		setAnswer(answer,time,true);
+	}
+	
+	/**
+	 * Définit la réponse au problème lorsque le problème est résolu en précisant si l'on veut mémoriser la réponse
+	 * @param answer la réponse trouvée
+	 * @param time le temps pris pour résoudre le problème
+	 * @paramr memorizing si l'on mémorise la réponse ou pas
+	 */
+	protected void setAnswer(String answer, double time, boolean memorizing) {
 		if(problemType.equals("free"))
 			this.letterAnswer=answer;
 		else{
@@ -141,22 +151,25 @@ public class Problem extends Model{
 			this.instructedAnswer=answer.substring(1);
 		}
 		this.time=time;
-		endProblem();
+		endProblem(memorizing);
 	}
 
 	/**
 	 * Affiche la résolution du problème et ajuste la mémoire de réponse et la mémoire procédurale en conséquences
+	 * @param memorizing si l'on mémorise la réponse ou pas
 	 */
-	public void endProblem() {
+	public void endProblem(boolean memorizing) {
 		time = time + elementEncoding + motorCommand + comparison;
 		endMessage();
 		Procedure_Memory.getInstance().modifyWeigth(usedRules, error()?-1:1);
+		if(memorizing) {
 		if(feedback) {
 			if(!error())
 				Answer_Memory.getInstance().putMemory(leftOperand+"+"+rightOperand, letterAnswer, time);
 		}
 		else
 			Answer_Memory.getInstance().putMemory(leftOperand+"+"+rightOperand, letterAnswer, time);
+		}
 
 		//System.out.println(trace());
 	}

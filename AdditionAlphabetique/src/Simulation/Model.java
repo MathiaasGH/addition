@@ -335,7 +335,7 @@ public class Model {
 		Model model = new Model("breaker");
 		try{
 			for(int i=0;i<200;i++)
-			model.addProblem(new Problem("a+2=c", model, false));
+			model.addProblem(new Problem("a+2=d", model, false));
 			System.out.println(model);
 		}
 		catch(ProblemException e) {
