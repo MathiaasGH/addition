@@ -236,21 +236,30 @@ public class Model {
 	}
 
 	/**
-	 * Simule une session de 288 problèmes pour un addend choisi
+	 * Simule une session de plusieurs problèmes pour un addend choisi
 	 * @param addend l'addend des problèmes choisi
 	 * @param charList la liste des caractères possibles comme augend
 	 * @param feedback si le problème dispose d'un feedback ou pas
+	 * @param nbSim le nombre de problème par session
+	 * @param problemType le type de probleme ("free" ou "instructed")
 	 * @return un tableau contenant le nombre d'erreurs et le temps total pris pour résoudre les 288 problèmes
 	 */
-	public double[] session(int addend, List<String> charList, boolean feedback) {
+	public double[] session(int addend, List<String> charList, boolean feedback, int nbSim, String problemType) {
 		session++;
 		printSession();
 		int errors=0;
 		double time=0;
 		for(int a=0;a<288;a++) {
 			String randomLetter = (String)charList.get(new Random().nextInt(charList.size()));
+			String problemName = randomLetter + "+" + addend;
+			if(problemType.equals("instructed")) {
+				double random = Math.random();
+				problemName=problemName+"="+((random<0.5)?((char)(randomLetter.charAt(0)+addend)):((char)(randomLetter.charAt(0)+addend+1)));
+			}
+			else if(!problemType.equals("free"))
+				System.out.println("Problem type has to be \"instructed\" or \"free\".");
 			try {
-				Problem problem = new Problem(randomLetter + "+" + addend ,this, feedback);
+				Problem problem = new Problem(problemName ,this, feedback);
 				double timeProblem = addProblem(problem);
 				time = time + timeProblem;
 				if(problem.error())
@@ -265,21 +274,30 @@ public class Model {
 	}
 
 	/**
-	 * Simule une session de 288 problèmes d'addends entre 2 et 5 d'augend de A à F
+	 * Simule une session de plusieurs problèmes d'addends entre 2 et 5 d'augend de A à F
 	 * @param charList la liste des caractères posssibles comme augend
 	 * @param feedback si le problème dispose d'un feedback ou pas
+	 * @param nbSim le nombre de simulation en une session
+	 * @param problemType le type de probleme ("free" ou "instructed")
 	 * @return un tableau du nombre d'erreur et du temps total pris par le modèle pour résoudre toute la session
 	 */
-	public double[] session(List<String> charList, boolean feedback) {
+	public double[] session(List<String> charList, boolean feedback, int nbSim, String problemType) {
 		session++;
 		printSession();
 		int errors=0;
 		double time=0;
-		for(int a=0;a<288;a++) {
+		for(int a=0;a<nbSim;a++) {
 			String randomLetter = (String)charList.get(new Random().nextInt(charList.size()));
 			int randomNumber = (int) ((Math.random() * (5 - 2 + 1)) + 2);
+			String problemName = randomLetter + "+" + randomNumber;
+			if(problemType.equals("instructed")) {
+				double random = Math.random();
+				problemName=problemName+"="+((random<0.5)?((char)(randomLetter.charAt(0)+randomNumber)):((char)(randomLetter.charAt(0)+randomNumber+1)));
+			}
+			else if(!problemType.equals("free"))
+				System.out.println("Problem type has to be \"instructed\" or \"free\".");
 			try {
-				Problem problem = new Problem(randomLetter + "+" + randomNumber ,this, feedback);
+				Problem problem = new Problem(problemName ,this, feedback);
 				double timeProblem = addProblem(problem);
 				time = time + timeProblem;
 				if(problem.error())
@@ -290,6 +308,46 @@ public class Model {
 			}
 		}
 		return new double[] {errors, time};
+	}
+	
+	/**
+	 * Simule une session de 288 problèmes d'addends entre 2 et 5 d'augend de A à F en condition libre
+	 * @param charList la liste des caractères posssibles comme augend
+	 * @return un tableau du nombre d'erreur et du temps total pris par le modèle pour résoudre toute la session
+	 */
+	public double[] session(List<String> charList) {
+		return session(charList, true, 288, "free");
+	}
+	
+	/**
+	 * Simule une session de plusieurs problèmes d'addends entre 2 et 5 d'augend de A à F en condition libre
+	 * @param charList la liste des caractères posssibles comme augend
+	 * @param nbSim le nombre de simulation par session
+	 * @return un tableau du nombre d'erreur et du temps total pris par le modèle pour résoudre toute la session
+	 */
+	public double[] session(List<String> charList, int nbSim) {
+		return session(charList, true, 288, "free");
+	}
+	
+	/**
+	 * Simule une session de 288 problèmes d'addends entre 2 et 5 d'augend de A à F en condition libre
+	 * @param charList la liste des caractères posssibles comme augend
+	 * @param feedback si les problèmes révèlent la réponse au modèle après résolution
+	 * @return un tableau du nombre d'erreur et du temps total pris par le modèle pour résoudre toute la session
+	 */
+	public double[] session(List<String> charList, boolean feedback) {
+		return session(charList, feedback, 288, "free");
+	}
+	
+	/**
+	 * Simule une session de 288 problèmes d'addends entre 2 et 5 d'augend de A à F
+	 * @param charList la liste des caractères posssibles comme augend
+	 * @param feedback si les problèmes révèlent la réponse au modèle après résolution
+	 * @param problemType le type de problème à résoudre ("free" ou "instructed")
+	 * @return un tableau du nombre d'erreur et du temps total pris par le modèle pour résoudre toute la session
+	 */
+	public double[] session(List<String> charList, boolean feedback, String problemType) {
+		return session(charList, feedback, 288, problemType);
 	}
 
 	/**
@@ -353,8 +411,7 @@ public class Model {
 		charList.add("b");
 		charList.add("c");
 
-		model.session(charList, false);
-		model.session(charList, false);
+		model.session(charList, false, "instructed");
 
 		System.out.println(model);
 		//System.out.println(model);

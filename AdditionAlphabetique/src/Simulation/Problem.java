@@ -178,7 +178,15 @@ public class Problem extends Model{
 		if(problemType.equals("free"))
 			System.out.println("Problem solved : " + name + "=" +  letterAnswer + " calculated in " + time + "ms " + (error()?"❌":"✅") + (strategyChosen.equals("production")?" by producing.":(" by retrieving " + historyRetrieved() + ".")));
 		else
-			System.out.println("Problem solved : " + name + " is " + instructedAnswer + " found in " + time + "ms " + (error()?"❌":"✅") +  (strategyChosen.equals("production")?" by producing.":(" by retrieving " + historyRetrieved() + ".")));
+			System.out.println("Problem solved : " + name + " is " + instructedAnswer + " found in " + time + "ms " + (error()?"❌":"✅") +  (strategyChosen.equals("production")?" by producing.":(" by retrieving " + historyRetrieved() + ".")) + " " + trapType());
+	}
+	
+	/**
+	 * Retourne "t" ou "t+1" en fonction du piège du problème. A n'utiliser que si le problème est de type "instructed"
+	 * @return "t" ou "t+1"
+	 */
+	public String trapType() {
+		return "The trap was : " + ((leftOperand+Integer.valueOf(rightOperand)-48)==target?"t":"t+1");
 	}
 
 
