@@ -136,14 +136,14 @@ public class Chunk extends Model{
 			if(!number.equals("0")) {
 				//Si l'addend n'est pas 0 alors je cherche la réponse dans la mémoire de réponses
 				String directAnswer[] = Answer_Memory.getInstance().findAnswer(this);
-				String ans = directAnswer[0];
-				String probResolved = directAnswer[1];
-				if(ans == null || ans.length()==0 || ans.equals(letter) || ans.charAt(0)< number.charAt(0)) {
+				if(directAnswer == null || directAnswer[0].length()==0 || directAnswer[0].equals(letter) || directAnswer[0].charAt(0)< number.charAt(0)) {
 					//Si je n'ai pas trouvé la réponse, je calcule via la mémoire procédurale
 					problem.strategyChosen="production";
 					production();
 				}
 				else {
+					String ans = directAnswer[0];
+					String probResolved = directAnswer[1];
 					previous_strat='a';
 					problem.receiveAction("answerRetrieved");
 					//Si je dois trouver la réponse

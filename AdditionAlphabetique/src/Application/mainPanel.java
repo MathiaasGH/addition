@@ -258,13 +258,13 @@ public class mainPanel extends JPanel {
     }
 
     public void session(ArrayList<String> charList) {
-        model.session(charList);
+        model.session(charList, true);
         appli.updateInfos();
     }
 
     public void session10(ArrayList<String> charList) {
         for (int i = 0; i < 10; i++)
-            model.session(charList);
+            model.session(charList, true);
         appli.updateInfos();
     }
     

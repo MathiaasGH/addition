@@ -238,9 +238,11 @@ public class Model {
 	/**
 	 * Simule une session de 288 problèmes pour un addend choisi
 	 * @param addend l'addend des problèmes choisi
+	 * @param charList la liste des caractères possibles comme augend
+	 * @param feedback si le problème dispose d'un feedback ou pas
 	 * @return un tableau contenant le nombre d'erreurs et le temps total pris pour résoudre les 288 problèmes
 	 */
-	public double[] session(int addend, List<String> charList) {
+	public double[] session(int addend, List<String> charList, boolean feedback) {
 		session++;
 		printSession();
 		int errors=0;
@@ -248,7 +250,7 @@ public class Model {
 		for(int a=0;a<288;a++) {
 			String randomLetter = (String)charList.get(new Random().nextInt(charList.size()));
 			try {
-				Problem problem = new Problem(randomLetter + "+" + addend ,this);
+				Problem problem = new Problem(randomLetter + "+" + addend ,this, feedback);
 				double timeProblem = addProblem(problem);
 				time = time + timeProblem;
 				if(problem.error())
@@ -264,9 +266,11 @@ public class Model {
 
 	/**
 	 * Simule une session de 288 problèmes d'addends entre 2 et 5 d'augend de A à F
+	 * @param charList la liste des caractères posssibles comme augend
+	 * @param feedback si le problème dispose d'un feedback ou pas
 	 * @return un tableau du nombre d'erreur et du temps total pris par le modèle pour résoudre toute la session
 	 */
-	public double[] session(List<String> charList) {
+	public double[] session(List<String> charList, boolean feedback) {
 		session++;
 		printSession();
 		int errors=0;
@@ -275,7 +279,7 @@ public class Model {
 			String randomLetter = (String)charList.get(new Random().nextInt(charList.size()));
 			int randomNumber = (int) ((Math.random() * (5 - 2 + 1)) + 2);
 			try {
-				Problem problem = new Problem(randomLetter + "+" + randomNumber ,this);
+				Problem problem = new Problem(randomLetter + "+" + randomNumber ,this, feedback);
 				double timeProblem = addProblem(problem);
 				time = time + timeProblem;
 				if(problem.error())
@@ -333,14 +337,20 @@ public class Model {
 	
 	public static void main(String[] args) {
 		Model model = new Model("breaker");
-		try{
-			for(int i=0;i<200;i++)
-			model.addProblem(new Problem("a+2=d", model, false));
+		//try{
+			//for(int i=0;i<200;i++)
+			//model.addProblem(new Problem("a+2=d", model, false));
+			List<String> charList = new ArrayList<String>();
+			charList.add("a");
+			charList.add("b");
+			charList.add("c");
+
+			model.session(charList, false);
 			System.out.println(model);
-		}
-		catch(ProblemException e) {
-			System.out.println(e);
-		}
+		//}
+		//catch(ProblemException e) {
+		//	System.out.println(e);
+		//}
 	}
 
 }
