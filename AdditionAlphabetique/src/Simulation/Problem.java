@@ -11,7 +11,7 @@ import Exceptions.*;
  * @author Mathias
  * @version 1.0
  */
-public class Problem extends Model{
+public class Problem {
 
 	boolean feedback;
 	String problemType;
@@ -35,24 +35,7 @@ public class Problem extends Model{
 	 * @throws ProblemException 
 	 */
 	public Problem(String name, Model model) throws ProblemException {
-		feedback=true;
-		if(profil.equals("breaker")) {
-			switching_cost=100;
-		}
-		else switching_cost=1000;
-		historyRetrieved= new ArrayList<String>();
-		this.name=name;
-		time=0;
-		letterAnswer=null;
-		this.model=model;
-		strategyChosen="null";
-		usedRules= new ArrayList<String>();
-		try {
-			createChunk();
-		}
-		catch(ProblemException e) {
-			System.out.println(e.getMessage());
-		}
+		this(name, model, true);
 	}
 
 	/**
@@ -64,10 +47,11 @@ public class Problem extends Model{
 	 */
 	public Problem(String name, Model model, boolean feedback) throws ProblemException {
 		this.feedback=feedback;
-		if(profil.equals("breaker")) {
+		/*if(profil.equals("breaker")) {
 			switching_cost=100;
 		}
 		else switching_cost=1000;
+		*/
 		historyRetrieved= new ArrayList<String>();
 		this.name=name;
 		time=0;
@@ -92,6 +76,7 @@ public class Problem extends Model{
 			throw new ProblemNameException("Usage : \"LetterOpNumber=Letter\". Example : \"A+3=D\"");
 		}
 		else {
+			//System.out.println(Parameters.previous_strat);
 			if(name.length()==3 || name.length()==5) {
 				problemType=name.length()==3?"free":"instructed";
 				//Je récupère l'augend, l'addend et l'opérateur
@@ -159,8 +144,8 @@ public class Problem extends Model{
 	 * @param memorizing si l'on mémorise la réponse ou pas
 	 */
 	public void endProblem(boolean memorizing) {
-		time = time + elementEncoding + motorCommand + comparison;
-		endMessage();
+		time = time + Parameters.elementEncoding + Parameters.motorCommand + Parameters.comparison;
+		//endMessage();
 		Procedure_Memory.getInstance().modifyWeigth(usedRules, error()?-1:1);
 		if(memorizing) {
 		if(feedback) {
@@ -178,15 +163,23 @@ public class Problem extends Model{
 		if(problemType.equals("free"))
 			System.out.println("Problem solved : " + name + "=" +  letterAnswer + " calculated in " + time + "ms " + (error()?"❌":"✅") + (strategyChosen.equals("production")?" by producing.":(" by retrieving " + historyRetrieved() + ".")));
 		else
-			System.out.println("Problem solved : " + name + " is " + instructedAnswer + " found in " + time + "ms " + (error()?"❌":"✅") +  (strategyChosen.equals("production")?" by producing.":(" by retrieving " + historyRetrieved() + ".")) + " " + trapType());
+			System.out.println("Problem solved : " + name + " is " + instructedAnswer + " found in " + time + "ms " + (error()?"❌":"✅") +  (strategyChosen.equals("production")?" by producing.":(" by retrieving " + historyRetrieved() + ".")) + " The trap type was " + getTrapType() + " and profil was " + model.profil);
 	}
 	
 	/**
 	 * Retourne "t" ou "t+1" en fonction du piège du problème. A n'utiliser que si le problème est de type "instructed"
 	 * @return "t" ou "t+1"
 	 */
-	public String trapType() {
-		return "The trap was : " + ((leftOperand+Integer.valueOf(rightOperand)-48)==target?"t":"t+1");
+	public String getTrapType() {
+		return ((leftOperand+Integer.valueOf(rightOperand)-48)==target?"t":"t+1");
+	}
+	
+	/**
+	 * Retourne la target du problème. A n'utiliser que si le problème est de type "instructed"
+	 * @return la target
+	 */
+	public String getTarget() {
+		return target+"";
 	}
 
 
@@ -304,6 +297,10 @@ public class Problem extends Model{
 	}
 
 	public String getProfil() {
-		return profil;
+		return model.profil;
+	}
+	
+	public String getAugend() {
+		return (leftOperand+"").toUpperCase();
 	}
 }

@@ -14,69 +14,29 @@ import Exceptions.ProblemException;
  * @version 1.0
  */
 public class Model {
-
-	protected static double specificity = 1.3; // MODEL ✅
-	protected static final double rt_mu = 4.5; // MODEL ✅
-	protected static final double rt_sd = 1; // MODEL ✅
-	//To calculate the probability to retrieval a rule OR an answer from procedure memory and answer memory
-	protected static double decisionDeterminism = 1.2;
-	//To adjust weight of a rule in procedure memory according to the correct or incorrect answer
-	protected static double errorDiscount = 0;
-	//To increase weight of an answer in answer memory
-	protected static double weightIncrease = 1.5; 
-	// To set initial practice weight to skip from element i to element i+1
-	protected static int initialPractice = 0;
-	// To increase practice to skip from element i to element i+1
-	protected static double increasePractice=1;
-	//To set initial strength of an answer to retrieve it more or less efficiency
-	protected static double initialStrength=1.5;
-	// To increase the strength of an answer to retrieve it more or less efficiency
-	protected static double increaseStrength=2;
-	// 3 parameters to calculate time by retrieving memory
-	protected double n = 171;
-	protected double t = 4900;
-	protected double p = 90;
-
-	// 3 parameters to calculate time by using production rules
-	protected double a=20;
-	protected double b =1200;
-	protected double d=400;
-
-	// 3 parameters to estimate participant-independent response time
-	protected static int elementEncoding = 80*3;
-	protected static int motorCommand = 300;
-	protected static int comparison = 200;
-
-
+	
 	public int session=0;
 	List<Problem> problemList = new LinkedList<Problem>();
 	double[] practice = new double[26];
 	
-	public static double switching_cost=0;
-	public static char previous_strat='p';
-	int other_strat=0;
 	public String profil;
 
-	/**
-	 * Constructeur pour le modèle.
-	 */
 	public Model() {
 		this("breaker");
 	}
-
 	public Model(double sw) {
 		this("breaker");
-		switching_cost=sw;
+		Parameters.switching_cost=sw;
 	}
 
 	public Model(String profil) {
 		this.profil=profil;
 		if(profil.equals("breaker")) {
-			switching_cost=154;
+			Parameters.switching_cost=157;
 		}
-		else switching_cost=730;
+		else Parameters.switching_cost=750;
 		for(int i=0;i<26;i++) {
-			practice[i]=initialPractice;
+			practice[i]=Parameters.initialPractice;
 		}
 	}
 	
@@ -91,15 +51,15 @@ public class Model {
 	 * @param ins la valeur du paramètre increaseStrength
 	 */
 	public Model(double dd, double ed, double wi, int ip, double inp, double is, double ins, String profil) {
-		decisionDeterminism = dd;
-		errorDiscount = ed;
-		weightIncrease= wi;
-		initialPractice= ip;
-		increasePractice = inp;
-		initialStrength= is;
-		increaseStrength= ins;
+		Parameters.decisionDeterminism = dd;
+		Parameters.errorDiscount = ed;
+		Parameters.weightIncrease= wi;
+		Parameters.initialPractice= ip;
+		Parameters.increasePractice = inp;
+		Parameters.initialStrength= is;
+		Parameters.increaseStrength= ins;
 		for(int i=0;i<26;i++) {
-			practice[i]=initialPractice;
+			practice[i]=Parameters.initialPractice;
 		}
 		this.profil = profil;
 	}
@@ -109,9 +69,9 @@ public class Model {
 	 * @param j la valeur du paramètre initialPractice
 	 */
 	public void setinitialPractice(int j) {
-		initialPractice=j;
+		Parameters.initialPractice=j;
 		for(int i=0;i<26;i++) {
-			practice[i]=initialPractice;
+			practice[i]=Parameters.initialPractice;
 		}
 	}
 
@@ -120,7 +80,7 @@ public class Model {
 	 * @param j la valeur du paramètre initialPractice
 	 */
 	public void setinitialPracticeWithoutReset(int j) {
-		initialPractice=j;
+		Parameters.initialPractice=j;
 	}
 
 	/**
@@ -128,7 +88,7 @@ public class Model {
 	 * @param j la valeur du paramètre increasePractice
 	 */
 	public void setincreasePractice(double j) {
-		increasePractice=j;
+		Parameters.increasePractice=j;
 	}
 
 	/**
@@ -136,7 +96,7 @@ public class Model {
 	 * @param j la valeur du paramètre initialStrength
 	 */
 	public void setinitialStrength(double j) {
-		initialStrength=j;
+		Parameters.initialStrength=j;
 	}
 
 	/**
@@ -144,7 +104,7 @@ public class Model {
 	 * @param j la valeur du paramètre increaseStrength
 	 */
 	public void setincreaseStrength(double j) {
-		increaseStrength=j;
+		Parameters.increaseStrength=j;
 	}
 
 	/**
@@ -152,7 +112,7 @@ public class Model {
 	 * @param sp  la valeur du paramètre specificity
 	 */
 	public void setSpecificity(double sp) {
-		specificity=sp;
+		Parameters.specificity=sp;
 	}
 
 	/**
@@ -160,7 +120,7 @@ public class Model {
 	 * @param wi la valeur du paramètre weigthIncrease
 	 */
 	public void setWeightIncrease(double wi) {
-		weightIncrease=wi;
+		Parameters.weightIncrease=wi;
 	}
 
 	/**
@@ -168,7 +128,7 @@ public class Model {
 	 * @param val la valeur du paramètre decisionDeterminism
 	 */
 	public void setDecisionDeterminism(double val) {
-		decisionDeterminism=val;
+		Parameters.decisionDeterminism=val;
 	}
 
 	/**
@@ -176,7 +136,7 @@ public class Model {
 	 * @param val la valeur du paramètre errorDiscount
 	 */
 	public void setErrorDiscount(double val) {
-		errorDiscount=val;
+		Parameters.errorDiscount=val;
 	}
 
 	/**
@@ -186,16 +146,16 @@ public class Model {
 	 */
 	public double getTime(String lettre) {
 		try {
-			practice[(int)(lettre.charAt(0)) - 65]=practice[(int)(lettre.charAt(0)) - 65]+increasePractice;
-			return a+b*Math.exp(-practice[(int)(lettre.charAt(0)) - 65] / d);
+			practice[(int)(lettre.charAt(0)) - 65]=practice[(int)(lettre.charAt(0)) - 65]+Parameters.increasePractice;
+			return Parameters.a+Parameters.b*Math.exp(-practice[(int)(lettre.charAt(0)) - 65] / Parameters.d);
 		}
 		catch(ArrayIndexOutOfBoundsException e) {
 			try {
-				practice[(int)(lettre.charAt(0)) - 97]=practice[(int)(lettre.charAt(0)) - 97]+increasePractice;
-				return a+b*Math.exp(-practice[(int)(lettre.charAt(0)) - 97] / d);
+				practice[(int)(lettre.charAt(0)) - 97]=practice[(int)(lettre.charAt(0)) - 97]+Parameters.increasePractice;
+				return Parameters.a+Parameters.b*Math.exp(-practice[(int)(lettre.charAt(0)) - 97] / Parameters.d);
 			}
 			catch(ArrayIndexOutOfBoundsException ex) {
-				return a+b*Math.exp(-practice[(int)(lettre.charAt(0)) - 97] / d);
+				return Parameters.a+Parameters.b*Math.exp(-practice[(int)(lettre.charAt(0)) - 97] / Parameters.d);
 			}
 		}
 	}
@@ -363,7 +323,7 @@ public class Model {
 
 
 	public void setSwitchingCost(double switchingCost) {
-		Model.switching_cost=switchingCost;
+		Parameters.switching_cost=switchingCost;
 	}
 
 	public void resetMemory() {
@@ -375,7 +335,7 @@ public class Model {
 
 	    // Réinitialiser la pratique des lettres
 	    for (int i = 0; i < practice.length; i++) {
-	        practice[i] = initialPractice;
+	        practice[i] = Parameters.initialPractice;
 	    }
 
 	    // Réinitialiser la liste des problèmes
@@ -385,9 +345,9 @@ public class Model {
 	    session = 0;
 
 	    // Réinitialiser le coût de switching et stratégie précédente si nécessaire
-	    switching_cost = 0;
-	    previous_strat = 'p';
-	    other_strat = 0;
+	    Parameters.switching_cost = 0;
+	    Parameters.previous_strat = 'p';
+	    Parameters.other_strat = 0;
 
 	    // Réinitialiser le profil (optionnel)
 	   // profil = null;
@@ -410,10 +370,15 @@ public class Model {
 		charList.add("a");
 		charList.add("b");
 		charList.add("c");
+		charList.add("d");
+		charList.add("e");
 
-		model.session(charList, false, "instructed");
+		for(int i=0;i<10;i++)
+		model.session(charList, true, "free");
+		//model.session(charList, false, "instructed");
 
-		System.out.println(model);
+		
+		//System.out.println(model);
 		//System.out.println(model);
 	
 	}

@@ -13,7 +13,7 @@ import Simulation.Procedure_Memory.inf;
  * @author Mathias
  * @version 1.0
  */
-public class Procedure_Memory extends Model{
+public class Procedure_Memory {
 	private static final Procedure_Memory instance = new Procedure_Memory();
 	Map<cond[], Action> rules;
 
@@ -73,6 +73,8 @@ public class Procedure_Memory extends Model{
 					throw new ConditionRuleException("Condition rule's usage : param1 : \"operand\", \"number\" or \"letter\" ; parmam2 : a number or an operand. Misuse on {" + individualCond.toString() + "} condition.");
 				Object right = individualCond.op2;
 
+				//System.out.println("estimation prod : " + estimationTimeProduction(chunk));
+				//System.out.println("estimation ans : " + estimationTimeAnswer(chunk));
 				if(right instanceof String) {
 					double rightValue = (right.equals("production")?
 							Double.valueOf(estimationTimeProduction(chunk)) : 
@@ -120,7 +122,7 @@ public class Procedure_Memory extends Model{
 		for(Action action : suitableRules) {
 			double activation =  activation(action, suitableRules);
 			suitableRulesActivations.put(action, activation);
-			sumExpActivation = sumExpActivation + Math.exp(activation*decisionDeterminism) ;
+			sumExpActivation = sumExpActivation + Math.exp(activation*Parameters.decisionDeterminism) ;
 		}
 		for(Action action : suitableRules) {
 			double activation = suitableRulesActivations.get(action);
@@ -193,7 +195,7 @@ public class Procedure_Memory extends Model{
 	protected void modifyWeigth(List<String> rules, int error) {
 		for (Action action:this.rules.values()) {
 			if(rules.contains(action.getName()))
-				action.setWeigth(action.getWeight()+error*errorDiscount);
+				action.setWeigth(action.getWeight()+error*Parameters.errorDiscount);
 		}
 	}
 
@@ -205,13 +207,13 @@ public class Procedure_Memory extends Model{
 	 * @return la probabilité de récupérer une règle
 	 */
 	private double retrievalProbability(double activation, List<Action> suitableRules, double sumExpActivation) {
-		if(Double.isInfinite(Math.exp(decisionDeterminism*activation)) && Double.isInfinite(sumExpActivation))
+		if(Double.isInfinite(Math.exp(Parameters.decisionDeterminism*activation)) && Double.isInfinite(sumExpActivation))
 			return 1;
 		else if(Double.isInfinite(sumExpActivation))
 			return 0.01;
-		else if(Double.isInfinite(Math.exp(decisionDeterminism*activation)))
+		else if(Double.isInfinite(Math.exp(Parameters.decisionDeterminism*activation)))
 			return 1;
-		return Math.exp(decisionDeterminism*activation)/sumExpActivation;
+		return Math.exp(Parameters.decisionDeterminism*activation)/sumExpActivation;
 	}
 
 	/**
@@ -330,10 +332,11 @@ public class Procedure_Memory extends Model{
 	 */
 	private double estimationTimeAnswer(Chunk chunk) {
 		double practice=0;
-		if(previous_strat=='p') {
-			other_strat=1;
+		//System.out.println(other_strat);
+		if(Parameters.previous_strat=='p') {
+			Parameters.other_strat=1;
 		}
-		else other_strat=0;
+		else Parameters.other_strat=0;
 		//System.out.print(previous_strat);
 		if(Answer_Memory.getInstance().getMemory().get(chunk.letter + "+" + chunk.number)!=null && Answer_Memory.getInstance().getMemory().get(chunk.letter + "+" + chunk.number).size()!=0) {
 			//Si au moins une réponse existe dans la mémoire de réponse, je calcule le temps que ca prendrait pour la récupérer (moyenne des réponses existantes)
@@ -343,8 +346,10 @@ public class Procedure_Memory extends Model{
 				practice = practice + answer.getPractice();
 				nbAnswer++;
 			}
+			//System.out.println("practice de la réponse : " + practice);
+			//System.out.println("nb de réponses " + nbAnswer);
 			practice=practice/nbAnswer;
-			return n+t*Math.exp(-practice/p) + elementEncoding + motorCommand + comparison + switching_cost*other_strat;
+			return Parameters.n+Parameters.t*Math.exp(-practice/Parameters.p) + Parameters.elementEncoding + Parameters.motorCommand + Parameters.comparison + Parameters.switching_cost*Parameters.other_strat;
 		}
 		else {
 			//Sinon j'estime que le temps que ca me prendrait c'est le temps moyen que je prends a calculer le probleme
@@ -353,8 +358,9 @@ public class Procedure_Memory extends Model{
 				return -1;
 			if(times.get(chunk.letter+"+"+chunk.number) == null || times.get(chunk.letter+"+"+chunk.number)==0)
 				return -1;
-			
-			return times.get(chunk.letter+"+"+chunk.number) + elementEncoding + motorCommand + comparison + switching_cost*(other_strat-1)*(-1);
+			//System.out.println("swith * other_strat pour ans : " + Parameters.switching_cost*Parameters.other_strat);
+
+			return times.get(chunk.letter+"+"+chunk.number) + Parameters.elementEncoding + Parameters.motorCommand + Parameters.comparison + Parameters.switching_cost*(Parameters.other_strat-1)*(-1);
 		}
 
 	}
@@ -365,16 +371,17 @@ public class Procedure_Memory extends Model{
 	 * @return le temps estimé à résoudre ce chunk en passant par la mémoire procédurale
 	 */
 	private double estimationTimeProduction(Chunk chunk) {
-		if(previous_strat=='p') {
-			other_strat=0;
+		if(Parameters.previous_strat=='p') {
+			Parameters.other_strat=0;
 		}
-		else other_strat=1;
+		else Parameters.other_strat=1;
 		
 		//Si je ne l'ai jamais travaillé, je ne sais pas
 		if(Answer_Memory.getInstance().getLastTime(Integer.valueOf(chunk.number)) == 0)
 			return -1;
+		//System.out.println("swith * other_strat pour prod : " + Parameters.switching_cost*Parameters.other_strat);
 		//Sinon c'est le temps moyen pris pour résoudre un problème de même addend
-		return Answer_Memory.getInstance().getLastTime(Integer.valueOf(chunk.number))+switching_cost*other_strat;
+		return Answer_Memory.getInstance().getLastTime(Integer.valueOf(chunk.number))+ + Parameters.elementEncoding + Parameters.motorCommand + Parameters.comparison +Parameters.switching_cost*Parameters.other_strat;
 	}
 
 	/**

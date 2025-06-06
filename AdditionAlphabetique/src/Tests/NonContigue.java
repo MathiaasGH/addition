@@ -21,7 +21,7 @@ public class NonContigue {
 		List<String> participantList = new ArrayList<String>();
 		List<String> strategyList = new ArrayList<String>();
 		List<String> profilList = new ArrayList<String>();
-		char[] letters = {'a', 'e', 'h', 'l', 'p'};
+		char[] letters = {'a', 'b', 'c', 'd', 'e'};
 
 		//Rules.getInstance().setWeight(0.2, -0.8);
 		double time = System.currentTimeMillis();
@@ -79,7 +79,7 @@ public class NonContigue {
 
 			// Écriture dans le fichier
 			try (FileWriter writer = new FileWriter(file)) {
-				writer.append("addend, time, error, session, particpant, strategy, profil\n");
+				writer.append("Addend, rt, error, session, particpant, strategy, profil\n");
 				// Écrire quelques lignes de données
 				for(int i=0; i<addendList.size();i++) {
 					writer.append(addendList.get(i) + "," + timeList.get(i) + "," + errorList.get(i) + "," + sessionList.get(i) + "," + participantList.get(i) + "," + strategyList.get(i) + "," + profilList.get(i) + "\n");

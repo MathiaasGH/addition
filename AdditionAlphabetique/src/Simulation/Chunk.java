@@ -8,7 +8,7 @@ import Exceptions.*;
  * @author Mathias
  * @version 1.0
  */
-public class Chunk extends Model{
+public class Chunk {
 
 	String letter;
 	String number; 
@@ -80,7 +80,6 @@ public class Chunk extends Model{
 			//Je cherche la règle à utiliser et je l'ajoute à l'historique des règles de mon problème
 			String production = Procedure_Memory.getInstance().findAction(this);
 			problem.receiveAction(production);
-			previous_strat='p';
 			if(production.equals("pop_goal")) {
 				//Je définis la réponse
 				if(problem.problemType.equals("instructed")) {
@@ -95,6 +94,7 @@ public class Chunk extends Model{
 					problem.setAnswer(letter, time);
 			}
 			else if(production.equals("increment") || production.equals("incrementOnlyLetter")){
+				Parameters.previous_strat='p';
 				if(problem.problemType.equals("instructed")) {
 					//Je regarde si la target est atteinte
 					boolean target_reached = (char)(letter.charAt(0)+1)==problem.target;
@@ -144,7 +144,7 @@ public class Chunk extends Model{
 				else {
 					String ans = directAnswer[0];
 					String probResolved = directAnswer[1];
-					previous_strat='a';
+					Parameters.previous_strat='a';
 					problem.receiveAction("answerRetrieved");
 					//Si je dois trouver la réponse
 					//Je donne au problème le sous problème que je viens de résoudre

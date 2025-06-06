@@ -15,7 +15,7 @@ import Exceptions.*;
  * @author Mathias
  * @version 1.0
  */
-public class Answer_Memory extends Model{
+public class Answer_Memory {
 
 	private static final Answer_Memory instance = new Answer_Memory();
 	Map<String, List<Answer>> memory ;
@@ -87,7 +87,7 @@ public class Answer_Memory extends Model{
 		}
 		//Je récupère un seuil aléatoire issu d'une normale pour déterminer si une réponse peut être récupérée ou non
 		Random random = new Random();
-		double treshold = rt_mu + rt_sd* random.nextGaussian();
+		double treshold = Parameters.rt_mu + Parameters.rt_sd* random.nextGaussian();
 		List<String> potentialAnswers = new ArrayList<String>();
 		for(Map.Entry<String, Double> entry: activationMap.entrySet()) {
 			//Si on dépasse le seuil aléatoire alors la réponse est potentiellement la réponse à notre problème
@@ -115,7 +115,7 @@ public class Answer_Memory extends Model{
 						practice=ans.getPractice();
 				}
 			}
-			chunk.addTime(n+t*Math.exp(-practice/p));
+			chunk.addTime(Parameters.n+Parameters.t*Math.exp(-practice/Parameters.p));
 			return new String[] {potentialAnswers.get(0), problemSolved};
 		}
 		else {
@@ -164,7 +164,7 @@ public class Answer_Memory extends Model{
 												practice=ans.getPractice();
 										}
 									}
-								chunk.addTime(n+t*Math.exp(-practice/p));
+								chunk.addTime(Parameters.n+Parameters.t*Math.exp(-practice/Parameters.p));
 								return new String[] {entry.getKey(), problemSolved};
 							}
 						}
@@ -181,7 +181,7 @@ public class Answer_Memory extends Model{
 									if(ans.getName().equals(entry.getKey()))
 										practice=ans.getPractice();
 								}
-							chunk.addTime(n+t*Math.exp(-practice/p));
+							chunk.addTime(Parameters.n+Parameters.t*Math.exp(-practice/Parameters.p));
 							return new String[] {entry.getKey(), problemSolved};
 						}
 					}
@@ -204,9 +204,9 @@ public class Answer_Memory extends Model{
 		double somme = 0;
 		for(String answer : potentialAnswers) {
 			double activation = activationMap.get(answer);
-			somme += Math.exp(decisionDeterminism*activation);
+			somme += Math.exp(Parameters.decisionDeterminism*activation);
 		}
-		return (Math.exp(decisionDeterminism*activationMap.get(a))/somme);
+		return (Math.exp(Parameters.decisionDeterminism*activationMap.get(a))/somme);
 	}
 
 	/**
@@ -232,7 +232,7 @@ public class Answer_Memory extends Model{
 	private double similarity(String problemName, String problemCurrentName) {
 		//J'inhibe le fait de récupérer des bouts de réponse
 		//if(problemName.equals(problemCurrentName))
-			return Math.exp(-specificity*distance(problemName,problemCurrentName));
+			return Math.exp(-Parameters.specificity*distance(problemName,problemCurrentName));
 		//else
 		//	return 0;
 	}
@@ -262,7 +262,7 @@ public class Answer_Memory extends Model{
 	 * @param time le temps pris pour résoudre le problème
 	 */
 	protected void putMemory(String problemName, String answer, double time) {
-		double weight = weightIncrease;
+		double weight = Parameters.weightIncrease;
 		List<Answer> answerFromMemory = memory.get(problemName);
 		if(answerFromMemory != null) {
 			boolean flag=false;
@@ -311,7 +311,7 @@ public class Answer_Memory extends Model{
 		private Answer(String name, double weight) {
 			this.name=name;
 			this.weight=weight;
-			assoStrength=initialStrength;
+			assoStrength=Parameters.initialStrength;
 		}
 		public String toString() {
 			return "(" + name + " | wei.:" + weight + " ; str.:" + assoStrength +")";
@@ -326,7 +326,7 @@ public class Answer_Memory extends Model{
 			this.weight=weight;
 		}
 		private void practice() {
-			assoStrength= assoStrength+increaseStrength;
+			assoStrength= assoStrength+Parameters.increaseStrength;
 		}
 		protected double getPractice() {
 			return assoStrength;
