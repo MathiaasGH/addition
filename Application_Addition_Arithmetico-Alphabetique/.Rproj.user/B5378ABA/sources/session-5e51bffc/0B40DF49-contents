@@ -1,0 +1,246 @@
+calculate_RMSE = function(dt1, dt2){
+  library(Metrics)
+  norm = normalize_pair(dt1$rt, dt2$rt)
+  norm_rmse = rmse(norm$x, norm$y)
+  return(norm_rmse)
+}
+
+normalize_pair <- function(x, y) {
+  min_val = min(c(x, y))
+  max_val = max(c(x, y))
+  list(
+    x = (x - min_val) / (max_val - min_val),
+    y = (y - min_val) / (max_val - min_val)
+  )
+}
+
+# 
+# transform_data_multi = function(data_list, file_name){
+#   n_data = length(data_list)
+#   arg_names = file_name
+#   # On prend le premier data.frame comme référence pour les paramètres
+#   data = data_list[[1]]
+#   transformed_data = data.frame()
+#   unique_combination = unique(data[, 1:nbParam])
+#   
+#   
+#   print(nrow(unique_combination))
+#   
+#   pb = txtProgressBar(min = 0, max = nrow(unique_combination), style = 3)
+#   
+#   
+#   for(i in 1:nrow(unique_combination)){
+#     param = unique_combination[i, ]
+#     print(param)
+#     # Initialiser un data.frame avec les paramètres
+#     new_row = param
+#     
+#     # Pour chaque data.frame fourni, sélectionner et ajouter la colonne datasX
+#     for (j in 1:n_data) {
+#       selected_data = merge(data_list[[j]], param, by = colnames(data_list[[j]])[1:nbParam])
+#       selected_data = selected_data[, -c(1:nbParam), drop = FALSE]
+#       # Ajouter la colonne datasX
+#       new_row[[ arg_names[j] ]] = I(list(selected_data))
+#     }
+#     
+#     transformed_data = rbind(transformed_data, new_row)
+#     
+#     print(i)
+#     setTxtProgressBar(pb, i)
+#   }
+#   
+#   close(pb)
+#   return(transformed_data)
+# }
+
+
+
+# Version encore plus optimisée avec data.table (si disponible)
+transform_data_multi_super_fast = function(data_list, file_name){
+  # Vérifier si data.table est disponible
+  if (requireNamespace("data.table", quietly = TRUE)) {
+    library(data.table)
+    
+    n_data = length(data_list)
+    arg_names = file_name
+    
+    # Convertir en data.table
+    dt_list = lapply(data_list, as.data.table)
+    
+    # Colonnes de paramètres
+    param_cols = colnames(dt_list[[1]])[1:nbParam]
+    
+    # Obtenir les combinaisons uniques
+    unique_combination = unique(dt_list[[1]][, ..param_cols])
+    n_combinations = nrow(unique_combination)
+    
+    print(paste("Nombre de combinaisons:", n_combinations))
+    
+    # Créer le résultat final
+    result_list = vector("list", n_combinations)
+    
+    for (j in 1:n_data) {
+      current_dt = dt_list[[j]]
+      
+      # Utiliser data.table pour un groupage ultra-rapide
+      grouped = current_dt[, .(data = list(.SD)), by = param_cols, .SDcols = -c(1:nbParam)]
+      
+      # Joindre avec les combinaisons uniques
+      setkeyv(grouped, param_cols)
+      setkeyv(unique_combination, param_cols)
+      
+      merged = grouped[unique_combination]
+      
+      # Remplir les résultats
+      for (i in 1:n_combinations) {
+        if (is.null(result_list[[i]])) {
+          result_list[[i]] = as.data.frame(unique_combination[i, ])
+        }
+        
+        # CORRECTION de la condition
+        if (!is.null(merged$data[[i]]) && nrow(merged$data[[i]]) > 0) {
+          result_list[[i]][[arg_names[j]]] = I(list(merged$data[[i]]))
+        } else {
+          result_list[[i]][[arg_names[j]]] = I(list(data.frame()))
+        }
+      }
+    }
+    
+    # Combiner tous les résultats
+    transformed_data = do.call(rbind, result_list)
+    return(transformed_data)
+    
+  } else {
+    warning("data.table n'est pas disponible. Utilisation de la version optimisée standard.")
+    return(transform_data_multi_optimized(data_list, file_name))
+  }
+}
+
+
+
+generate_RMSE_table = function(simulated_data, experimental_data, nbParameters=8){
+  #Exemple d'utilisation : generate_RMSE_table(list(CSC=test, NCSC=test2), list(CSC,NCSC),8)
+  
+  nbParam <<- nbParameters
+  file_name = names(simulated_data)
+  transformed_simulated_data = transform_data_multi_super_fast(simulated_data, file_name)
+  
+  for (col in 1:length(experimental_data)) {
+    rmse_col_name = paste0("RMSE_", names(simulated_data)[col])
+    transformed_simulated_data[[rmse_col_name]] = NA
+  }
+  transformed_simulated_data[["RMSE_total"]] = NA
+  
+  pb = txtProgressBar(min = 0, max = nrow(transformed_simulated_data), style = 3)
+  
+  for(row in 1:nrow(transformed_simulated_data)){
+    every_rmse = c()
+    for(col in 1:length(experimental_data)){
+      current_rmse = calculate_RMSE(transformed_simulated_data[row,col+nbParam][[1]], experimental_data[[col]])
+      rmse_col_name = paste0("RMSE_", names(simulated_data)[col])
+      transformed_simulated_data[row, rmse_col_name] = current_rmse
+      every_rmse = c(every_rmse, current_rmse)
+    }
+    transformed_simulated_data[row,"RMSE_total"] = mean(every_rmse)
+    
+    setTxtProgressBar(pb, row)
+  }
+  close(pb)
+  return(transformed_simulated_data)
+}
+
+
+
+#RMSE_table1 = generate_RMSE_table(list(CSC=CSC_1, NCSC=NCSC_1, Kyria=Kyria_1), list(CSC_exp,NCSC_exp,Kyria_exp),8)
+
+
+# 
+# dt = Kyria_exp
+# Kyria_exp_rework=data.frame(
+#   Addend = numeric(),
+#   Accuracy=numeric(),
+#   rt=numeric(),
+#   profil=character()
+# )
+# 
+# for(prof in c("b","nb")){
+#   for(add in 2:5){
+#     new_row=data.frame(
+#       Addend=add,
+#       Accuracy=mean(dt$accuracy[dt$Addend==add & dt$profil==prof]), 
+#       rt=mean(dt$rt[dt$Addend==add & dt$profil==prof]), 
+#       profil=prof
+#       )
+#     Kyria_exp_rework=rbind(Kyria_exp_rework,new_row)
+#   }
+# }
+# 
+# dt = CSC_exp
+# CSC_exp_rework=data.frame(
+#   session=numeric(),
+#   Addend=numeric(),
+#   Accuracy=numeric(),
+#   rt=numeric()
+# )
+# 
+# for(sess in 1:10){
+#   for(add in 2:5){
+#     new_row=data.frame(
+#       session=sess,
+#       Addend=add,
+#       Accuracy=mean(dt$Accuracy[dt$session==sess & dt$Addend==add]), 
+#       rt=mean(dt$rt[dt$session==sess & dt$Addend==add]) 
+#     )
+#     CSC_exp_rework=rbind(CSC_exp_rework,new_row)
+#   }
+# }
+
+bestRMSE <- function(table, colonne, N = 100) {
+  return(table[order(table[[colonne]]), ][1:N, ])
+}
+
+
+
+########################
+
+
+RMSE_table[RMSE_table$increasePractice == 0.5 & 
+             RMSE_table$t == 3750 & 
+             RMSE_table$p == 40 & 
+             RMSE_table$b == 800 & 
+             RMSE_table$d == 325 & 
+             RMSE_table$rationality == 0.0018 & 
+             RMSE_table$retrievingReinforcement == 0.9 & 
+             RMSE_table$countingReinforcement == 0.4, ]
+
+
+tauxAccroissement1 = (CSC_exp$rt[CSC_exp$session==10 & CSC_exp$Addend==3] - CSC_exp$rt[CSC_exp$session==10 & CSC_exp$Addend==2]) / CSC_exp$rt[CSC_exp$session==10 & CSC_exp$Addend==2]
+
+
+tauxAccroissement2 = (CSC_exp$rt[CSC_exp$session==10 & CSC_exp$Addend==5] - CSC_exp$rt[CSC_exp$session==10 & CSC_exp$Addend==4]) / CSC_exp$rt[CSC_exp$session==10 & CSC_exp$Addend==4]
+
+
+# Calcule pour chaque ligne les deux taux
+taux_2 <- sapply(RMSE_table$CSC, function(df) tauxAccroissement(df, 2))
+taux_4 <- sapply(RMSE_table$CSC, function(df) tauxAccroissement(df, 4))
+taux_2NCSC <- sapply(RMSE_table$NCSC, function(df) tauxAccroissement(df, 2))
+taux_3NCSC <- sapply(RMSE_table$NCSC, function(df) tauxAccroissement(df, 3))
+
+# Applique la condition de tolérance
+condition <- abs(taux_2 - tauxAccroissement1) <= 0.18 &
+  abs(taux_4 - tauxAccroissement2) <= 0.04 & 
+  taux_2NCSC >0 &
+  taux_3NCSC >0
+
+# Filtrage
+RMSE_table_pont <- RMSE_table[condition, ]
+
+
+
+
+best_RMSE_pont = bestRMSE(RMSE_table_pont, "RMSE_total", N=nrow(RMSE_table_pont))
+
+
+tauxAccroissement = function(df, add, sess=10){
+  return((df$rt[df$session==sess & df$Addend==add+1] - df$rt[df$session==sess & df$Addend==add]) / df$rt[df$session==sess & df$Addend==add])
+}
