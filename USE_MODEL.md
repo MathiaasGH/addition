@@ -1,5 +1,5 @@
 # Guide d'utilisation du modèle cognitif computationnel
-Pour utiliser le modèle, deux solutions sont dispobles : 
+Pour utiliser le modèle, deux solutions sont disponibles : 
 - Cloner le projet Git,
 - Exporter le dossier .zip depuis Git
 
