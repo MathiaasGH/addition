@@ -10,6 +10,6 @@ Le modèle computationnel permet de simuler des participants à des tâches d'ad
 
 Vous pouvez télécharger la version 21 ici :
 
-- [Java SE Development Kit 21.0.8]((https://www.oracle.com/fr/java/technologies/downloads/#java21))
+- [Java SE Development Kit 21.0.8](https://www.oracle.com/fr/java/technologies/downloads/#java21)
 
 Après avoir configuré votre environnement de travail (par exemple Eclipse) avec Java, assurez-vous que la version du compilateur est bien Java SE 21. Sur Eclipse : Project > Java Compiler > Vérifiez que Compiler compliance level est à "21".
