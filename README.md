@@ -8,6 +8,6 @@ L'utilisation de ce projet sur votre machine suppose que vous avez suivi la proc
 
 ## Utilisation du projet
 ### Manipulation du modèle
-Le modèle compuationnel est développée en Java et disponible dans le dossier [Application_Addition_Arithmetico-Alphabetique](./Application_Addition_Arithmetico-Alphabetique). 
-La procédure de manipulation du modèle est indiquée dans le document [USE_MODEL.md](./Application_Addition_Arithmetico-Alphabetique/USE_MODEL.md).
+Le modèle compuationnel est développée en Java et disponible dans le dossier [Modele_Addition_Arithmetico-Alphabetique](./Modele_Addition_Arithmetico-Alphabetique). 
+La procédure de manipulation du modèle est indiquée dans le document [USE_MODEL.md](./Modele_Addition_Arithmetico-Alphabetique/USE_MODEL.md).
 
