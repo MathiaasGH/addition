@@ -5,3 +5,8 @@ Un des objectifs de ce projet est d'implémenter un modèle computationnel qui s
 
 ## Prérequis
 L'utilisation de ce projet sur votre machine suppose que vous avez suivi la procédure indiquée dans le document [INSTALL.md](./INSTALL.md).
+
+## Utilisation du projet
+### Manipulation du modèle
+Le modèle compuationnel est développée en Java et disponible dans le dossier [Application_Addition_Arithmetico-Alphabetique](./Application_Addition_Arithmetico-Alphabetique)
+
