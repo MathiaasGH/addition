@@ -9,3 +9,5 @@ Sur votre environnement de travail Java, il suffit maintenant de créer un nouve
 Le projet s'ajoutera dans la fenêtre "Git Repositories" (pour afficher cette fenêtre, Window > Show View > Other > Git > Git Repositories
 
 ## Exporter le dossier
+Pour exporter le dossier et ainsi utiliser le modèle développé en Java, vous pouvez cliquer sur le bouton "Code" en vert dans le menu principal du git, puis cliquer sur "Exporter le zip".
+Ainsi, vous aurez accès au dossier [application](./Application_Addition_Arithmetico-Alphabetique)
