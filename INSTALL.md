@@ -19,4 +19,11 @@ L'application permet de visualiser des données relatives à des tâches d'addit
 
 - R version 4.4.2
 - R Shiny 1.10.0
+
+  D'autres packages sont utilisés mais le code possède un script permettant de vérifier vos packages installés et installe ceux manquants.
+
+  Vous pouvez installer R ici :
+  
+  - [R](https://cran.r-project.org/)
+
   
