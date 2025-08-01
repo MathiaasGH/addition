@@ -15,3 +15,8 @@ Vous pouvez télécharger la version 21 ici :
 Après avoir configuré votre environnement de travail (par exemple Eclipse) avec Java, assurez-vous que la version du compilateur est bien Java SE 21. Sur Eclipse : Project > Java Compiler > Vérifiez que Compiler compliance level est à "21".
 
 ## Installer R
+L'application permet de visualiser des données relatives à des tâches d'additions arithmético-alphabétiques expérimentales simulées ou empiriques. Elle a été développée avec :
+
+- R version 4.4.2
+- R Shiny 1.10.0
+  
