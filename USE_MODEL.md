@@ -13,7 +13,7 @@ Le projet s'ajoutera dans la fenêtre "Git Repositories" (pour afficher cette fe
 ## Exporter le dossier
 Pour exporter le dossier et ainsi utiliser le modèle développé en Java, vous pouvez cliquer sur le bouton "Code" en vert dans le menu principal du git, puis cliquer sur "Exporter le zip".
 
-Ainsi, vous aurez accès au dossier du [modèle](./Modele_Addition_Arithmetico-Alphabetique). Grâce à ce dernier, vous pouvez l'importer dans votre environnement de travail. Sur Eclipse : File > Import... > General > Existing Project into Workspace puis importez le dossier.
+Ainsi, vous aurez accès au dossier du [modèle](./Modele_Addition_Arithmetico-Alphabetique). Grâce à ce dernier, vous pouvez l'importer dans votre IDE Java (comme Eclipse). Sur Eclipse : File > Import... > General > Existing Project into Workspace puis importez le dossier.
 
 ## L'utilisation
 Un participant est simulé en instanciant un objet de la classe "Model". 
