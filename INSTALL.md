@@ -1,7 +1,7 @@
 # Guide d'installation de l'environnement Java et R
 
 ## Installer Java
-Le modèle computationnel permet de simuler des participants à des tâches d'addition arithémtico-alphabétiques. Il a été développé avec : 
+Le modèle computationnel permet de simuler des participants à des tâches d'addition arithmético-alphabétiques. Il a été développé avec : 
 - Java Development Kit (JDK) 21 (Java SE 21)
 - Outil de compilation : javac
 - IDE recommandé : Eclipse IDE
@@ -20,10 +20,12 @@ L'application permet de visualiser des données relatives à des tâches d'addit
 - R version 4.4.2
 - R Shiny 1.10.0
 
-D'autres packages sont utilisés mais le code possède un script permettant de vérifier vos packages installés et installe ceux manquants.
+D'autres packages sont utilisés mais le code vérifie si les packages requis sont installés, et installe automatiquement ceux qui ne le sont pas.
 
 Vous pouvez installer R ici :
   
 - [R](https://cran.r-project.org/)
+
+Une fois Java et R installés, vous pouvez suivre les instructions dans les fichiers `USE_MODEL.md` et `USE_APPLI.md`.
 
   
