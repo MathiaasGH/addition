@@ -26,6 +26,6 @@ Vous pouvez installer R ici :
   
 - [R](https://cran.r-project.org/)
 
-Une fois Java et R installés, vous pouvez suivre les instructions dans les fichiers `USE_MODEL.md` et `USE_APPLI.md`.
+Une fois Java et R installés, vous pouvez suivre les instructions dans les fichiers [USE_MODEL.md](./USE_MODEL.md) et [USE_APPLI.md](./USE_APPLI.md).
 
   
