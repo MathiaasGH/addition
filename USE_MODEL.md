@@ -18,8 +18,8 @@ Ainsi, vous aurez accès au dossier du [modèle](./Modele_Addition_Arithmetico-A
 ## L'utilisation
 Un participant est simulé en instanciant un objet de la classe "Model". 
 
-Deux profils de participants existent : 
-  -Les breakers
-  -Les non-breakers
+Deux profils de participants existent :
+- Les breakers
+- Les non-breakers
   
 Par défaut, un participant est breaker. Vous pouvez spécifier son profil explicitement dans les paramètres d'instancation du participant (ex : new Model("nonbreakers"))
