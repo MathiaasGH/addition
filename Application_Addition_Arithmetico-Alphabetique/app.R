@@ -1,9 +1,12 @@
-library(shiny)
-library(shinycssloaders)
-library(dplyr)
-library(bslib)
-library(shinyWidgets)
-library(shinyBS)
+#J'installe les packages nécessaires
+required_packages <- c("shiny", "shinycssloaders", "dplyr", "bslib", "shinyWidgets", "shinyBS")
+missing <- required_packages[!required_packages %in% installed.packages()[,"Package"]]
+
+if (length(missing) > 0) {
+  install.packages(missing)
+}
+
+lapply(required_packages, library, character.only = TRUE)
 
 
 #J'initialise quelques variables et fonction utilises
