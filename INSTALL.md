@@ -14,6 +14,8 @@ Vous pouvez télécharger la version 21 ici :
 
 Après avoir configuré votre environnement de travail (par exemple Eclipse) avec Java, assurez-vous que la version du compilateur est bien Java SE 21. Sur Eclipse : Project > Java Compiler > Vérifiez que Compiler compliance level est à "21".
 
+Une fois Java installé, vous pouvez suivre les instructions dans le fichier [USE_MODEL.md](./USE_MODEL.md) pour utiliser le modèle.
+
 ## Installer R
 L'application permet de visualiser des données relatives à des tâches d'additions arithmético-alphabétiques expérimentales simulées ou empiriques. Elle a été développée avec :
 
@@ -26,6 +28,6 @@ Vous pouvez installer R ici :
   
 - [R](https://cran.r-project.org/)
 
-Une fois Java et R installés, vous pouvez suivre les instructions dans les fichiers [USE_MODEL.md](./USE_MODEL.md) et [USE_APPLI.md](./USE_APPLI.md).
+Une fois R installé, vous pouvez suivre les instructions dans le fichier [USE_APPLI.md](./USE_APPLI.md) pour utiliser l'application.
 
   
