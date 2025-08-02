@@ -23,5 +23,12 @@ Pour utiliser l'application, vous pouvez :
 
   ### Passer par un IDE R
   Une fois le fichier `app.R` importé dans votre IDE, vous pouvez lancer le code en appuyant sur le bouton run spécifique à votre environnement de travail.
-  Sur RStudio, le bouton se présente ainsi : 
+  Sur RStudio, le bouton se présente comme suit (Run App). 
 <img width="2183" height="87" alt="image" src="https://github.com/user-attachments/assets/2d870f28-b2bb-4810-b0db-d6d9012b7865" />
+
+ ### Passer par un terminal
+ Si vous souhaitez lancer l'application depuis le terminal, assurez-vous d'avoir R installé dans votre dossier. Une fois chose faite, il vous suffit d'ouvrir un terminal de commande et de taper : 
+ ***Windows***
+ `shiny::runApp("chemin/vers/ton/app")`
+ ***Linux/Mac*** :
+ R -e "shiny::runApp('chemin/vers/le/dossier/app')"
