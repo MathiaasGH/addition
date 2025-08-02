@@ -29,13 +29,14 @@ Pour utiliser l'application, vous pouvez :
 ### Passer par un terminal 
  
  ***Windows***
+ 
 Si R n'est pas dans votre variable `PATH` (généralement le cas), précisez le chemin vers l'éxécutable R que vous avez installé pour pouvoir utiliser le langage, puis le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
 
-`& "C:\Program Files\R\R-4.4.2\bin\Rscript.exe" -e "shiny::runApp('C:/Users/Propriétaire/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
+`& "C:\Program Files\R\R-4.4.2\bin\Rscript.exe" -e "shiny::runApp('C:/Users/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
 
  Si R est dans votre variblae `PATH`, précisez simplement le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
 
- `& Rscript -e "shiny::runApp('C:/Users/Propriétaire/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
+ `& Rscript -e "shiny::runApp('C:/Users/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
  
  ***Linux/Mac*** :
 
