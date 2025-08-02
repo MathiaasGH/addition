@@ -2803,6 +2803,7 @@ server <- function(input, output, session) {
   
 }
 
+options(shiny.launch.browser = TRUE)
 shinyApp(ui = ui, server = server)
 
 
