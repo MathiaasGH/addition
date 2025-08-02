@@ -21,12 +21,12 @@ Pour utiliser l'application, vous pouvez :
 - Passer par un IDE R,
 - L'ouvrir depuis le terminal, à condition que R soit installé dans le dossier contenant l'application (par défaut non installé)
 
-  ### Passer par un IDE R
+### Passer par un IDE R
   Une fois le fichier `app.R` importé dans votre IDE, vous pouvez lancer le code en appuyant sur le bouton run spécifique à votre environnement de travail.
   Sur RStudio, le bouton se présente comme suit (Run App). 
 <img width="2183" height="87" alt="image" src="https://github.com/user-attachments/assets/2d870f28-b2bb-4810-b0db-d6d9012b7865" />
 
-  ### Passer par un terminal 
+### Passer par un terminal 
  
  ***Windows***
 Si R n'est pas dans votre variable `PATH` (généralement le cas), précisez le chemin vers l'éxécutable R que vous avez installé pour pouvoir utiliser le langage, puis le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
