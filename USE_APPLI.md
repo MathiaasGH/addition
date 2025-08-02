@@ -47,3 +47,15 @@ Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutab
  Si R est dans votre variblae `PATH`, précisez simplement le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
  
  `Rscript -e "shiny::runApp('/home/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
+
+ ## Contenu du dossier
+
+ Le dossier contient quatre sous-dossiers (sans compter `.Rproj.user`) :
+ - [Graphes](./Application_Addition_Arithmetico-Alphabetique/Graphes)
+   Ce dossier contient des codes R qui permettent la présentation de graphes dans l'interface
+ - [configSave](./Application_Addition_Arithmetico-Alphabetique/configSave)
+   Ce dossier contient les configurations de création de tâches expérimentales sauvegardées pour les charger ultérieurement
+ - [csv](./Application_Addition_Arithmetico-Alphabetique/csv)
+   Ce dossier n'est pas nécessaire. Il sert de dépôt pour vos données expérimentales
+ - [simulationFiles](./Application_Addition_Arithmetico-Alphabetique/simulationFiles)
+   Ce dossier contient les simulations créées par le modèle cognitif computationnel. **Attention :** il est vidé à chaque fois que l'application est relancée 
