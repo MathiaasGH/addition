@@ -19,7 +19,7 @@ Ainsi, vous aurez accès au dossier de l'[application](./Application_Addition_Ar
 ## Utiliser l'application
 Pour utiliser l'application, vous pouvez : 
 - Passer par un IDE R,
-- L'ouvrir depuis le terminal, à condition que R soit installé dans le dossier contenant l'application (par défaut non installé)
+- L'ouvrir depuis le terminal
 
 ### Passer par un IDE R
   Une fois le fichier `app.R` importé dans votre IDE, vous pouvez lancer le code en appuyant sur le bouton run spécifique à votre environnement de travail.
