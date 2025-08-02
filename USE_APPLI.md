@@ -28,7 +28,11 @@ Pour utiliser l'application, vous pouvez :
 
  ### Passer par un terminal
  Si vous souhaitez lancer l'application depuis le terminal, assurez-vous d'avoir R installé dans votre dossier. Une fois chose faite, il vous suffit d'ouvrir un terminal de commande et de taper : 
+ 
  ***Windows***
+ 
  `shiny::runApp("chemin/vers/ton/app")`
+ 
  ***Linux/Mac*** :
- R -e "shiny::runApp('chemin/vers/le/dossier/app')"
+ 
+ `R -e "shiny::runApp('chemin/vers/le/dossier/app')"`
