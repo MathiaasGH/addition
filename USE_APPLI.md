@@ -26,13 +26,23 @@ Pour utiliser l'application, vous pouvez :
   Sur RStudio, le bouton se présente comme suit (Run App). 
 <img width="2183" height="87" alt="image" src="https://github.com/user-attachments/assets/2d870f28-b2bb-4810-b0db-d6d9012b7865" />
 
- ### Passer par un terminal
- Si vous souhaitez lancer l'application depuis le terminal, assurez-vous d'avoir R installé dans votre dossier. Une fois chose faite, il vous suffit d'ouvrir un terminal de commande et de taper : 
+ ### Passer par un terminal 
  
  ***Windows***
- 
- `shiny::runApp("chemin/vers/ton/app")`
+Si R n'est pas dans votre variable `PATH` (généralement le cas), précisez le chemin vers l'éxécutable R que vous avez installé pour pouvoir utiliser le langage, puis le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
+
+`& "C:\Program Files\R\R-4.4.2\bin\Rscript.exe" -e "shiny::runApp('C:/Users/Propriétaire/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
+
+ Si R est dans votre variblae `PATH`, précisez simplement le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
+
+ `& Rscript -e "shiny::runApp('C:/Users/Propriétaire/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
  
  ***Linux/Mac*** :
+
+Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutable R que vous avez installé pour pouvoir utiliser le langage, puis le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
+
+`/usr/bin/Rscript -e "shiny::runApp('/home/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
+
+ Si R est dans votre variblae `PATH`, précisez simplement le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
  
- `R -e "shiny::runApp('chemin/vers/le/dossier/app')"`
+ `Rscript -e "shiny::runApp('/home/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
