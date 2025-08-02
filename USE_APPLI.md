@@ -44,7 +44,7 @@ Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutab
 
 `/usr/bin/Rscript -e "shiny::runApp('/home/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
 
- Si R est dans votre variblae `PATH`, précisez simplement le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
+ Si R est dans votre variable `PATH`, précisez simplement le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
  
  `Rscript -e "shiny::runApp('/home/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
 
