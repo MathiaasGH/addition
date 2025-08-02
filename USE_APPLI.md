@@ -52,10 +52,10 @@ Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutab
 
  Le dossier contient quatre sous-dossiers (sans compter `.Rproj.user`) :
  - [Graphes](./Application_Addition_Arithmetico-Alphabetique/Graphes)
-   Ce dossier contient des codes R qui permettent la présentation de graphes dans l'interface
+   Ce dossier contient des codes R qui permettent la présentation de graphiques dans l'interface.
  - [configSave](./Application_Addition_Arithmetico-Alphabetique/configSave)
-   Ce dossier contient les configurations de création de tâches expérimentales sauvegardées pour les charger ultérieurement
+   Ce dossier contient les configurations de création de tâches expérimentales sauvegardées pour les charger ultérieurement.
  - [csv](./Application_Addition_Arithmetico-Alphabetique/csv)
-   Ce dossier n'est pas nécessaire. Il sert de dépôt pour vos données expérimentales
+   Ce dossier n'est pas nécessaire. Il sert de dépôt pour vos données expérimentales.
  - [simulationFiles](./Application_Addition_Arithmetico-Alphabetique/simulationFiles)
-   Ce dossier contient les simulations créées par le modèle cognitif computationnel. **Attention :** il est vidé à chaque fois que l'application est relancée 
+   Ce dossier contient les simulations créées par le modèle cognitif computationnel. **Attention :** il est vidé à chaque fois que l'application est relancée. 
