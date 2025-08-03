@@ -31,6 +31,6 @@ Vous pouvez installer R ici :
 Une fois R installé, vous pouvez suivre les instructions dans le fichier [USE_APPLI.md](./USE_APPLI.md) pour utiliser l'application.
 
 ## Références
-- [Download the Latest Java LTS Free.](https://www.oracle.com/fr/java/technologies/downloads/#java21) (s. d.). https://www.oracle.com/fr/java/technologies/downloads/#java21
-- [The comprehensive R Archive Network.](https://cran.r-project.org/) (s. d.). https://cran.r-project.org/
+- Download the Latest Java LTS Free. (s. d.). https://www.oracle.com/fr/java/technologies/downloads/#java21
+- The comprehensive R Archive Network. (s. d.). https://cran.r-project.org/
 
