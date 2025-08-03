@@ -146,8 +146,8 @@ public class Problem {
 	 */
 	public void endProblem(boolean memorizing) {
 		time = time + Parameters.elementEncoding + Parameters.motorCommand + Parameters.comparison + decisionTime;
-		//Retirer le commentaire suivant pour afficher la réponse
-		//endMessage(memorizing);
+		//Commenter la ligne suivante pour retirer l'affichage de la réponse
+		endMessage(memorizing);
 		Procedure_Memory.getInstance().modifyWeigth(usedRules, error()?-1:1);
 		if(memorizing) {
 			if(feedback) {
@@ -365,5 +365,12 @@ public class Problem {
 			}
 		}
 		return max;
+	}
+	
+	/**
+	 * Affiche des statistiques à propos de la résolution de ce problème
+	 */
+	public void statistics() {
+		System.out.println("Name : " + name + "\nProblem type : " + problemType + "\nAnswer : " + letterAnswer + (problemType.equals("instructed")?(" then " + instructedAnswer):("")) + "\nTime : " + time + "\nStrategy chosen : " + strategyChosen);
 	}
 }

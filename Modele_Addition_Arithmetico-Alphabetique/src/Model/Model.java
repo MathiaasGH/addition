@@ -422,31 +422,4 @@ public class Model {
 
 	}
 
-	public static void main(String[] args) {
-		Model model = new Model("breaker");
-
-		List<String> charList = new ArrayList<String>();
-		charList.add("a");
-		charList.add("b");
-		charList.add("c");
-		charList.add("d");
-		charList.add("e");
-		charList.add("f");
-
-		try {
-			Problem pb = new Problem("j+5=o", model);
-			pb.overlap();
-			model.addProblem(pb);
-
-
-		} catch (ProblemException e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println(Arrays.toString(model.practice));
-
-		System.out.println(model);
-
-	}
-
 }
