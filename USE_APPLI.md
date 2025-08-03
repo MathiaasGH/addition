@@ -58,4 +58,11 @@ Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutab
  - [csv](./Application_Addition_Arithmetico-Alphabetique/csv)
    Ce dossier n'est pas nécessaire. Il sert de dépôt pour vos données expérimentales.
  - [simulationFiles](./Application_Addition_Arithmetico-Alphabetique/simulationFiles)
-   Ce dossier contient les simulations créées par le modèle cognitif computationnel. **Attention :** il est vidé à chaque fois que l'application est relancée. 
+   Ce dossier contient les simulations créées par le modèle cognitif computationnel. **Attention :** il est vidé à chaque fois que l'application est relancée.
+
+ ## Contenu de l'application
+
+ Expliquer comment on l'utilise
+
+ ## Références
+ - RStudio Desktop - Posit. (2025, 21 janvier). Posit. https://posit.co/download/rstudio-desktop/
