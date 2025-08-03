@@ -1,4 +1,4 @@
-# 🇫🇷🟦⬜🟥 Guide d'utilisation de l'application
+# 🇫🇷 Guide d'utilisation de l'application
 Pour utiliser l'application, deux solutions sont disponibles : 
 - Cloner le projet Git,
 - Exporter le dossier .zip depuis Git
@@ -66,7 +66,7 @@ Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutab
 
  Expliquer comment on l'utilise (❌ **à faire**)
 
- # 🇺🇸🌎 Application Usage Guide
+ # 🌎 Application Usage Guide
 To use the application, two options are available:  
 - Clone the Git project,  
 - Export the .zip folder from Git  
