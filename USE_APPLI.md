@@ -21,6 +21,8 @@ Pour utiliser l'application, vous pouvez :
 - Passer par un IDE R,
 - L'ouvrir depuis le terminal
 
+  **❌Dans tous les cas, attention à ne pas ouvrir le proget depuis le dossier git exporté directement. Il faut copier ce dossier dans un autre dossier (bug à corriger)❌**
+
 ### Passer par un IDE R
   Une fois le fichier `app.R` importé dans votre IDE, vous pouvez lancer le code en appuyant sur le bouton run spécifique à votre environnement de travail.
   Sur RStudio, le bouton se présente comme suit (Run App). 
@@ -85,6 +87,8 @@ This will give you access to the [application folder](./Application_Addition_Ari
 To use the application, you can:  
 - Use an R IDE,  
 - Run it from the terminal
+
+- **❌ In any case, be careful not to open the project directly from the exported git folder. You need to copy this folder into another directory (bug to be fixed) ❌**
 
 ### Using an R IDE
   Once the `app.R` file is imported into your IDE, you can run the code by pressing the run button specific to your development environment.  
