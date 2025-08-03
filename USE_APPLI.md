@@ -130,5 +130,5 @@ The folder contains four subfolders (excluding `.Rproj.user`):
 Explain how to use it (❌ **to be done**)
 
 
- ## Références
+ ## References
  -  Download RStudio - Posit. (2024, 12 novembre). Posit. https://posit.co/downloads/
