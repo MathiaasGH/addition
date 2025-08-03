@@ -1,4 +1,4 @@
-# Guide d'utilisation de l'application
+# 🇫🇷🟦⬜🟥 Guide d'utilisation de l'application
 Pour utiliser l'application, deux solutions sont disponibles : 
 - Cloner le projet Git,
 - Exporter le dossier .zip depuis Git
@@ -63,6 +63,72 @@ Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutab
  ## Contenu de l'application
 
  Expliquer comment on l'utilise (❌ **à faire**)
+
+ # 🇺🇸🌎 Application Usage Guide
+To use the application, two options are available:  
+- Clone the Git project,  
+- Export the .zip folder from Git  
+
+## Cloning the Project
+To clone the project, please click on the green "Code" button in the main menu of the Git repository, then copy the presented URL (or key).
+
+In your R development environment, simply create a new Git project by pasting this URL (or key). In RStudio: File > New Project > Version Control > Clone URI and paste the URL in the "URI" field > Create Project.
+
+The project will appear in the "Files" pane at the bottom right of the interface.
+
+## Exporting the Folder
+To export the folder and use the application, you can click on the green "Code" button in the main Git menu, then click on "Download ZIP".
+
+This will give you access to the [application folder](./Application_Addition_Arithmetico-Alphabetique). Using this folder, you can import the [app file](./Application_Addition_Arithmetico/app.R) into your R IDE (such as RStudio). In RStudio: File > Open File... > then select the `app.R` file from the folder.
+
+## Using the Application
+To use the application, you can:  
+- Use an R IDE,  
+- Run it from the terminal
+
+### Using an R IDE
+  Once the `app.R` file is imported into your IDE, you can run the code by pressing the run button specific to your development environment.  
+  In RStudio, the button looks like this (Run App).  
+<img width="2183" height="87" alt="image" src="https://github.com/user-attachments/assets/2d870f28-b2bb-4810-b0db-d6d9012b7865" />
+
+### Running from a Terminal
+
+ ***Windows***
+ 
+If R is not in your `PATH` variable (usually the case), specify the path to the R executable you installed to use the language, then the path to the application you downloaded from this Git repository. Example execution:  
+
+`& "C:\Program Files\R\R-4.4.2\bin\Rscript.exe" -e "shiny::runApp('C:/Users/username/git/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
+
+If R is in your `PATH` variable, simply specify the path to the application you downloaded from this Git repository. Example execution:
+
+`& Rscript -e "shiny::runApp('C:/Users/username/git/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
+
+ ***Linux/Mac***:
+
+If R is not in your `PATH` variable, specify the path to the R executable you installed to use the language, then the path to the application you downloaded from this Git repository. Example execution:
+
+`/usr/bin/Rscript -e "shiny::runApp('/home/username/git/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
+
+If R is in your `PATH` variable, simply specify the path to the application you downloaded from this Git repository. Example execution:
+
+`Rscript -e "shiny::runApp('/home/username/git/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
+
+## Folder Contents
+
+The folder contains four subfolders (excluding `.Rproj.user`):  
+- [Graphes](./Application_Addition_Arithmetico-Alphabetique/Graphes)  
+  This folder contains R scripts used to display graphs in the interface.  
+- [configSave](./Application_Addition_Arithmetico-Alphabetique/configSave)  
+  This folder contains saved experimental task configurations to be loaded later.  
+- [csv](./Application_Addition_Arithmetico-Alphabetique/csv)  
+  This folder is not necessary. It serves as a repository for your experimental data.  
+- [simulationFiles](./Application_Addition_Arithmetico-Alphabetique/simulationFiles)  
+  This folder contains simulations created by the computational cognitive model. **Warning:** it is emptied every time the application is restarted.
+
+## Application Contents
+
+Explain how to use it (❌ **to be done**)
+
 
  ## Références
  -  Download RStudio - Posit. (2024, 12 novembre). Posit. https://posit.co/downloads/
