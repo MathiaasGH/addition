@@ -21,7 +21,7 @@ Pour utiliser l'application, vous pouvez :
 - Passer par un IDE R,
 - L'ouvrir depuis le terminal
 
-  **❌Dans tous les cas, attention à ne pas ouvrir le proget depuis le dossier git exporté directement. Il faut copier ce dossier dans un autre dossier (bug à corriger)❌**
+  **❌Dans tous les cas, attention à ne pas ouvrir le projet depuis le dossier git exporté directement. Il faut copier ce dossier dans un autre dossier (bug à corriger)❌**
 
 ### Passer par un IDE R
   Une fois le fichier `app.R` importé dans votre IDE, vous pouvez lancer le code en appuyant sur le bouton run spécifique à votre environnement de travail.
