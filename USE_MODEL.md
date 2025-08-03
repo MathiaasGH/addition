@@ -1,4 +1,4 @@
-# 🇫🇷🟦⬜🟥 Guide d'utilisation du modèle cognitif computationnel
+# 🇫🇷 Guide d'utilisation du modèle cognitif computationnel
 Pour utiliser le modèle, deux solutions sont disponibles : 
 - Cloner le projet Git,
 - Exporter le dossier .zip depuis Git
@@ -19,7 +19,7 @@ Ainsi, vous aurez accès au dossier du [modèle](./Modele_Addition_Arithmetico-A
 Vous avez maintenant accès au modèle. 
 Pour des exemples concrets d'utilisation du modèle (création d'un participant, lancement d'une simulation, export de résultats), voir le fichier `Exemples_Model.java`.
 
-# 🇺🇸🌎 Computational Cognitive Model Usage Guide
+# 🇺🇸 Computational Cognitive Model Usage Guide
 To use the model, two options are available:  
 - Clone the Git project,  
 - Export the .zip folder from Git  
