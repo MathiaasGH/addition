@@ -1,4 +1,4 @@
-# 🇫🇷🟦⬜🟥 Guide d'installation de l'environnement Java et R
+# 🇫🇷 Guide d'installation de l'environnement Java et R
 
 ## Installer Java
 Le modèle computationnel permet de simuler des participants à des tâches d'addition arithmético-alphabétiques. Il a été développé avec : 
@@ -30,7 +30,7 @@ Vous pouvez installer R ici :
 
 Une fois R installé, vous pouvez suivre les instructions dans le fichier [USE_APPLI.md](./USE_APPLI.md) pour utiliser l'application.
 
-# 🇺🇸🌎 Installation Guide for the Java and R Environments
+# 🇺🇸 Installation Guide for the Java and R Environments
 
 ## Installing Java
 The computational model simulates participants in arithmetico-alphabetical addition tasks. It was developed using:  
