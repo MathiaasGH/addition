@@ -65,4 +65,4 @@ Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutab
  Expliquer comment on l'utilise (❌ **à faire**)
 
  ## Références
- - RStudio Desktop - Posit. (2025, 21 janvier). Posit. https://posit.co/download/rstudio-desktop/
+ -  Download RStudio - Posit. (2024, 12 novembre). Posit. https://posit.co/downloads/
