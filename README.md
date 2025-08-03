@@ -22,3 +22,10 @@ Dernière version : 1.0
 - Benoît LEMAIRE
 - Mathias DEVILLIERS (alias [@MathiaasGH](https://github.com/MathiaasGH))
 - Kyria CHIGNIER (alias [@kyria1](https://github.com/kyria1))
+
+## Références
+- [RStudio Desktop](https://posit.co/download/rstudio-desktop/) - Posit. (2025, 21 janvier). Posit. https://posit.co/download/rstudio-desktop/
+- [Eclipse Installer 2025-06 R | Eclipse Packages.](https://www.eclipse.org/downloads/packages/installer) (s. d.). https://www.eclipse.org/downloads/packages/installer
+- Java
+- R
+- 
