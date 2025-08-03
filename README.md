@@ -26,6 +26,5 @@ Dernière version : 1.0
 ## Références
 - [RStudio Desktop](https://posit.co/download/rstudio-desktop/) - Posit. (2025, 21 janvier). Posit. https://posit.co/download/rstudio-desktop/
 - [Eclipse Installer 2025-06 R | Eclipse Packages.](https://www.eclipse.org/downloads/packages/installer) (s. d.). https://www.eclipse.org/downloads/packages/installer
-- Java
-- R
-- 
+- [Download the Latest Java LTS Free.](https://www.oracle.com/fr/java/technologies/downloads/#java21) (s. d.). https://www.oracle.com/fr/java/technologies/downloads/#java21
+- [The comprehensive R Archive Network.](https://cran.r-project.org/) (s. d.). https://cran.r-project.org/ 
