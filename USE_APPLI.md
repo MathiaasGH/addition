@@ -13,7 +13,7 @@ Le projet s'ajoutera dans la fenêtre "Files" en bas à droite de l'interface.
 ## Exporter le dossier
 Pour exporter le dossier et ainsi utiliser l'application, vous pouvez cliquer sur le bouton "Code" en vert dans le menu principal du git, puis cliquer sur "Exporter le zip".
 
-Ainsi, vous aurez accès au dossier de l'[application](./Application_Addition_Arithmetico-Alphabetique). Grâce à ce dernier, vous pouvez importer le fichier [app](./Application_Addition_Arithmetico/app.R) dans votre IDE R (comme RStudio). Sur RStudio : File > Open File... > puis sélectionnez le fichier `app.R`
+Ainsi, vous aurez accès au dossier de l'[application](./Application_Addition_Arithmetico-Alphabetique). Grâce à ce dernier, vous pouvez importer le fichier [app](./Application_Addition_Arithmetico-Alphabetique/app.R) dans votre IDE R (comme RStudio). Sur RStudio : File > Open File... > puis sélectionnez le fichier `app.R`
  depuis le dossier.
 
 ## Utiliser l'application
@@ -79,7 +79,7 @@ The project will appear in the "Files" pane at the bottom right of the interface
 ## Exporting the Folder
 To export the folder and use the application, you can click on the green "Code" button in the main Git menu, then click on "Download ZIP".
 
-This will give you access to the [application folder](./Application_Addition_Arithmetico-Alphabetique). Using this folder, you can import the [app file](./Application_Addition_Arithmetico/app.R) into your R IDE (such as RStudio). In RStudio: File > Open File... > then select the `app.R` file from the folder.
+This will give you access to the [application folder](./Application_Addition_Arithmetico-Alphabetique). Using this folder, you can import the [app file](./Application_Addition_Arithmetico-Alphabetique/app.R) into your R IDE (such as RStudio). In RStudio: File > Open File... > then select the `app.R` file from the folder.
 
 ## Using the Application
 To use the application, you can:  
