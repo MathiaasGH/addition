@@ -17,7 +17,7 @@ Ainsi, vous aurez accès au dossier du [modèle](./Modele_Addition_Arithmetico-A
 
 ## L'utilisation
 Vous avez maintenant accès au modèle. 
-Pour des exemples concrets d'utilisation du modèle (création d'un participant, lancement d'une simulation, export de résultats), voir le fichier `Exemples_Model.java` (❌ **à faire**).
+Pour des exemples concrets d'utilisation du modèle (création d'un participant, lancement d'une simulation, export de résultats), voir le fichier `Exemples_Model.java`.
 
 ## Références
 - Eclipse Installer 2025-06 R | Eclipse Packages. (s. d.). https://www.eclipse.org/downloads/packages/installer
