@@ -1,0 +1,16 @@
+Augend, Addend, Bloc, Overlap, rt, error, True, session, participant, strategy, profil
+B,3,1,0.0,2896.44915925115,false,other,1,participant 0,production,breaker
+C,2,1,100.0,2894.085934774146,true,other,1,participant 0,production,breaker
+A,3,1,50.0,3609.3614803965343,true,other,1,participant 0,production,breaker
+B,2,1,83.33333333333333,2171.7327001049734,false,other,1,participant 0,production,breaker
+A,2,1,50.0,2172.9123143830534,false,other,1,participant 0,production,breaker
+C,3,1,66.66666666666666,5043.463385352272,true,other,1,participant 0,production,breaker
+A,3,1,73.33333333333334,3597.5872544108706,true,other,2,participant 0,production,breaker
+C,2,1,91.66666666666667,2164.6848859861707,false,other,2,participant 0,production,breaker
+B,2,1,85.71428571428572,2163.5152109497344,false,other,2,participant 0,production,breaker
+B,3,1,83.33333333333334,3589.387632339395,true,other,2,participant 0,production,breaker
+A,2,1,55.55555555555556,2165.8644800799734,false,other,2,participant 0,production,breaker
+C,4,1,55.55555555555556,4309.387548223751,true,other,2,participant 0,production,breaker
+A,4,1,75.0,3580.030164999939,false,other,2,participant 0,production,breaker
+B,4,1,75.00000000000001,3576.5369353685332,false,other,2,participant 0,production,breaker
+C,3,1,75.0,2864.786203661748,false,other,2,participant 0,production,breaker

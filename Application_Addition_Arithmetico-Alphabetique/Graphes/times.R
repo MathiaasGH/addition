@@ -253,13 +253,16 @@ timeSim = function(sim, idProgressBar, sess) {
     n_addends <- length(meanTimeAddend) - 1
     
     for (i in 1:n_addends) {
-      x_seq <- seq(addends[i], addends[i + 1], length.out = n_seg)
-      y_seq <- seq(meanTimeAddend[i], meanTimeAddend[i + 1], length.out = n_seg)
-      col_seq <- interpolate_color(colors[i], colors[i + 1], n_seg)
-      
-      for (j in 1:(n_seg - 1)) {
-        segments(x_seq[j], y_seq[j], x_seq[j + 1], y_seq[j + 1], col = col_seq[j], lwd = 2)
-      }
+      if (is.finite(meanTimeAddend[i]) && is.finite(meanTimeAddend[i + 1])) {
+        x_seq <- seq(addends[i], addends[i + 1], length.out = n_seg)
+        y_seq <- seq(meanTimeAddend[i], meanTimeAddend[i + 1], length.out = n_seg)
+        col_seq <- interpolate_color(colors[i], colors[i + 1], n_seg)
+        
+        for (j in 1:(n_seg - 1)) {
+          segments(x_seq[j], y_seq[j], x_seq[j + 1], y_seq[j + 1], col = col_seq[j], lwd = 2)
+        }
+        
+      } 
     }
     current_sess = current_sess+1
     progress_value = current_sess*100/max_session
