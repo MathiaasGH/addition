@@ -34,21 +34,21 @@ Pour utiliser l'application, vous pouvez :
  
 Si R n'est pas dans votre variable `PATH` (généralement le cas), précisez le chemin vers l'éxécutable R que vous avez installé pour pouvoir utiliser le langage, puis le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
 
-`& "C:\Program Files\R\R-4.4.2\bin\Rscript.exe" -e "shiny::runApp('C:/Users/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
+`& "C:\Program Files\R\R-4.4.2\bin\Rscript.exe" -e "shiny::runApp('C:/Users/nom_utilisateur/git_copy/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
 
  Si R est dans votre variable `PATH`, précisez simplement le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
 
- `& Rscript -e "shiny::runApp('C:/Users/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
+ `& Rscript -e "shiny::runApp('C:/Users/nom_utilisateur/git_copy/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
  
  ***Linux/Mac*** :
 
 Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutable R que vous avez installé pour pouvoir utiliser le langage, puis le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
 
-`/usr/bin/Rscript -e "shiny::runApp('/home/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
+`/usr/bin/Rscript -e "shiny::runApp('/home/nom_utilisateur/git_copy/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
 
  Si R est dans votre variable `PATH`, précisez simplement le chemin d'accès vers l'application récupérée depuis ce dépôt Git. Exemple d'éxecution : 
  
- `Rscript -e "shiny::runApp('/home/nom_utilisateur/git/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
+ `Rscript -e "shiny::runApp('/home/nom_utilisateur/git_copy/projet_addition/Application_Addition_Arithmetico-Alphabetique')"`
 
  ## Contenu du dossier
 
@@ -101,21 +101,21 @@ To use the application, you can:
  
 If R is not in your `PATH` variable (usually the case), specify the path to the R executable you installed to use the language, then the path to the application you downloaded from this Git repository. Example execution:  
 
-`& "C:\Program Files\R\R-4.4.2\bin\Rscript.exe" -e "shiny::runApp('C:/Users/username/git/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
+`& "C:\Program Files\R\R-4.4.2\bin\Rscript.exe" -e "shiny::runApp('C:/Users/username/git_copy/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
 
 If R is in your `PATH` variable, simply specify the path to the application you downloaded from this Git repository. Example execution:
 
-`& Rscript -e "shiny::runApp('C:/Users/username/git/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
+`& Rscript -e "shiny::runApp('C:/Users/username/git_copy/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
 
  ***Linux/Mac***:
 
 If R is not in your `PATH` variable, specify the path to the R executable you installed to use the language, then the path to the application you downloaded from this Git repository. Example execution:
 
-`/usr/bin/Rscript -e "shiny::runApp('/home/username/git/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
+`/usr/bin/Rscript -e "shiny::runApp('/home/username/git_copy/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
 
 If R is in your `PATH` variable, simply specify the path to the application you downloaded from this Git repository. Example execution:
 
-`Rscript -e "shiny::runApp('/home/username/git/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
+`Rscript -e "shiny::runApp('/home/username/git_copy/project_addition/Application_Addition_Arithmetico-Alphabetique')"`
 
 ## Folder Contents
 
