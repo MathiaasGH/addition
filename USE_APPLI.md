@@ -83,12 +83,36 @@ Si l'utilisateur possède également un fichier de données simulées grâce à 
 
 <img width="402" height="95" alt="image" src="https://github.com/user-attachments/assets/7db7099e-18d8-45a4-a070-0d483aa76895" title="Texte permettant à l'utilisateur de lire un fichier de données simulées avant clic." />
 
+
+A LA LIGNE
+
+
+
 <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/94462019-879a-4246-afcd-a10ba6a32345" title="Choix des données simulées." />
 
 ##### Ordre de passation des simulations
 
 L'application simule des participants à une tâche selon les données du fichier de données empiriques. Il est possible de : 
-- Suivre l'ordre de passation du fichier (
+- Suivre l'ordre de passation du fichier (le faux-participant 1 suivra les mêmes tâches que le vrai-participant 1 du fichier et dans le même ordre)
+- Ne pas suivre l'ordre de passation du fichier (le faux-participant 1 suivra les mêmes tâches que le vrai-participant 1 mais pas dans le même ordre)
+
+<img width="327" height="161" alt="image" src="https://github.com/user-attachments/assets/e3692179-b9e4-4a1f-9956-2dbe264fa118" title="Choix de l'ordre de passation des simualtions." />
+
+
+##### Gérer le nombre de participants et leur profil
+
+L'application peut - grâce au modèle Java présent dans le git - simuler des participants à une tâche d'additions arithémtico-alphabétiques. Il peut donc être intéressant de pouvoir choisir le nombre de participants souhaité et le nombre de runs par participant. Pour ce faire, il suffit de spécifier cela dans le champ associé. 
+
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/b82f694f-249c-4c86-ae9f-e36fcecd4a76" />
+
+De plus, il est possible de préciser la proportion de participants de profils "breakers" et la proportion de participants de profil "non-breaker" parmi les participants simulés. 
+Pour faire cela, il suffit de cliquer sur la bulle d'information associée à la section permettant de spécifier le nombre de participants voulu et de préciser les proportions.
+
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/e22d521e-51e6-44e9-9db3-68944aa8fbbe" />
+
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/30c8ee1f-0c32-471c-9cd3-723ca3482b5f" />
+
+
 
 
  # 🌎 Application Usage Guide
