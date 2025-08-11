@@ -110,7 +110,7 @@ Pour faire cela, il suffit de cliquer sur la bulle d'information associée à la
 
 <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/e22d521e-51e6-44e9-9db3-68944aa8fbbe" />
 
-<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/30c8ee1f-0c32-471c-9cd3-723ca3482b5f" />
+<img width="400" height="250" alt="image" src="https://github.com/user-attachments/assets/30c8ee1f-0c32-471c-9cd3-723ca3482b5f" />
 
 
 
