@@ -65,7 +65,7 @@ Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutab
  #### Onglet "Jeux de données"
 
 Dans l'onglet "Jeux de données", vous trouverez une section permettant à l'utilisateur d'importer des fichiers au format .csv. Ces fichiers correspondent à vos données empiriques que vous pourrez visualiser et simuler si elles contiennent les colonnes nécessaires (voir dans l'application)
-<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/932b6add-d045-4646-bd2e-4793a47610d8" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/932b6add-d045-4646-bd2e-4793a47610d8" />
 
   #### Onglet "Graphiques"
 
