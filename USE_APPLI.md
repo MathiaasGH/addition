@@ -117,19 +117,19 @@ puis,
 
 Si l'utilisateur ne possède pas de données empiriques, l'application permet tout de même de simuler des participants et de visualiser les données. 
 
-<img width="575" height="73" alt="image" src="https://github.com/user-attachments/assets/a0873ad5-ae80-4c25-a6e8-cded0e234917" title="Boîte à séléctionner pour imaginer une tâche sans fichier de données empiriques." />
+<img width="300" height="50" alt="image" src="https://github.com/user-attachments/assets/a0873ad5-ae80-4c25-a6e8-cded0e234917" title="Boîte à séléctionner pour imaginer une tâche sans fichier de données empiriques." />
 
 Suite à cela, il est possible de spécifier le nombre de sessions voulues pour la tâche et les problèmes associées.
 
-<img width="545" height="90" alt="image" src="https://github.com/user-attachments/assets/25945a41-e69d-4f55-8c86-a8cb1407ff3e" title="Section pour spécifier le nombre de sessions." />
+<img width="300" height="50" alt="image" src="https://github.com/user-attachments/assets/25945a41-e69d-4f55-8c86-a8cb1407ff3e" title="Section pour spécifier le nombre de sessions." />
 
 puis,
 
-<img width="844" height="911" alt="image" src="https://github.com/user-attachments/assets/ead3fdc7-599e-49d6-a446-4e3113a5ae73" title="Section pour créer des problèmes pour chaque session voulue." />
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/ead3fdc7-599e-49d6-a446-4e3113a5ae73" title="Section pour créer des problèmes pour chaque session voulue." />
 
 L'application permet de personnaliser les problèmes souhaités. Vous pouvez découvrir cette fonctionnalité grâce au bouton "Combinaisons personnalisées".
 
-<img width="472" height="85" alt="image" src="https://github.com/user-attachments/assets/47176a1d-46f1-4649-92df-1d506b1b40b9" title="Bouton pour personnaliser les combinaisons de problèmes possibles." />
+<img width="300" height="50" alt="image" src="https://github.com/user-attachments/assets/47176a1d-46f1-4649-92df-1d506b1b40b9" title="Bouton pour personnaliser les combinaisons de problèmes possibles." />
 
 ##### Personnaliser les blocs de présentation de problèmes par sessions
 
