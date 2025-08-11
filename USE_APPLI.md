@@ -66,11 +66,25 @@ Si R n'est pas dans votre variable `PATH`, précisez le chemin vers l'éxécutab
 
 Dans l'onglet "Jeux de données", vous trouverez une section permettant à l'utilisateur d'importer des fichiers au format .csv. Ces fichiers correspondent à vos données empiriques que vous pourrez visualiser et simuler si elles contiennent les colonnes nécessaires (voir dans l'application).
 
-<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/932b6add-d045-4646-bd2e-4793a47610d8" />
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/932b6add-d045-4646-bd2e-4793a47610d8" title="Section permettant d'importer des fichiers de données empiriques ou simulées grâce à un autre modèle." />
 
   #### Onglet "Graphiques"
 
- Dans l'onglet "Graphiques", 
+ Dans l'onglet "Graphiques", vous trouverez deux menus : un volet à gauche, et le menu principal au centre. 
+
+ ##### Le volet de gauche
+
+ Ce volet permet à l'utilisateur de renseigner quel fichier de données empiriques (précédemment importé dans l'onglet "Jeux de données") doit être visualisé et simulé. 
+ 
+ <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/8f7f34ab-cb46-42d1-850b-39654e50571d" title="Section permettant de sélectionner le fichier de données empiriques à regarder." />
+
+Si l'utilisateur possède également un fichier de données simulées grâce à un autre modèle, il est possible de l'ajouter pour visualiser ces données. Pour ce faire, un texte cliquable et présent et offre cette possibilité à l'utilisateur. 
+
+<img width="402" height="95" alt="image" src="https://github.com/user-attachments/assets/7db7099e-18d8-45a4-a070-0d483aa76895" title="Texte permettant à l'utilisateur de lire un fichier de données simulées avant clic." />
+
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/94462019-879a-4246-afcd-a10ba6a32345" title="Choix des données simulées." />
+
+L'application offre 
 
 
  # 🌎 Application Usage Guide
