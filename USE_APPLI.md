@@ -83,10 +83,7 @@ Si l'utilisateur possède également un fichier de données simulées grâce à 
 
 <img width="402" height="95" alt="image" src="https://github.com/user-attachments/assets/7db7099e-18d8-45a4-a070-0d483aa76895" title="Texte permettant à l'utilisateur de lire un fichier de données simulées avant clic." />
 
-
-A LA LIGNE
-
-
+puis,
 
 <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/94462019-879a-4246-afcd-a10ba6a32345" title="Choix des données simulées." />
 
@@ -109,6 +106,8 @@ De plus, il est possible de préciser la proportion de participants de profils "
 Pour faire cela, il suffit de cliquer sur la bulle d'information associée à la section permettant de spécifier le nombre de participants voulu et de préciser les proportions.
 
 <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/e22d521e-51e6-44e9-9db3-68944aa8fbbe" />
+
+puis,
 
 <img width="400" height="250" alt="image" src="https://github.com/user-attachments/assets/30c8ee1f-0c32-471c-9cd3-723ca3482b5f" />
 
