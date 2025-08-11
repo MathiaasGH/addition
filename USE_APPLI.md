@@ -125,7 +125,7 @@ Suite à cela, il est possible de spécifier le nombre de sessions voulues pour 
 
 puis,
 
-<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/ead3fdc7-599e-49d6-a446-4e3113a5ae73" title="Section pour créer des problèmes pour chaque session voulue." />
+<img width="400" height="100" alt="image" src="https://github.com/user-attachments/assets/ead3fdc7-599e-49d6-a446-4e3113a5ae73" title="Section pour créer des problèmes pour chaque session voulue." />
 
 L'application permet de personnaliser les problèmes souhaités. Vous pouvez découvrir cette fonctionnalité grâce au bouton "Combinaisons personnalisées".
 
