@@ -96,7 +96,7 @@ L'application simule des participants à une tâche selon les données du fichie
 - Suivre l'ordre de passation du fichier (le faux-participant 1 suivra les mêmes tâches que le vrai-participant 1 du fichier et dans le même ordre)
 - Ne pas suivre l'ordre de passation du fichier (le faux-participant 1 suivra les mêmes tâches que le vrai-participant 1 mais pas dans le même ordre)
 
-<img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/e3692179-b9e4-4a1f-9956-2dbe264fa118" title="Choix de l'ordre de passation des simualtions." />
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/e3692179-b9e4-4a1f-9956-2dbe264fa118" title="Choix de l'ordre de passation des simualtions." />
 
 
 ##### Gérer le nombre de participants et leur profil
