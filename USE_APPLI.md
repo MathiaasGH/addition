@@ -93,25 +93,45 @@ L'application simule des participants à une tâche selon les données du fichie
 - Suivre l'ordre de passation du fichier (le faux-participant 1 suivra les mêmes tâches que le vrai-participant 1 du fichier et dans le même ordre)
 - Ne pas suivre l'ordre de passation du fichier (le faux-participant 1 suivra les mêmes tâches que le vrai-participant 1 mais pas dans le même ordre)
 
-<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/e3692179-b9e4-4a1f-9956-2dbe264fa118" title="Choix de l'ordre de passation des simualtions." />
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/e3692179-b9e4-4a1f-9956-2dbe264fa118" title="Choix de l'ordre de passation des simulations." />
 
 
 ##### Gérer le nombre de participants et leur profil
 
 L'application peut - grâce au modèle Java présent dans le git - simuler des participants à une tâche d'additions arithémtico-alphabétiques. Il peut donc être intéressant de pouvoir choisir le nombre de participants souhaité et le nombre de runs par participant. Pour ce faire, il suffit de spécifier cela dans le champ associé. 
 
-<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/b82f694f-249c-4c86-ae9f-e36fcecd4a76" />
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/b82f694f-249c-4c86-ae9f-e36fcecd4a76" title="Section permettant de spécifier le nombre de participants simulés et combien de fois ils vont être simulés." />
 
 De plus, il est possible de préciser la proportion de participants de profils "breakers" et la proportion de participants de profil "non-breaker" parmi les participants simulés. 
 Pour faire cela, il suffit de cliquer sur la bulle d'information associée à la section permettant de spécifier le nombre de participants voulu et de préciser les proportions.
 
-<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/e22d521e-51e6-44e9-9db3-68944aa8fbbe" />
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/e22d521e-51e6-44e9-9db3-68944aa8fbbe" title="Bulle d'information pour préciser les profils des participants." />
 
 puis,
 
-<img width="400" height="250" alt="image" src="https://github.com/user-attachments/assets/30c8ee1f-0c32-471c-9cd3-723ca3482b5f" />
+<img width="400" height="250" alt="image" src="https://github.com/user-attachments/assets/30c8ee1f-0c32-471c-9cd3-723ca3482b5f" title="Section pour préciser les profils des participants." />
 
+**⚠️ Remarque : Si le nombre de participant simulé est plus grand que le nombre de participants contenus dans le fichier des données empiriques, toutes les passations simulées seront "non respectées" (=les faux-participants suivront des tâches créés de toutes pièces à partir des tâches contenus dans le fichier)**
 
+##### Simuler sans données empiriques
+
+Si l'utilisateur ne possède pas de données empiriques, l'application permet tout de même de simuler des participants et de visualiser les données. 
+
+<img width="575" height="73" alt="image" src="https://github.com/user-attachments/assets/a0873ad5-ae80-4c25-a6e8-cded0e234917" title="Boîte à séléctionner pour imaginer une tâche sans fichier de données empiriques." />
+
+Suite à cela, il est possible de spécifier le nombre de sessions voulues pour la tâche et les problèmes associées.
+
+<img width="545" height="90" alt="image" src="https://github.com/user-attachments/assets/25945a41-e69d-4f55-8c86-a8cb1407ff3e" title="Section pour spécifier le nombre de sessions." />
+
+puis,
+
+<img width="844" height="911" alt="image" src="https://github.com/user-attachments/assets/ead3fdc7-599e-49d6-a446-4e3113a5ae73" title="Section pour créer des problèmes pour chaque session voulue." />
+
+L'application permet de personnaliser les problèmes souhaités. Vous pouvez découvrir cette fonctionnalité grâce au bouton "Combinaisons personnalisées".
+
+<img width="472" height="85" alt="image" src="https://github.com/user-attachments/assets/47176a1d-46f1-4649-92df-1d506b1b40b9" title="Bouton pour personnaliser les combinaisons de problèmes possibles." />
+
+##### Personnaliser les blocs de présentation de problèmes par sessions
 
 
  # 🌎 Application Usage Guide
