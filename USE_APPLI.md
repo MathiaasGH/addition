@@ -4,13 +4,18 @@
 - [Cloner le projet](#cloner-le-projet)
 - [Exporter le dossier](#exporter-le-dossier)
 - [Utiliser l'application](#utiliser-lapplication)
-    - [Passer par un IDE](#passer-par-un-ide-r)
+    - [Passer par un IDE R](#passer-par-un-ide-r)
     - [Passer par un terminal](#passer-par-un-terminal)
 - [Contenu du dossier](#contenu-du-dossier)
     - [Onglet "Jeux de données"](#onglet-jeux-de-données)
     - [Onglet "Graphiques"](#onglet-graphiques)
-        - [Volet de gauche](#volet-de-gauche)
-            - [Sélection des fichiers à visualiser et/ou simuler](#sélection-des-fichiers-à-visualiser-etou-simuler)  
+        - [Le volet de gauche](#le-volet-de-gauche)
+            - [Sélection des fichiers à visualiser et/ou simuler](#sélection-des-fichiers-à-visualiser-etou-simuler)
+            - [Ordre de passation des simulations](#ordre-de-passation-des-simulations)
+            - [Gérer le nombre de participants et leur profil](#gérer-le-nombre-de-participants-et-leur-profil)
+            - [Simuler sans données empiriques](#simuler-sans-données-empiriques)
+            - [Personnaliser les blocs de présentation de problèmes par sessions](#personnaliser-les-blocs-de-présentation-de-problèmes-par-session)
+            - [Sauvegarder et charger des simulations sans données empiriques](#sauvegarder-et-charger-des-simulations-sans-données-empiriques)
 
 
 Pour utiliser l'application, deux solutions sont disponibles : 
