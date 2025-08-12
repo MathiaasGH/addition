@@ -136,9 +136,9 @@ L'application permet de personnaliser les problèmes souhaités. Vous pouvez dé
 Chaque session présent des problèmes à résoudre. Il est possible de présenter ces problèmes plusieurs fois par sessions. Cela est possible en créant des blocs de problèmes et en présentant X fois ces blocs. Cela permet aussi de préciser la nature des problèmes (production (ex. "A+3=?" vs jugement "A+3=D?"). 
 Pour préciser tout cela, il suffit de cliquer sur le bouton "Blocs" puis de remplir les champs associés.
 
-<img width="50" height="50" alt="image" src="https://github.com/user-attachments/assets/4a886570-8d5e-4ebc-84de-83317da99bcf" />
+<img width="80" height="80" alt="image" src="https://github.com/user-attachments/assets/4a886570-8d5e-4ebc-84de-83317da99bcf" />
  puis,
- <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/e0bf55c7-81e6-40b7-b289-87a26ddcd05b" />
+ <img width="300" height="200" alt="image" src="https://github.com/user-attachments/assets/e0bf55c7-81e6-40b7-b289-87a26ddcd05b" />
 
 
 
