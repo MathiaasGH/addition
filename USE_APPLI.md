@@ -133,7 +133,7 @@ L'application permet de personnaliser les problèmes souhaités. Vous pouvez dé
 
 ##### Personnaliser les blocs de présentation de problèmes par sessions
 
-Chaque session présent des problèmes à résoudre. Il est possible de présenter ces problèmes plusieurs fois par sessions. Cela est possible en créant des blocs de problèmes et en présentant X fois ces blocs. Cela permet aussi de préciser la nature des problèmes (production (ex. "A+3=?" vs jugement "A+3=D?"). 
+Chaque session présent des problèmes à résoudre. Il est possible de présenter ces problèmes plusieurs fois par sessions. Cela est possible en créant des blocs de problèmes et en présentant X fois ces blocs. Cela permet aussi de préciser la nature des problèmes (production (ex. "A+3=?" vs jugement "A+3=D?")). 
 Pour préciser tout cela, il suffit de cliquer sur le bouton "Blocs" puis de remplir les champs associés.
 
 <img width="80" height="80" alt="image" src="https://github.com/user-attachments/assets/4a886570-8d5e-4ebc-84de-83317da99bcf" />
