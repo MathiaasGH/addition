@@ -1,4 +1,10 @@
 # 🇫🇷 Guide d'utilisation de l'application
+
+## Table des matières
+- [Cloner le projet](#clone)
+- 
+
+
 Pour utiliser l'application, deux solutions sont disponibles : 
 - Cloner le projet Git,
 - Exporter le dossier .zip depuis Git
