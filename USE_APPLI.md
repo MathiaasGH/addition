@@ -1,8 +1,10 @@
 # 🇫🇷 Guide d'utilisation de l'application
 
 ## Table des matières
-- [Cloner le projet](#clone)
-- 
+- [Cloner le projet](#cloner-le-projet)
+- [Exporter le dossier](#exporter-le-dossier)
+- [Utiliser l'application](#utiliser-l-application)
+- [Passer par un IDE](#passer-par-un-ide) 
 
 
 Pour utiliser l'application, deux solutions sont disponibles : 
