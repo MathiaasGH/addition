@@ -136,11 +136,22 @@ L'application permet de personnaliser les problèmes souhaités. Vous pouvez dé
 Chaque session présent des problèmes à résoudre. Il est possible de présenter ces problèmes plusieurs fois par sessions. Cela est possible en créant des blocs de problèmes et en présentant X fois ces blocs. Cela permet aussi de préciser la nature des problèmes (production (ex. "A+3=?" vs jugement "A+3=D?")). 
 Pour préciser tout cela, il suffit de cliquer sur le bouton "Blocs" puis de remplir les champs associés.
 
-<img width="80" height="80" alt="image" src="https://github.com/user-attachments/assets/4a886570-8d5e-4ebc-84de-83317da99bcf" />
+<img width="80" height="80" alt="image" src="https://github.com/user-attachments/assets/4a886570-8d5e-4ebc-84de-83317da99bcf" title="Bouton pour accéder à la personnalisation des blocs de problèmes." />
 
  puis,
 
- <img width="400" height="300" alt="image" src="https://github.com/user-attachments/assets/e0bf55c7-81e6-40b7-b289-87a26ddcd05b" />
+ <img width="400" height="300" alt="image" src="https://github.com/user-attachments/assets/e0bf55c7-81e6-40b7-b289-87a26ddcd05b" title="Section pour personnaliser les blocs de problèmes par sessions." />
+
+##### Sauvegarder et charger des simulations sans données empiriques
+
+Comme vu précédemment, vous pouvez créer des tâches expérimentales et y simuler des participants sans données empiriques. Cependant, cela s'avère long et fastidieux pour des tâches avec beaucoup de sessions. Vous avez donc la possibilité de sauvegarder des configurations puis de les charger plus tard pour éviter de les re-créer. 
+
+<img width="513" height="152" alt="image" src="https://github.com/user-attachments/assets/60885d4a-a062-4def-a171-c11ec38c5c08" title = "Boutons pour charger et sauvegarder des configurations de tâches expérimentales." />
+
+L'application est fournie avec une configuration déjà créee. Il s'agit de la configuration de la tâche exprimentale d'additions sur séquence contigue (CSC) sur problèmes de jugement de Stéphanie Chouteau (Chouteau, 2024).
+
+<img width="400" height="300" alt="image" src="https://github.com/user-attachments/assets/806bd5a1-7ba5-403f-a4dd-239667ccee2d" title = "Chargement de la configuration de Stéphanie Chouteau (Chouteau, 2024)." />
+
 
 
 
