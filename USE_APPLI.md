@@ -4,7 +4,10 @@
 - [Cloner le projet](#cloner-le-projet)
 - [Exporter le dossier](#exporter-le-dossier)
 - [Utiliser l'application](#utiliser-lapplication)
-    - [Passer par un IDE](#passer-par-un-ide-r) 
+    - [Passer par un IDE](#passer-par-un-ide-r)
+    - [Passer par un terminal](#passer-par-un-terminal)
+- [Contenu du dossier](#contenu-du-dossier)
+    - [Onglet "Jeux de données"](#onglet-jeux-de-données) 
 
 
 Pour utiliser l'application, deux solutions sont disponibles : 
