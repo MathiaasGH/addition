@@ -7,7 +7,10 @@
     - [Passer par un IDE](#passer-par-un-ide-r)
     - [Passer par un terminal](#passer-par-un-terminal)
 - [Contenu du dossier](#contenu-du-dossier)
-    - [Onglet "Jeux de données"](#onglet-jeux-de-données) 
+    - [Onglet "Jeux de données"](#onglet-jeux-de-données)
+    - [Onglet "Graphiques"](#onglet-graphiques)
+        - [Volet de gauche](#volet-de-gauche)
+            - [Sélection des fichiers à visualiser et/ou simuler](#sélection-des-fichiers-à-visualiser-etou-simuler)  
 
 
 Pour utiliser l'application, deux solutions sont disponibles : 
