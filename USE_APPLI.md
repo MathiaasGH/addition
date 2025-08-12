@@ -140,7 +140,7 @@ Pour préciser tout cela, il suffit de cliquer sur le bouton "Blocs" puis de rem
 
  puis,
 
- <img width="450" height="300" alt="image" src="https://github.com/user-attachments/assets/e0bf55c7-81e6-40b7-b289-87a26ddcd05b" />
+ <img width="400" height="300" alt="image" src="https://github.com/user-attachments/assets/e0bf55c7-81e6-40b7-b289-87a26ddcd05b" />
 
 
 
