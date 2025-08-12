@@ -146,7 +146,7 @@ Pour préciser tout cela, il suffit de cliquer sur le bouton "Blocs" puis de rem
 
 Comme vu précédemment, vous pouvez créer des tâches expérimentales et y simuler des participants sans données empiriques. Cependant, cela s'avère long et fastidieux pour des tâches avec beaucoup de sessions. Vous avez donc la possibilité de sauvegarder des configurations puis de les charger plus tard pour éviter de les re-créer. 
 
-<img width="513" height="152" alt="image" src="https://github.com/user-attachments/assets/60885d4a-a062-4def-a171-c11ec38c5c08" title = "Boutons pour charger et sauvegarder des configurations de tâches expérimentales." />
+<img width="200" height="100" alt="image" src="https://github.com/user-attachments/assets/60885d4a-a062-4def-a171-c11ec38c5c08" title = "Boutons pour charger et sauvegarder des configurations de tâches expérimentales." />
 
 L'application est fournie avec une configuration déjà créee. Il s'agit de la configuration de la tâche exprimentale d'additions sur séquence contigue (CSC) sur problèmes de jugement de Stéphanie Chouteau (Chouteau, 2024).
 
