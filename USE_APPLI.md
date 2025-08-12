@@ -138,7 +138,7 @@ Si l'utilisateur ne possède pas de données empiriques, l'application permet to
 
 <img width="300" height="50" alt="image" src="https://github.com/user-attachments/assets/a0873ad5-ae80-4c25-a6e8-cded0e234917" title="Boîte à séléctionner pour imaginer une tâche sans fichier de données empiriques." />
 
-Suite à cela, il est possible de spécifier le nombre de sessions voulues pour la tâche et les problèmes associées.
+Suite à cela, il est possible de spécifier le nombre de sessions voulues pour la tâche et les problèmes associés.
 
 <img width="300" height="50" alt="image" src="https://github.com/user-attachments/assets/25945a41-e69d-4f55-8c86-a8cb1407ff3e" title="Section pour spécifier le nombre de sessions." />
 
@@ -152,7 +152,7 @@ L'application permet de personnaliser les problèmes souhaités. Vous pouvez dé
 
 ##### Personnaliser les blocs de présentation de problèmes par sessions
 
-Chaque session présent des problèmes à résoudre. Il est possible de présenter ces problèmes plusieurs fois par sessions. Cela est possible en créant des blocs de problèmes et en présentant X fois ces blocs. Cela permet aussi de préciser la nature des problèmes (production (ex. "A+3=?" vs jugement "A+3=D?")). 
+Chaque session présente des problèmes à résoudre. Il est possible de présenter ces problèmes plusieurs fois par sessions. Cela est possible en créant des blocs de problèmes et en présentant X fois ces blocs. Cela permet aussi de préciser la nature des problèmes (production (ex. "A+3=?" vs jugement "A+3=D?")). 
 Pour préciser tout cela, il suffit de cliquer sur le bouton "Blocs" puis de remplir les champs associés.
 
 <img width="80" height="80" alt="image" src="https://github.com/user-attachments/assets/4a886570-8d5e-4ebc-84de-83317da99bcf" title="Bouton pour accéder à la personnalisation des blocs de problèmes." />
