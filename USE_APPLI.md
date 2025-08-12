@@ -7,6 +7,7 @@
     - [Passer par un IDE R](#passer-par-un-ide-r)
     - [Passer par un terminal](#passer-par-un-terminal)
 - [Contenu du dossier](#contenu-du-dossier)
+- [Contenu de l'application](#contenu-de-lapplication)
     - [Onglet "Jeux de données"](#onglet-jeux-de-données)
     - [Onglet "Graphiques"](#onglet-graphiques)
         - [Le volet de gauche](#le-volet-de-gauche)
