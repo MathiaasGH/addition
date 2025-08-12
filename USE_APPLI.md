@@ -14,7 +14,7 @@
             - [Ordre de passation des simulations](#ordre-de-passation-des-simulations)
             - [Gérer le nombre de participants et leur profil](#gérer-le-nombre-de-participants-et-leur-profil)
             - [Simuler sans données empiriques](#simuler-sans-données-empiriques)
-            - [Personnaliser les blocs de présentation de problèmes par sessions](#personnaliser-les-blocs-de-présentation-de-problèmes-par-session)
+            - [Personnaliser les blocs de présentation de problèmes par sessions](#personnaliser-les-blocs-de-présentation-de-problèmes-par-sessions)
             - [Sauvegarder et charger des simulations sans données empiriques](#sauvegarder-et-charger-des-simulations-sans-données-empiriques)
 
 
