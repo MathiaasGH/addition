@@ -17,6 +17,7 @@
             - [Simuler sans données empiriques](#simuler-sans-données-empiriques)
             - [Personnaliser les blocs de présentation de problèmes par sessions](#personnaliser-les-blocs-de-présentation-de-problèmes-par-sessions)
             - [Sauvegarder et charger des simulations sans données empiriques](#sauvegarder-et-charger-des-simulations-sans-données-empiriques)
+        - [Le menu principal](#le-menu-principal)
 
 
 Pour utiliser l'application, deux solutions sont disponibles : 
