@@ -177,9 +177,20 @@ L'application est fournie avec une configuration déjà créee. Il s'agit de la 
 Dans l'onglet ["Graphiques"](#onglet-graphiques), vous trouverez, en plus de la configuration des simulations, les représentations des données de ces dernières et des données empiriques. Quatre types de graphiques sont disponibles : 
 
 - Graphes des temps : Représente les temps de résolution des problèmes par addend et session.
-- Heatmap : Représente une carte de chaleur des types de stratégies utilisées pour la résolution des problèmes par addend et par session. (Graphe pour les données simulées)
-- Strategies : Représente des barplots des types de stratégies utilisées pour la résolution des problèmes par addend et par session choisie. (Graphe pour les données simulées)
+  
+  <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/d34e86bc-84e7-498c-a239-bd2d5a7efcbb" title="Graphe des temps." />
+
+- Heatmap : Représente une carte de chaleur des types de stratégies utilisées pour la résolution des problèmes par addend et par session. (Graphe pour les données simulées). **Violet** -> Stratégie de récupération vs **Jaune** -> Stratégie de comptage.
+
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/1bfbdd6b-424f-40be-b5cf-7b4e73261a47" title="Heatmap" />
+
+- Strategies : Représente des barplots des types de stratégies utilisées pour la résolution des problèmes par addend et par session choisie. (Graphe pour les données simulées). **Violet** -> Stratégie de récupération vs **Jaune** -> Stratégie de comptage.
+
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/bb55f852-ddac-4585-8a29-dbb4714993e0" title="Strategies" />
+
 - Overlap : Représente les temps de résolution des problèmes par addend et par session choisie en fonction du taux de chevauchement des problèmes avec les problèmes déjà connus dans la mémoire procédurale.
+
+<img width="1820" height="1248" alt="image" src="https://github.com/user-attachments/assets/66fcb4fb-88b8-4450-bbea-e7ed1822147c" title="Overlap" />
 
 
  # 🌎 Application Usage Guide
