@@ -197,11 +197,11 @@ Dans l'onglet ["Graphiques"](#onglet-graphiques), vous trouverez, en plus de la 
  # 🌎 Application Usage Guide
 
  ## Table of Contents
-- [Clone the Project](#clone-the-project)
-- [Export the Folder](#export-the-folder)
-- [Use the Application](#use-the-application)
+- [Cloning the Project](#cloning-the-project)
+- [Exporting the Folder](#exporting-the-folder)
+- [Using the Application](#using-the-application)
     - [Using an R IDE](#using-an-r-ide)
-    - [Using a Terminal](#using-a-terminal)
+    - [Running from a Terminal](#running-from-a-terminal)
 - [Folder Contents](#folder-contents)
 - [Application Contents](#application-contents)
     - ["Jeux de données" tab](#jeux-de-données-tab)
