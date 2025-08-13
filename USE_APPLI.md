@@ -172,7 +172,14 @@ L'application est fournie avec une configuration déjà créee. Il s'agit de la 
 
 <img width="400" height="300" alt="image" src="https://github.com/user-attachments/assets/806bd5a1-7ba5-403f-a4dd-239667ccee2d" title = "Chargement de la configuration de Stéphanie Chouteau (Chouteau, 2024)." />
 
+#### Le menu principal
 
+Dans l'onglet ["Graphiques"](#onglet-graphiques), vous trouverez, en plus de la configuration des simulations, les représentations des données de ces dernières et des données empiriques. Quatre types de graphiques sont disponibles : 
+
+- Graphes des temps : Représente les temps de résolution des problèmes par addend et session.
+- Heatmap : Représente une carte de chaleur des types de stratégies utilisées pour la résolution des problèmes par addend et par session. (Graphe pour les données simulées)
+- Strategies : Représente des barplots des types de stratégies utilisées pour la résolution des problèmes par addend et par session choisie. (Graphe pour les données simulées)
+- Overlap : Représente les temps de résolution des problèmes par addend et par session choisie en fonction du taux de chevauchement des problèmes avec les problèmes déjà connus dans la mémoire procédurale.
 
 
  # 🌎 Application Usage Guide
