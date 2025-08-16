@@ -100,7 +100,7 @@ Dans l'onglet "Jeux de données", vous trouverez une section permettant à l'uti
  
  <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/8f7f34ab-cb46-42d1-850b-39654e50571d" title="Section permettant de sélectionner le fichier de données empiriques à regarder." />
 
-Si l'utilisateur possède également un fichier de données simulées grâce à un autre modèle, il est possible de l'ajouter pour visualiser ces données. Pour ce faire, un texte cliquable et présent et offre cette possibilité à l'utilisateur. 
+Si l'utilisateur possède également un fichier de données simulées grâce à un autre modèle, il est possible de l'ajouter pour visualiser ces données. Pour ce faire, un texte cliquable est présent et offre cette possibilité à l'utilisateur. 
 
 <img width="402" height="95" alt="image" src="https://github.com/user-attachments/assets/7db7099e-18d8-45a4-a070-0d483aa76895" title="Texte permettant à l'utilisateur de lire un fichier de données simulées avant clic." />
 
