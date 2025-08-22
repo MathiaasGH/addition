@@ -325,7 +325,7 @@ server <- function(input, output, session) {
   
   
   default_params <- list(
-    iincreasePractice = 0.55,
+    increasePractice = 0.55,
     t = 3000,
     p=30,
     b=700,
