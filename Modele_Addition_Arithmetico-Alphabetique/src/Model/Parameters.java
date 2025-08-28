@@ -14,7 +14,7 @@ public final class Parameters {
 	//To calculate the probability to retrieval a rule OR an answer from procedure memory and answer memory
 	protected static double decisionDeterminism = 1.2;
 	//To adjust weight of a rule in procedure memory according to the correct or incorrect answer
-	protected static double errorDiscount = 0.02; //0.03
+	protected static double errorDiscount = 0.05; //0.03
 	//To increase weight of an answer in answer memory
 	protected static double weightIncrease = 1.5; 
 	// To set initial practice weight to skip from element i to element i+1
