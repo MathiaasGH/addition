@@ -147,7 +147,7 @@ public class Problem {
 	public void endProblem(boolean memorizing) {
 		time = time + Parameters.elementEncoding + Parameters.motorCommand + Parameters.comparison + decisionTime;
 		//Commenter la ligne suivante pour retirer l'affichage de la réponse
-		endMessage(memorizing);
+		//endMessage(memorizing);
 		Procedure_Memory.getInstance().modifyWeigth(usedRules, error()?-1:1);
 		if(memorizing) {
 			if(feedback) {
