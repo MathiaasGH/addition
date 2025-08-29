@@ -409,6 +409,11 @@ public class Procedure_Memory {
 		return medianLastTime+Parameters.switching_cost*Parameters.other_strat;
 	}
 	
+	/**
+	 * Retourne une map de probabilité pour compter ou pour récupérer la réponse à un problème
+	 * @param chunk
+	 * @return une map de probabilité
+	 */
 	public Map<String, Double> strategyProbabilty(Chunk chunk){
 		double estimationTimeAnswer = estimationTimeAnswer(chunk);
 		double estimationTimeProduction= estimationTimeProduction(chunk);
@@ -443,6 +448,12 @@ public class Procedure_Memory {
 		return decisionMap;
 	}
 	
+	/**
+	 * Une fonction softmax à température inversée
+	 * @param retrievingTime
+	 * @param countingTime
+	 * @return les proba pour compter ou pour récupérer la réponse
+	 */
 	public double[] softmax(double retrievingTime, double countingTime) {
 		double rationality = Parameters.rationalityParameter;
 		double probaRetrieving = Math.exp(-rationality*retrievingTime) / ( Math.exp(-rationality*retrievingTime) + Math.exp(-rationality*countingTime));
